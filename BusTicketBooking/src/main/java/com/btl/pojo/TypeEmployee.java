@@ -21,6 +21,10 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author ACER
+ */
 @Entity
 @Table(name = "type_employee")
 @XmlRootElement
@@ -109,5 +113,5 @@ public class TypeEmployee implements Serializable {
     public String toString() {
         return "com.btl.pojo.TypeEmployee[ id=" + id + " ]";
     }
-
+    
 }

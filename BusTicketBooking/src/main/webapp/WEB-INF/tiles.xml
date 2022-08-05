@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- Begin admin tiles -->
+    <definition name="adminBaseLayout" template="/WEB-INF/layout/admin/adminBase.jsp">
+        <put-attribute name="adminTitle" value=""/>
+        <put-attribute name="adminHeader" value="/WEB-INF/layout/admin/adminHeader.jsp"/>
+        <put-attribute name="adminContent" value="Default Tiles"/>
+        <put-attribute name="adminFooter" value="/WEB-INF/layout/admin/adminFooter.jsp"/>
+    </definition>
+    
+    <definition name="adminIndex" extends="adminBaseLayout">
+        <put-attribute name="adminTitle" value="Manage" />
+        <put-attribute name="adminContent"
+                       value="/WEB-INF/jsp/admin/adminIndex.jsp" />
+    </definition>
+    
+    <definition name="adminLineBus" extends="adminBaseLayout">
+        <put-attribute name="adminTitle" value="ManageLineBus" />
+        <put-attribute name="adminContent"
+                       value="/WEB-INF/jsp/admin/adminLineBus.jsp" />
+    </definition>
+    <!-- End admin tiles -->
+</tiles-definitions>
+

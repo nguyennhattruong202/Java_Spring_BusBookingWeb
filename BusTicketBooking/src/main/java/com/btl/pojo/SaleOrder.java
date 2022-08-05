@@ -19,8 +19,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ *
+ * @author ACER
+ */
 @Entity
 @Table(name = "sale_order")
 @XmlRootElement
@@ -28,7 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SaleOrder.findAll", query = "SELECT s FROM SaleOrder s"),
     @NamedQuery(name = "SaleOrder.findById", query = "SELECT s FROM SaleOrder s WHERE s.id = :id"),
     @NamedQuery(name = "SaleOrder.findByCreatedDate", query = "SELECT s FROM SaleOrder s WHERE s.createdDate = :createdDate"),
-    @NamedQuery(name = "SaleOrder.findByNum", query = "SELECT s FROM SaleOrder s WHERE s.num = :num")})
+    @NamedQuery(name = "SaleOrder.findByNum", query = "SELECT s FROM SaleOrder s WHERE s.num = :num"),
+    @NamedQuery(name = "SaleOrder.findByFeedbackRate", query = "SELECT s FROM SaleOrder s WHERE s.feedbackRate = :feedbackRate"),
+    @NamedQuery(name = "SaleOrder.findByFeedbackComment", query = "SELECT s FROM SaleOrder s WHERE s.feedbackComment = :feedbackComment"),
+    @NamedQuery(name = "SaleOrder.findByFeedbackDate", query = "SELECT s FROM SaleOrder s WHERE s.feedbackDate = :feedbackDate")})
 public class SaleOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +50,14 @@ public class SaleOrder implements Serializable {
     private Date createdDate;
     @Column(name = "num")
     private Integer num;
+    @Column(name = "feedback_rate")
+    private Integer feedbackRate;
+    @Size(max = 255)
+    @Column(name = "feedback_comment")
+    private String feedbackComment;
+    @Column(name = "feedback_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date feedbackDate;
     @JoinColumn(name = "bus_trip_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private BusTrip busTripId;
@@ -78,6 +94,30 @@ public class SaleOrder implements Serializable {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public Integer getFeedbackRate() {
+        return feedbackRate;
+    }
+
+    public void setFeedbackRate(Integer feedbackRate) {
+        this.feedbackRate = feedbackRate;
+    }
+
+    public String getFeedbackComment() {
+        return feedbackComment;
+    }
+
+    public void setFeedbackComment(String feedbackComment) {
+        this.feedbackComment = feedbackComment;
+    }
+
+    public Date getFeedbackDate() {
+        return feedbackDate;
+    }
+
+    public void setFeedbackDate(Date feedbackDate) {
+        this.feedbackDate = feedbackDate;
     }
 
     public BusTrip getBusTripId() {
@@ -120,5 +160,5 @@ public class SaleOrder implements Serializable {
     public String toString() {
         return "com.btl.pojo.SaleOrder[ id=" + id + " ]";
     }
-
+    
 }

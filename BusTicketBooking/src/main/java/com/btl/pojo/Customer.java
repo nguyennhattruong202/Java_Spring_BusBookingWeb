@@ -24,6 +24,10 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author ACER
+ */
 @Entity
 @Table(name = "customer")
 @XmlRootElement
@@ -223,5 +227,5 @@ public class Customer implements Serializable {
     public String toString() {
         return "com.btl.pojo.Customer[ id=" + id + " ]";
     }
-
+    
 }
