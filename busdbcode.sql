@@ -207,3 +207,25 @@ alter table `busdb`.`sale_order`
 add column `feedback_rate` int null after `bus_trip_id`, -- Thêm cột lưu điểm phản hồi
 add column `feedback_comment` varchar(255) null after `feedback_rate`, -- Thêm cột nhận phản hồi
 add column `feedback_date` datetime null after `feedback_comment`; -- Thêm cột lưu ngày tạo phản hồi
+
+-- Update at 2022-08-03
+update busdb.line_bus set busdb.line_bus.name = 'Bạc Liêu - Tp.Hồ Chí Minh' where(id = '1');
+update busdb.line_bus set busdb.line_bus.name = 'Bảo Lộc - Huế' where(id = '2');
+update busdb.line_bus set busdb.line_bus.name = 'Bảo Lộc - Đà Nẵng' where(id = '3');
+update busdb.line_bus set busdb.line_bus.name = 'Bảo Lộc - Quãng Ngãi' where(id = '4');
+update busdb.line_bus set busdb.line_bus.name = 'Bến Tre - Tp.Hồ Chí Minh' where(id = '5');
+update busdb.line_bus set busdb.line_bus.name = 'Buôn Ma Thuộc - Tp.Hồ Chí Minh' where(id = '6');
+update busdb.line_bus set busdb.line_bus.name = 'Buôn Ma Thuộc - Nha Trang' where(id = '7');
+update busdb.line_bus set busdb.line_bus.name = 'An Sương - Quãng Ngãi' where(id = '8');
+update busdb.line_bus set busdb.line_bus.name = 'An Sương - Đà Nẵng' where(id = '9');
+update busdb.line_bus set busdb.line_bus.name = 'Cà Mau - Tp.Hồ Chí Minh' where(id = '10');
+update busdb.line_bus set busdb.line_bus.name = 'Cà Mau - Cần Thơ' where(id = '11');
+update busdb.line_bus set busdb.line_bus.name = 'Cà Mau - Châu Đốc' where(id = '12');
+update busdb.line_bus set busdb.line_bus.name = 'Cam Ranh - Đà Nẵng' where(id = '13');
+update busdb.line_bus set busdb.line_bus.name = 'Cam Ranh - Tp.Hồ Chí Minh' where(id = '14');
+update busdb.line_bus set busdb.line_bus.name = 'Cần Thơ - Cà Mau' where(id = '15');
+update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '1');
+update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '5');
+update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '6');
+update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '10');
+update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '14');
