@@ -6,7 +6,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     <!-- Begin admin tiles -->
     <definition name="adminBaseLayout" template="/WEB-INF/layout/admin/adminBase.jsp">
         <put-attribute name="adminTitle" value=""/>
-        <put-attribute name="adminHeader" value="/WEB-INF/layout/admin/adminHeader.jsp"/>
+        <put-attribute name="adminHeader" value="Header"/>
         <put-attribute name="adminContent" value="Default Tiles"/>
         <put-attribute name="adminFooter" value="/WEB-INF/layout/admin/adminFooter.jsp"/>
     </definition>
@@ -21,6 +21,12 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminTitle" value="ManageLineBus" />
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminLineBus.jsp" />
+    </definition>
+    
+    <definition name="adminEmployeeUser" extends="adminBaseLayout">
+        <put-attribute name="adminTitle" value="ManageEmployee" />
+        <put-attribute name="adminContent"
+                       value="/WEB-INF/jsp/admin/adminEmployeeUser.jsp" />
     </definition>
     <!-- End admin tiles -->
 </tiles-definitions>

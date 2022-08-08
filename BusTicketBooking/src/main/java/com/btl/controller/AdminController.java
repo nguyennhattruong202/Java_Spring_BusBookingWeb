@@ -36,4 +36,9 @@ public class AdminController {
         model.addAttribute("pageSize", Integer.parseInt(env.getProperty("admin.content.pageSize")));
         return "adminLineBus";
     }
+
+    @GetMapping("/employee")
+    public String adminEmployeeManage() {
+        return "adminEmployeeUser";
+    }
 }
