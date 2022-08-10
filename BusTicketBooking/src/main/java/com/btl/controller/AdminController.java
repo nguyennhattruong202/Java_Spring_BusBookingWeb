@@ -41,4 +41,8 @@ public class AdminController {
     public String adminEmployeeManage() {
         return "adminEmployeeUser";
     }
+    @GetMapping("/bustrip")
+    public String adminBusTrip() {
+        return "adminBusTrip";
+    }
 }
