@@ -8,6 +8,9 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<head>
+    <script src="<c:url value="/js/admin/jsAdminEmployee.js"/>"></script>
+</head>
 <div class="text-center mt-3 text-primary text-uppercase">
     <h2>Quản lý nhân sự</h2>
 </div>
@@ -59,16 +62,7 @@
             <label>Email:</label>
             <input type="text" class="form-control" placeholder="Enter email">
         </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col">
-            <label>Active:</label>
-            <select class="form-select" aria-label="Active select">
-                <option value="1" selected>Active</option>
-                <option value="2">Non-Active</option>
-            </select>
-        </div>
-        <div class="col">
+        <div class="col-3">
             <label>Type employee:</label>
             <select class="form-select" aria-label="Role select">
                 <option value="1" selected>Admin</option>
@@ -76,45 +70,51 @@
                 <option value="3">Driver</option>
             </select>
         </div>
+        <div class="col-3">
+            <label>Active:</label>
+            <select class="form-select" aria-label="Active select">
+                <option value="1" selected>Active</option>
+                <option value="2">Non-Active</option>
+            </select>
+        </div>
     </div>
 </form:form>
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-primary me-md-2 mt-3" type="button">Thêm nhân sự mới</button>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-3">
+    <button class="btn btn-primary me-md-2 fw-bold" type="button"><i class="fa fa-plus me-2"></i>Thêm nhân sự mới</button>
 </div>
+
 <hr>
 
-<div class="text-center mt-5 text-primary text-uppercase">
+<div class="text-center mt-3 text-primary text-uppercase">
     <h4>Danh sách nhân sự</h4>
 </div>
 <div class=" d-flex justify-content-center">
     <hr class="w-25">
 </div>
 
+<div class="input-group mt-3 mb-3">
+    <input type="search" class="form-control" placeholder="Search">
+    <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+</div>
+
 <table class="table table-hover">
     <tr>
+        <th>#</th>
         <th>Last name</th>
         <th>First name</th>
         <th>Date of birth</th>
-        <th>Sex</th>
-        <th>Address</th>
-        <th>Identity number</th>
         <th>Phone number</th>
         <th>Email</th>
-        <th>Active</th>
-        <th>Type employee</th>
     </tr>
-    <c:forEach begin="1" end="10" var="i">
-        <tr>
-            <td>Last name ${i}</td>
-            <td>First name ${i}</td>
-            <td>Date of birth ${i}</td>
-            <td>Sex ${i}</td>
-            <td>Address ${i}</td>
-            <td>Identity number ${i}</td>
-            <td>Phone number ${i}</td>
-            <td>Email ${i}</td>
-            <td>Active ${i}</td>
-            <td>Type employee ${i}</td>
-        </tr>
-    </c:forEach>
+    <tbody id="listEmployee">
+
+    </tbody>
 </table>
+
+<script>
+    <c:url value="/admin/employee" var="endpoint"/>
+    window:onload = function () {
+        loadEmployee('${endpoint}');
+    };
+</script>

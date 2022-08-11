@@ -19,9 +19,9 @@
                 Epmloyee 1
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-info me-3"></i>Thông tin tài khoản</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-key me-3"></i>Thay đổi mật khẩu</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket me-3"></i>Đăng xuất</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle me-2" style="font-size: 20px;"></i>Thông tin tài khoản</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-key me-2" style="font-size: 20px;"></i>Thay đổi mật khẩu</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left me-2" style="font-size: 20px;"></i>Đăng xuất</a></li>
             </ul>
         </li>
     </div>

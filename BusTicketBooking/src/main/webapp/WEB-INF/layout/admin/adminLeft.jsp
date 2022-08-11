@@ -15,19 +15,28 @@
     <hr>
     <ul class="nav nav-pills flex-column">
         <li>
-            <a href="<c:url value="/admin/index"/>" class="nav-link link-dark"><i class="fa-solid fa-house me-3" style="width: 20px;"></i>Trang chủ</a>
+            <a href="<c:url value="/admin/index"/>" class="nav-link link-dark"><i class="bi bi-house me-3" style="font-size: 20px;"></i>Trang chủ</a>
         </li>
         <li>
-            <a href="<c:url value="/admin/linesbus"/>" class="nav-link link-dark"><i class="fa-solid fa-signs-post me-3" style="width: 20px;"></i>Quản lý tuyến xe</a>
+            <a href="<c:url value="/admin/linesbus"/>" class="nav-link link-dark"><i class="bi bi-signpost-2 me-3" style="font-size: 20px;"></i>Quản lý tuyến xe</a>
         </li>
         <li>
-            <a href="<c:url value="/admin/bustrip"/>" class="nav-link link-dark"><i class="fa-solid fa-bus me-3" style="width: 20px;"></i>Quản lý chuyến xe</a>
+            <a href="<c:url value="/admin/bustrip"/>" class="nav-link link-dark"><i class="bi bi-pin-map me-3" style="font-size: 20px;"></i>Quản lý chuyến xe</a>
         </li>
         <li>
-            <a href="<c:url value="/admin/employee"/>" class="nav-link link-dark"><i class="fa-solid fa-users me-3" style="width: 20px;"></i>Quản lý nhân sự</a>
+            <a href="<c:url value="/admin/bus"/>" class="nav-link link-dark"><i class="bi bi-truck-front me-3" style="font-size: 20px;"></i>Quản lý xe</a>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark"><i class="fa-solid fa-user me-3" style="width: 20px;"></i>Quản lý loại nhân sự</a>
+            <a href="<c:url value="/admin/employee"/>" class="nav-link link-dark"><i class="bi bi-people me-3" style="font-size: 20px;"></i>Quản lý nhân sự</a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark"><i class="bi bi-person me-3" style="font-size: 20px;"></i>Quản lý loại nhân sự</a>
         </li>
     </ul>
 </div>
+<style>
+    li:hover{
+        font-weight: bold;
+    }
+
+</style>

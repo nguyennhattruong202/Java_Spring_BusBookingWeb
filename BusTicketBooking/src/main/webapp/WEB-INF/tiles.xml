@@ -34,6 +34,11 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminBusTrip.jsp" />
     </definition>
+    <definition name="adminBus" extends="adminBaseLayout">
+        <put-attribute name="adminTitle" value="ManageBus" />
+        <put-attribute name="adminContent"
+                       value="/WEB-INF/jsp/admin/adminBus.jsp" />
+    </definition>
     <!-- End admin tiles -->
 </tiles-definitions>
 
