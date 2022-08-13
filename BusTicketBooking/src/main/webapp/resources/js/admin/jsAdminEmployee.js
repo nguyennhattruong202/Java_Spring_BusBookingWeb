@@ -4,7 +4,7 @@
  */
 function loadEmployee() {
     let msg = "";
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i <= 20; i++) {
         msg +=
                 `
         <tr class="align-middle">
@@ -17,7 +17,7 @@ function loadEmployee() {
             <td>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-bars"></i></button>
                 <button class="btn btn-primary" type="button"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-danger" type="button"><i class="fa fa-trash" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"></i></button>
             </td>
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog modal-dialog-centered">
@@ -31,6 +31,23 @@ function loadEmployee() {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="deleteEmployeeModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Attention</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure to delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Yes</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>

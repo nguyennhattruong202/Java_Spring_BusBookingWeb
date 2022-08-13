@@ -32,7 +32,7 @@
                     <!-- Admin left-->
                     <tiles:insertAttribute name="adminLeft"/>
                 </div>
-                <div class="col-9">
+                <div class="col-9 ps-0">
                     <!-- Admin content-->
                     <tiles:insertAttribute name="adminContent"/>
                 </div>

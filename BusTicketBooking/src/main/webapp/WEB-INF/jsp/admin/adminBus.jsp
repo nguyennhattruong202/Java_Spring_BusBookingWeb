@@ -64,19 +64,22 @@
 </div>
 
 <div class="input-group mt-3 mb-3">
-    <input type="search" class="form-control" placeholder="Nhập tên xe để tìm kiếm">
+    <input type="search" class="form-control" placeholder="Tìm kiếm xe">
     <button type="button" class="btn btn-primary"><i class="bi bi-search"></i></button>
 </div>
 
-<table class="table table-hover">
-    <tr>
-        <th>#</th>
-        <th>Tên xe</th>
-        <th>Biển số xe</th>
-        <th>Sức chứa</th>
-        <th>Hãng sản xuất</th>
-        <th>Loại xe</th>
-    </tr>
+<table class="table table-hover table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Tên xe</th>
+            <th>Biển số xe</th>
+            <th>Sức chứa</th>
+            <th>Hãng sản xuất</th>
+            <th>Loại xe</th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody id="listBus"></tbody>
 </table>
 

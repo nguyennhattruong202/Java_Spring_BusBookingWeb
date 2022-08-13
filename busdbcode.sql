@@ -229,3 +229,55 @@ update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where
 update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '6');
 update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '10');
 update busdb.line_bus set busdb.line_bus.destination = 'Tp.Hồ Chí Minh' where(id = '14');
+
+-- Update at 2022-08-13
+drop table if exists `busdb`.`station`;
+-- Bảng dữ liệu lưu thông tin các trạm xe
+create table `busdb`.`station`(
+	`id` int not null auto_increment, -- Mã trạm xe
+    `name` varchar(255) null, -- Tên trạm xe
+    `location` varchar(255) null, -- Địa điểm trạm xe
+    `ward` varchar(255) null, -- Xã/phường trạm xe
+    `district` varchar(255) null, -- Quận/huyện trạm xe
+    `province` varchar(255) null, -- Tỉnh/thành trạm xe
+    `phone` varchar(255) null, -- Số điện thoại trạm xe
+    primary key(`id`)
+)
+engine = InnoDB
+default character set = utf8
+collate = utf8_unicode_ci;
+
+-- Thêm dữ liệu cho bảng `busdb`.`station`
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Chợ Rẫy', '20 Phạm Hữu Chí', 'Phường 11', 'Quận 5', 'Thành phố Hồ Chí Minh', '19007676');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Lai Vung', '137A QL80', 'Hòa Long', 'Lai Vung', 'Đồng Tháp', '19007689');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Đặng Thái Thân', '09 Đặng Thái Thân', 'Phường 11', 'Quận 5', 'Thành phố Hồ Chí Minh', '19007684');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Nơ Trang Long', '68 Nơ Trang Long', 'Phường 14', 'Quận Bình Thạnh', 'Thành phố Hồ Chí Minh', '19006784');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Bến xe miền Tây', '395-397 Kinh Dương Vương', 'Phường An Lạc', 'Quận Bình Tân', 'Thành phố Hồ Chí Minh', '19006284');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Cao Văn Lầu', '94 Cao Văn Lầu', 'Phường 10', 'Quận 6', 'Thành phố Hồ Chí Minh', '19006584');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Lê Hồng Phong', '231-233 Lê Hồng Phong', 'Phường 4', 'Quận 5', 'Thành phố Hồ Chí Minh', '19006514');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Vị Thanh', 'Trần Hưng Đạo', 'Phường 5', 'Vị Thanh', 'Hậu Giang', '19004514');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Vĩnh Long', '1E Đinh Tiên Hoàng', 'Phường 8', 'Thành phố Vĩnh Long', 'Vĩnh Long', '19004014');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Bến xe Vũng Tàu', '192 Nam Kỳ Khởi Nghĩa', 'Phường 3', 'Thành phố Vũng Tàu', 'Bà Rịa - Vũng Tàu', '19001014');
+insert into `busdb`.`station` (`name`, `location`, `ward`, `district`, `province`, `phone`) values ('Trạm Phan Thiết', '121 Tôn Đức Thắng', 'Phường 3', 'Phan Thiết', 'Bình Thuận', '19001114');
+
+-- Thêm cột cho bảng `busdb`.`employee_user`
+alter table `busdb`.`employee_user`
+add column `station_id` int null after `type_emp_id`;
+
+-- Thêm khóa ngoại cho bảng `busdb`.`employee_user`
+alter table `busdb`.`employee_user`
+add constraint `fk_employee_station` foreign key(`station_id`) references `busdb`.`station`(`id`);
+
+-- Cập nhật dữ liệu cho cột `station_id`
+update `busdb`.`employee_user` set `station_id` = '1' where(`id` = '1');
+update `busdb`.`employee_user` set `station_id` = '2' where(`id` = '2');
+update `busdb`.`employee_user` set `station_id` = '3' where(`id` = '3');
+update `busdb`.`employee_user` set `station_id` = '4' where(`id` = '4');
+update `busdb`.`employee_user` set `station_id` = '5' where(`id` = '5');
+update `busdb`.`employee_user` set `station_id` = '6' where(`id` = '6');
+update `busdb`.`employee_user` set `station_id` = '7' where(`id` = '7');
+update `busdb`.`employee_user` set `station_id` = '8' where(`id` = '8');
+update `busdb`.`employee_user` set `station_id` = '9' where(`id` = '9');
+update `busdb`.`employee_user` set `station_id` = '10' where(`id` = '10');
+
+-- Run finished and done employee_user table

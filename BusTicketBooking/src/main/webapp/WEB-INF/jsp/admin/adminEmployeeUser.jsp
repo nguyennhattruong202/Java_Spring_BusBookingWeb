@@ -98,15 +98,18 @@
     <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
 </div>
 
-<table class="table table-hover">
-    <tr>
-        <th>#</th>
-        <th>Last name</th>
-        <th>First name</th>
-        <th>Date of birth</th>
-        <th>Phone number</th>
-        <th>Email</th>
-    </tr>
+<table class="table table-hover table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>Date of birth</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
     <tbody id="listEmployee">
 
     </tbody>
