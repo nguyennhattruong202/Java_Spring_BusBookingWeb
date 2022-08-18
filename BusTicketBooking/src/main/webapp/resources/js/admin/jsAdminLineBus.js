@@ -2,16 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
-function loadLineBus() {
+function loadLineBus(endpoint) {
     let msg = "";
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i <= 20; i++) {
         msg +=
                 `
         <tr class="align-middle">
             <td>` + i + `</td>
-            <td>Tên tuyến xe ` + i + `</td>
             <td>Nơi khởi hành ` + i + `</td>
             <td>Nơi đến ` + i + `</td>
+            <td>Độ dài tuyến ` + i + `</td>
+            <td>Giá tiền ` + i + `</td>
+            <td>Trạng thái ` + i + `</td>
             <td>
                 <button class="btn btn-primary" type="button"><i class="bi bi-pencil-square"></i></button>
                 <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteLineBusModal"><i class="fa fa-trash"></i></button>
@@ -39,4 +41,3 @@ function loadLineBus() {
     let d = document.getElementById("listLineBus");
     d.innerHTML = msg;
 };
-

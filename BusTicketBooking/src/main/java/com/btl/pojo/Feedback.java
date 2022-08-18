@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -26,16 +27,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ACER
  */
 @Entity
-@Table(name = "sale_order")
+@Table(name = "feedback")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SaleOrder.findAll", query = "SELECT s FROM SaleOrder s"),
-    @NamedQuery(name = "SaleOrder.findById", query = "SELECT s FROM SaleOrder s WHERE s.id = :id"),
-    @NamedQuery(name = "SaleOrder.findByCraetedDate", query = "SELECT s FROM SaleOrder s WHERE s.craetedDate = :craetedDate"),
-    @NamedQuery(name = "SaleOrder.findByNum", query = "SELECT s FROM SaleOrder s WHERE s.num = :num"),
-    @NamedQuery(name = "SaleOrder.findByPaid", query = "SELECT s FROM SaleOrder s WHERE s.paid = :paid"),
-    @NamedQuery(name = "SaleOrder.findByCancel", query = "SELECT s FROM SaleOrder s WHERE s.cancel = :cancel")})
-public class SaleOrder implements Serializable {
+    @NamedQuery(name = "Feedback.findAll", query = "SELECT f FROM Feedback f"),
+    @NamedQuery(name = "Feedback.findById", query = "SELECT f FROM Feedback f WHERE f.id = :id"),
+    @NamedQuery(name = "Feedback.findByRate", query = "SELECT f FROM Feedback f WHERE f.rate = :rate"),
+    @NamedQuery(name = "Feedback.findByComment", query = "SELECT f FROM Feedback f WHERE f.comment = :comment"),
+    @NamedQuery(name = "Feedback.findByCreatedDate", query = "SELECT f FROM Feedback f WHERE f.createdDate = :createdDate")})
+public class Feedback implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,29 +43,25 @@ public class SaleOrder implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "craeted_date")
+    @Column(name = "rate")
+    private Integer rate;
+    @Size(max = 255)
+    @Column(name = "comment")
+    private String comment;
+    @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date craetedDate;
-    @Column(name = "num")
-    private Integer num;
-    @Column(name = "paid")
-    private Boolean paid;
-    @Column(name = "cancel")
-    private Boolean cancel;
+    private Date createdDate;
     @JoinColumn(name = "bustrip_id", referencedColumnName = "id")
     @ManyToOne
     private Bustrip bustripId;
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne
     private Customer customerId;
-    @JoinColumn(name = "payment_id", referencedColumnName = "id")
-    @ManyToOne
-    private Payment paymentId;
 
-    public SaleOrder() {
+    public Feedback() {
     }
 
-    public SaleOrder(Integer id) {
+    public Feedback(Integer id) {
         this.id = id;
     }
 
@@ -77,36 +73,28 @@ public class SaleOrder implements Serializable {
         this.id = id;
     }
 
-    public Date getCraetedDate() {
-        return craetedDate;
+    public Integer getRate() {
+        return rate;
     }
 
-    public void setCraetedDate(Date craetedDate) {
-        this.craetedDate = craetedDate;
+    public void setRate(Integer rate) {
+        this.rate = rate;
     }
 
-    public Integer getNum() {
-        return num;
+    public String getComment() {
+        return comment;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public Boolean getPaid() {
-        return paid;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setPaid(Boolean paid) {
-        this.paid = paid;
-    }
-
-    public Boolean getCancel() {
-        return cancel;
-    }
-
-    public void setCancel(Boolean cancel) {
-        this.cancel = cancel;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Bustrip getBustripId() {
@@ -125,14 +113,6 @@ public class SaleOrder implements Serializable {
         this.customerId = customerId;
     }
 
-    public Payment getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Payment paymentId) {
-        this.paymentId = paymentId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -143,10 +123,10 @@ public class SaleOrder implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SaleOrder)) {
+        if (!(object instanceof Feedback)) {
             return false;
         }
-        SaleOrder other = (SaleOrder) object;
+        Feedback other = (Feedback) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -155,7 +135,7 @@ public class SaleOrder implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.SaleOrder[ id=" + id + " ]";
+        return "com.btl.pojo.Feedback[ id=" + id + " ]";
     }
     
 }

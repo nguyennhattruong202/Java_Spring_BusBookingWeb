@@ -47,10 +47,6 @@ public class AdminController {
         return "adminBusTrip";
     }
 
-    @GetMapping("/bus")
-    public String adminBusManage() {
-        return "adminBus";
-    }
     @GetMapping("/typeemployee")
     public String adminTypeEmployeeManage() {
         return "adminTypeEmployee";

@@ -4,10 +4,10 @@
  */
 package com.btl.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +17,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Bus.findByLicensePlates", query = "SELECT b FROM Bus b WHERE b.licensePlates = :licensePlates"),
     @NamedQuery(name = "Bus.findByCapacity", query = "SELECT b FROM Bus b WHERE b.capacity = :capacity"),
     @NamedQuery(name = "Bus.findByManufacturer", query = "SELECT b FROM Bus b WHERE b.manufacturer = :manufacturer"),
-    @NamedQuery(name = "Bus.findByType", query = "SELECT b FROM Bus b WHERE b.type = :type")})
+    @NamedQuery(name = "Bus.findByType", query = "SELECT b FROM Bus b WHERE b.type = :type"),
+    @NamedQuery(name = "Bus.findByActive", query = "SELECT b FROM Bus b WHERE b.active = :active")})
 public class Bus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,22 +48,32 @@ public class Bus implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 255)
+    @NotNull(message = "{admin.validation.bus.nullError}")
+    @Size(min = 1, max = 255, message = "{admin.validation.bus.name.sizeError}")
     @Column(name = "name")
     private String name;
-    @Size(max = 255)
+    @NotNull(message = "{admin.validation.bus.nullError}")
+    @Size(min = 8, max = 255, message = "{admin.validation.bus.licensePlates.sizeError}")
     @Column(name = "license_plates")
     private String licensePlates;
+    @NotNull(message = "{admin.validation.bus.nullError}")
+    @Min(value = 4, message = "{admin.validation.bus.capacity.minError}")
+    @Max(value = 50, message = "{admin.validation.bus.capacity.maxError}")
     @Column(name = "capacity")
     private Integer capacity;
-    @Size(max = 255)
+    @NotNull(message = "{admin.validation.bus.nullError}")
+    @Size(min = 1, max = 255, message = "{admin.validation.bus.manufacturer.sizeError}")
     @Column(name = "manufacturer")
     private String manufacturer;
+    @NotNull(message = "{admin.validation.bus.nullError}")
     @Size(max = 255)
     @Column(name = "type")
     private String type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "busId")
-    private Set<BusTrip> busTripSet;
+    @Column(name = "active")
+    private Boolean active;
+    @JsonIgnore
+    @OneToMany(mappedBy = "busId")
+    private Set<Bustrip> bustripSet;
 
     public Bus() {
     }
@@ -116,13 +130,21 @@ public class Bus implements Serializable {
         this.type = type;
     }
 
-    @XmlTransient
-    public Set<BusTrip> getBusTripSet() {
-        return busTripSet;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setBusTripSet(Set<BusTrip> busTripSet) {
-        this.busTripSet = busTripSet;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @XmlTransient
+    public Set<Bustrip> getBustripSet() {
+        return bustripSet;
+    }
+
+    public void setBustripSet(Set<Bustrip> bustripSet) {
+        this.bustripSet = bustripSet;
     }
 
     @Override

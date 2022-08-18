@@ -25,14 +25,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author ACER
  */
 @Entity
-@Table(name = "type_employee")
+@Table(name = "payment")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TypeEmployee.findAll", query = "SELECT t FROM TypeEmployee t"),
-    @NamedQuery(name = "TypeEmployee.findById", query = "SELECT t FROM TypeEmployee t WHERE t.id = :id"),
-    @NamedQuery(name = "TypeEmployee.findByName", query = "SELECT t FROM TypeEmployee t WHERE t.name = :name"),
-    @NamedQuery(name = "TypeEmployee.findBySalaryLevel", query = "SELECT t FROM TypeEmployee t WHERE t.salaryLevel = :salaryLevel")})
-public class TypeEmployee implements Serializable {
+    @NamedQuery(name = "Payment.findAll", query = "SELECT p FROM Payment p"),
+    @NamedQuery(name = "Payment.findById", query = "SELECT p FROM Payment p WHERE p.id = :id"),
+    @NamedQuery(name = "Payment.findByName", query = "SELECT p FROM Payment p WHERE p.name = :name"),
+    @NamedQuery(name = "Payment.findByContent", query = "SELECT p FROM Payment p WHERE p.content = :content"),
+    @NamedQuery(name = "Payment.findByActive", query = "SELECT p FROM Payment p WHERE p.active = :active")})
+public class Payment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,15 +44,18 @@ public class TypeEmployee implements Serializable {
     @Size(max = 255)
     @Column(name = "name")
     private String name;
-    @Column(name = "salary_level")
-    private Long salaryLevel;
-    @OneToMany(mappedBy = "typeEmployeeId")
-    private Set<Employee> employeeSet;
+    @Size(max = 255)
+    @Column(name = "content")
+    private String content;
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "paymentId")
+    private Set<SaleOrder> saleOrderSet;
 
-    public TypeEmployee() {
+    public Payment() {
     }
 
-    public TypeEmployee(Integer id) {
+    public Payment(Integer id) {
         this.id = id;
     }
 
@@ -71,21 +75,29 @@ public class TypeEmployee implements Serializable {
         this.name = name;
     }
 
-    public Long getSalaryLevel() {
-        return salaryLevel;
+    public String getContent() {
+        return content;
     }
 
-    public void setSalaryLevel(Long salaryLevel) {
-        this.salaryLevel = salaryLevel;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @XmlTransient
-    public Set<Employee> getEmployeeSet() {
-        return employeeSet;
+    public Set<SaleOrder> getSaleOrderSet() {
+        return saleOrderSet;
     }
 
-    public void setEmployeeSet(Set<Employee> employeeSet) {
-        this.employeeSet = employeeSet;
+    public void setSaleOrderSet(Set<SaleOrder> saleOrderSet) {
+        this.saleOrderSet = saleOrderSet;
     }
 
     @Override
@@ -98,10 +110,10 @@ public class TypeEmployee implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TypeEmployee)) {
+        if (!(object instanceof Payment)) {
             return false;
         }
-        TypeEmployee other = (TypeEmployee) object;
+        Payment other = (Payment) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -110,7 +122,7 @@ public class TypeEmployee implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.TypeEmployee[ id=" + id + " ]";
+        return "com.btl.pojo.Payment[ id=" + id + " ]";
     }
     
 }

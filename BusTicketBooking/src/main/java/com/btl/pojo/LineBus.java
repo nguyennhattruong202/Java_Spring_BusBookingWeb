@@ -7,7 +7,6 @@ package com.btl.pojo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,9 +30,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "LineBus.findAll", query = "SELECT l FROM LineBus l"),
     @NamedQuery(name = "LineBus.findById", query = "SELECT l FROM LineBus l WHERE l.id = :id"),
-    @NamedQuery(name = "LineBus.findByName", query = "SELECT l FROM LineBus l WHERE l.name = :name"),
     @NamedQuery(name = "LineBus.findByDeparture", query = "SELECT l FROM LineBus l WHERE l.departure = :departure"),
-    @NamedQuery(name = "LineBus.findByDestination", query = "SELECT l FROM LineBus l WHERE l.destination = :destination")})
+    @NamedQuery(name = "LineBus.findByDestination", query = "SELECT l FROM LineBus l WHERE l.destination = :destination"),
+    @NamedQuery(name = "LineBus.findByDistance", query = "SELECT l FROM LineBus l WHERE l.distance = :distance"),
+    @NamedQuery(name = "LineBus.findByPrice", query = "SELECT l FROM LineBus l WHERE l.price = :price"),
+    @NamedQuery(name = "LineBus.findByActive", query = "SELECT l FROM LineBus l WHERE l.active = :active")})
 public class LineBus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,16 +44,20 @@ public class LineBus implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Size(max = 255)
-    @Column(name = "name")
-    private String name;
-    @Size(max = 255)
     @Column(name = "departure")
     private String departure;
     @Size(max = 255)
     @Column(name = "destination")
     private String destination;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineBusId")
-    private Set<BusTrip> busTripSet;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "distance")
+    private Double distance;
+    @Column(name = "price")
+    private Long price;
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "linebusId")
+    private Set<Bustrip> bustripSet;
 
     public LineBus() {
     }
@@ -67,14 +72,6 @@ public class LineBus implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDeparture() {
@@ -93,13 +90,37 @@ public class LineBus implements Serializable {
         this.destination = destination;
     }
 
-    @XmlTransient
-    public Set<BusTrip> getBusTripSet() {
-        return busTripSet;
+    public Double getDistance() {
+        return distance;
     }
 
-    public void setBusTripSet(Set<BusTrip> busTripSet) {
-        this.busTripSet = busTripSet;
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @XmlTransient
+    public Set<Bustrip> getBustripSet() {
+        return bustripSet;
+    }
+
+    public void setBustripSet(Set<Bustrip> bustripSet) {
+        this.bustripSet = bustripSet;
     }
 
     @Override

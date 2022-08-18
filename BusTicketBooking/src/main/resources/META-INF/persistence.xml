@@ -9,6 +9,12 @@
     <class>com.btl.pojo.SaleOrder</class>
     <class>com.btl.pojo.Customer</class>
     <class>com.btl.pojo.EmployeeUser</class>
+    <class>com.btl.pojo.Feedback</class>
+    <class>com.btl.pojo.Employee</class>
+    <class>com.btl.pojo.DetailBustrip</class>
+    <class>com.btl.pojo.Payment</class>
+    <class>com.btl.pojo.Station</class>
+    <class>com.btl.pojo.Bustrip</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/busdb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

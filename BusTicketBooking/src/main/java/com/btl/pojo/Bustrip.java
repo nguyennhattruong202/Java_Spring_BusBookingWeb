@@ -5,10 +5,8 @@
 package com.btl.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,9 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -31,15 +26,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author ACER
  */
 @Entity
-@Table(name = "bus_trip")
+@Table(name = "bustrip")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BusTrip.findAll", query = "SELECT b FROM BusTrip b"),
-    @NamedQuery(name = "BusTrip.findById", query = "SELECT b FROM BusTrip b WHERE b.id = :id"),
-    @NamedQuery(name = "BusTrip.findByName", query = "SELECT b FROM BusTrip b WHERE b.name = :name"),
-    @NamedQuery(name = "BusTrip.findByDateTime", query = "SELECT b FROM BusTrip b WHERE b.dateTime = :dateTime"),
-    @NamedQuery(name = "BusTrip.findByPrice", query = "SELECT b FROM BusTrip b WHERE b.price = :price")})
-public class BusTrip implements Serializable {
+    @NamedQuery(name = "Bustrip.findAll", query = "SELECT b FROM Bustrip b"),
+    @NamedQuery(name = "Bustrip.findById", query = "SELECT b FROM Bustrip b WHERE b.id = :id"),
+    @NamedQuery(name = "Bustrip.findByPrice", query = "SELECT b FROM Bustrip b WHERE b.price = :price"),
+    @NamedQuery(name = "Bustrip.findByActive", query = "SELECT b FROM Bustrip b WHERE b.active = :active")})
+public class Bustrip implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,30 +41,30 @@ public class BusTrip implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 255)
-    @Column(name = "name")
-    private String name;
-    @Column(name = "date_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateTime;
     @Column(name = "price")
     private Long price;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "busTripId")
-    private Set<SaleOrder> saleOrderSet;
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "bustripId")
+    private Set<Feedback> feedbackSet;
     @JoinColumn(name = "bus_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Bus busId;
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private EmployeeUser employeeId;
-    @JoinColumn(name = "line_bus_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private LineBus lineBusId;
+    @ManyToOne
+    private Employee employeeId;
+    @JoinColumn(name = "linebus_id", referencedColumnName = "id")
+    @ManyToOne
+    private LineBus linebusId;
+    @OneToMany(mappedBy = "bustripId")
+    private Set<SaleOrder> saleOrderSet;
+    @OneToMany(mappedBy = "bustripId")
+    private Set<DetailBustrip> detailBustripSet;
 
-    public BusTrip() {
+    public Bustrip() {
     }
 
-    public BusTrip(Integer id) {
+    public Bustrip(Integer id) {
         this.id = id;
     }
 
@@ -82,28 +76,53 @@ public class BusTrip implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
-    }
-
     public Long getPrice() {
         return price;
     }
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @XmlTransient
+    public Set<Feedback> getFeedbackSet() {
+        return feedbackSet;
+    }
+
+    public void setFeedbackSet(Set<Feedback> feedbackSet) {
+        this.feedbackSet = feedbackSet;
+    }
+
+    public Bus getBusId() {
+        return busId;
+    }
+
+    public void setBusId(Bus busId) {
+        this.busId = busId;
+    }
+
+    public Employee getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Employee employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public LineBus getLinebusId() {
+        return linebusId;
+    }
+
+    public void setLinebusId(LineBus linebusId) {
+        this.linebusId = linebusId;
     }
 
     @XmlTransient
@@ -115,28 +134,13 @@ public class BusTrip implements Serializable {
         this.saleOrderSet = saleOrderSet;
     }
 
-    public Bus getBusId() {
-        return busId;
+    @XmlTransient
+    public Set<DetailBustrip> getDetailBustripSet() {
+        return detailBustripSet;
     }
 
-    public void setBusId(Bus busId) {
-        this.busId = busId;
-    }
-
-    public EmployeeUser getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(EmployeeUser employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public LineBus getLineBusId() {
-        return lineBusId;
-    }
-
-    public void setLineBusId(LineBus lineBusId) {
-        this.lineBusId = lineBusId;
+    public void setDetailBustripSet(Set<DetailBustrip> detailBustripSet) {
+        this.detailBustripSet = detailBustripSet;
     }
 
     @Override
@@ -149,10 +153,10 @@ public class BusTrip implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BusTrip)) {
+        if (!(object instanceof Bustrip)) {
             return false;
         }
-        BusTrip other = (BusTrip) object;
+        Bustrip other = (Bustrip) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -161,7 +165,7 @@ public class BusTrip implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.BusTrip[ id=" + id + " ]";
+        return "com.btl.pojo.Bustrip[ id=" + id + " ]";
     }
     
 }

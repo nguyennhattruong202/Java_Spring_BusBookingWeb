@@ -9,10 +9,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<head>
-    <script src="<c:url value="/js/admin/jsAdminLineBus.js"/>"></script>
-</head>
-
 <div class="text-primary text-center text-uppercase mt-3">
     <h2>Quản lý tuyến xe khách</h2>
 </div>
@@ -24,18 +20,39 @@
 <form:form>
     <div class="row mt-3">
         <div class="col">
-            <label>Tên tuyến xe:</label>
-            <input type="text" class="form-control" placeholder="Nhập tên tuyến xe">
+            <label>Nơi khởi hành:</label>
+            <select class="form-select" aria-label="Default select example">
+                <option value="" disabled selected>Chọn nơi khởi hành...</option>
+                <option value="1">Tp Hồ Chí Minh</option>
+                <option value="2">Cần Thơ</option>
+                <option value="3">Cà Mau</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Nơi đến:</label>
+            <select class="form-select" aria-label="Default select example">
+                <option value="" disabled selected>Chọn nơi đến...</option>
+                <option value="1">Tp Hồ Chí Minh</option>
+                <option value="2">Cần Thơ</option>
+                <option value="3">Cà Mau</option>
+            </select>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col">
-            <label>Nơi khởi hành:</label>
-            <input type="text" class="form-control" placeholder="Nhập nơi khởi hành">
+            <label>Độ dài tuyến:</label>
+            <input type="text" class="form-control" placeholder="Nhập độ dài tuyến (Km)">
         </div>
         <div class="col">
-            <label>Nơi đến:</label>
-            <input type="text" class="form-control" placeholder="Nhập nơi đến">
+            <label>Giá tiền:</label>
+            <input type="text" class="form-control" placeholder="Nhập giá tiền">
+        </div>
+        <div class="col">
+            <label>Trạng thái khai thác tuyến:</label>
+            <select class="form-select" aria-label="Default select example">
+                <option value="1">Active</option>
+                <option value="2">Non-active</option>
+            </select>
         </div>
     </div>
 </form:form>
@@ -63,10 +80,12 @@
     <thead class="table-dark">
         <tr>
             <th>#</th>
-            <th>Tên tuyến</th>
             <th>Nơi khởi hành</th>
             <th>Nơi đến</th>
-            <th></th>
+            <th>Độ dài tuyến</th>
+            <th>Giá tiền</th>
+            <th>Trạng thái khai thác tuyến</th>
+            <th>Thao tác</th>
         </tr>
     </thead>
     <tbody id="listLineBus">
@@ -74,9 +93,12 @@
     </tbody>
 </table>
 
+<!-- Begin script -->
+<script src="<c:url value="/js/admin/jsAdminLineBus.js"/>"></script>
 <script>
     <c:url value="/admin/linesbus" var="endpoint"/>
     window:onload = function () {
         loadLineBus('${endpoint}');
     };
 </script>
+<!-- End script -->
