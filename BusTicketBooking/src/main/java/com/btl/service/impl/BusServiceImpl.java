@@ -27,4 +27,9 @@ public class BusServiceImpl implements BusService {
         return this.busRepository.addBus(bus);
     }
     
+    @Override
+    public boolean deleteBus(int busId) {
+        return this.busRepository.deleteBus(busId);
+    }
+    
 }

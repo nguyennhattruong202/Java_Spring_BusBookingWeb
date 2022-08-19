@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
@@ -59,6 +60,23 @@ public class BusRepositoryImpl implements BusRepository {
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteBus(int busId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaUpdate<Bus> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Bus.class);
+            Root<Bus> root = criteriaUpdate.from(Bus.class);
+            criteriaUpdate.set("active", false);
+            criteriaUpdate.where(criteriaBuilder.equal(root.get("id"), busId));
+            session.createQuery(criteriaUpdate).executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

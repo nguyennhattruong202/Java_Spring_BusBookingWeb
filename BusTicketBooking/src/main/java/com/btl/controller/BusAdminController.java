@@ -36,7 +36,7 @@ public class BusAdminController {
     }
 
     @GetMapping("/bus")
-    public String pushEmptyBus(Model model) {
+    public String busManage(Model model) {
         model.addAttribute("newBus", new Bus());
         return "adminBus";
     }
@@ -48,7 +48,7 @@ public class BusAdminController {
             return "adminBus";
         }
         if (this.busService.addBus(bus) == true) {
-            return "redirect:/admin/index";
+            return "adminBus";
         }
         return "adminBus";
     }

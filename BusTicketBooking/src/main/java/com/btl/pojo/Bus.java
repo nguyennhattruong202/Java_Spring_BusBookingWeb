@@ -70,7 +70,7 @@ public class Bus implements Serializable {
     @Column(name = "type")
     private String type;
     @Column(name = "active")
-    private Boolean active;
+    private Boolean active = true;
     @JsonIgnore
     @OneToMany(mappedBy = "busId")
     private Set<Bustrip> bustripSet;

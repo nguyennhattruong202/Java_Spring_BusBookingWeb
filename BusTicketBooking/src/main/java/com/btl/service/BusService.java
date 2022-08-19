@@ -12,4 +12,6 @@ public interface BusService {
     List<Bus> getBus(String keyword);
 
     boolean addBus(Bus bus);
+
+    boolean deleteBus(int busId);
 }

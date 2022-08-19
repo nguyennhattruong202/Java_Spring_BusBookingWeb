@@ -59,7 +59,7 @@
             </form:select>
         </div>
     </div>
-        
+
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-3">
         <button class="btn btn-primary me-md-2 fw-bold" type="submit"><i class="fa fa-plus me-2"></i><spring:message code="admin.bus.button.addBus"/></button>
     </div>
@@ -105,8 +105,8 @@
                 <td>${lBus[4]}</td>
                 <td>${lBus[5]}</td>
                 <td>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#editBusModal"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteBusModal"><i class="fa fa-trash"></i></button>
+                    <a class="text text-primary h5" data-bs-toggle="modal" data-bs-target="#editBusModal"><i class="bi bi-pencil-square"></i></a>
+                    <a class="text text-danger h5 ms-2" data-bs-toggle="modal" data-bs-target="#deleteBusModal"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         </c:forEach>
@@ -122,7 +122,7 @@
             </div>
 
             <div class="modal-body">
-                Are you sure to delete this bus?
+                Are you sure to delete this bus  ?
             </div>
 
             <div class="modal-footer">
@@ -131,7 +131,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 <div class="modal fade" id="editBusModal">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
