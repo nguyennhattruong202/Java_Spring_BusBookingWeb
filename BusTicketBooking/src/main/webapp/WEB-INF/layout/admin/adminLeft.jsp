@@ -47,6 +47,5 @@
         background-color: #0d6efd !important;
         color: white;
     }
-
 </style>
 

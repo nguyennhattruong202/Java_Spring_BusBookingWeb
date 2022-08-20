@@ -6,7 +6,6 @@ package com.btl.controller;
 
 import com.btl.pojo.Bus;
 import com.btl.service.BusService;
-import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @ControllerAdvice
@@ -28,10 +26,7 @@ public class BusAdminController {
     private BusService busService;
 
     @ModelAttribute
-    public String busAdminManage(Model model,
-            @RequestParam(required = false) Map<String, String> params) {
-        String kw = params.getOrDefault("kwName", null);
-        model.addAttribute("listBus", this.busService.getBus(kw));
+    public String busAdminManage(Model model) {
         return "adminBus";
     }
 

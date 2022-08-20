@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <div class="ms-4 me-4" style="font-family: arial">
+        <div class="ps-3 pe-3" style="font-family: arial">
             <!-- Admin header-->
             <tiles:insertAttribute name="adminHeader"/>
             
@@ -38,7 +38,7 @@
                     <tiles:insertAttribute name="adminLeft"/>
                 </div>
                 
-                <div class="col-9 ps-0">
+                <div class="col-9">
                     <!-- Admin content-->
                     <tiles:insertAttribute name="adminContent"/>
                 </div>
