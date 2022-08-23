@@ -13,5 +13,5 @@ public interface BusRepository {
 
     boolean addBus(Bus bus);
     
-    boolean deleteBus(int busId);
+//    boolean deleteBus(int busId);
 }

@@ -64,20 +64,20 @@ public class BusRepositoryImpl implements BusRepository {
         }
     }
 
-    @Override
-    public boolean deleteBus(int busId) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        try {
-            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-            CriteriaUpdate<Bus> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Bus.class);
-            Root<Bus> root = criteriaUpdate.from(Bus.class);
-            criteriaUpdate.set("active", false);
-            criteriaUpdate.where(criteriaBuilder.equal(root.get("id"), busId));
-            session.createQuery(criteriaUpdate).executeUpdate();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    @Override
+//    public boolean deleteBus(int busId) {
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        try {
+//            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+//            CriteriaUpdate<Bus> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Bus.class);
+//            Root<Bus> root = criteriaUpdate.from(Bus.class);
+//            criteriaUpdate.set("active", false);
+//            criteriaUpdate.where(criteriaBuilder.equal(root.get("id"), busId));
+//            session.createQuery(criteriaUpdate).executeUpdate();
+//            return true;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 }

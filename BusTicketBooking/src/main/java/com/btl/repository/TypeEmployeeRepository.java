@@ -2,16 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.btl.service;
+package com.btl.repository;
 
-import com.btl.pojo.Bus;
-import java.util.List;
+import com.btl.pojo.TypeEmployee;
 
-public interface BusService {
+public interface TypeEmployeeRepository {
 
-    List<Bus> getBus(String keyword);
+    TypeEmployee getTypeEmployeeById(int id);
 
-    boolean addBus(Bus bus);
-
-//    boolean deleteBus(int busId);
 }

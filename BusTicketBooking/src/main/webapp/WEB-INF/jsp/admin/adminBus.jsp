@@ -40,7 +40,7 @@
 
 <div class="d-flex justify-content-center w-100 mt-4">
     <div class="my-style-card-box my-style-w-98 p-3">
-        <div class="h4 my-style-pt-20 my-style-pb-20 fw-bold my-style-text-blue">Thêm xe khách mới</div>
+        <div class="h4 my-style-pt-10 my-style-pb-10 fw-bold my-style-text-blue">Thêm xe khách mới</div>
         <c:url value="/admin/bus" var="formAction"/>
         <form:form method="post" action="${formAction}" modelAttribute="newBus">
             <div class="row mt-3">
@@ -94,8 +94,8 @@
                 <button type="submit" class="btn btn-primary my-style-input-radius"><i class="bi bi-search"></i></button>
             </div>
         </form>
+        <hr>
         <table class="table table-hover">
-            <hr>
 
             <thead>
                 <tr>
@@ -115,25 +115,3 @@
         </table>
     </div>
 </div>
-<style>
-    .my-style-card-box{
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, .08);
-    }
-    .my-style-pt-20{
-        padding-top: 20px;
-    }
-    .my-style-pb-20{
-        padding-bottom: 20px;
-    }
-    .my-style-w-98{
-        width: 98%;
-    }
-    .my-style-text-blue{
-        color: #1b00ff;
-    }
-    .my-style-input-radius{
-        border-radius: 10px;
-    }
-</style>

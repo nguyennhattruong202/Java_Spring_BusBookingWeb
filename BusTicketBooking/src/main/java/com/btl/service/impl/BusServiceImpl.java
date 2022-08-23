@@ -13,23 +13,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BusServiceImpl implements BusService {
-    
+
     @Autowired
     private BusRepository busRepository;
-    
+
     @Override
     public List<Bus> getBus(String keyword) {
         return this.busRepository.getBus(keyword);
     }
-    
+
     @Override
     public boolean addBus(Bus bus) {
         return this.busRepository.addBus(bus);
     }
-    
-    @Override
-    public boolean deleteBus(int busId) {
-        return this.busRepository.deleteBus(busId);
-    }
-    
+
+//    @Override
+//    public boolean deleteBus(int busId) {
+//        return this.busRepository.deleteBus(busId);
+//    }
 }

@@ -12,8 +12,9 @@ function loadTypeEmployee() {
             <td>Loại nhân viên ` + i + `</td>
             <td>Bậc lương ` + i + `</td>
             <td>
-                <button class="btn btn-primary" type="button"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteTypeEmployeeModal"><i class="fa fa-trash"></i></button>
+                <a class="text text-primary h5"><i class="fa fa-bars"></i></a>
+                <a class="text text-primary h5 ms-2"><i class="bi bi-pencil-square"></i></a>
+                <a class="text text-danger h5 ms-2" data-bs-toggle="modal" data-bs-target="#deleteTypeEmployeeModal"><i class="fa fa-trash"></i></a>
             </td>
             <div class="modal fade" id="deleteTypeEmployeeModal">
                 <div class="modal-dialog">

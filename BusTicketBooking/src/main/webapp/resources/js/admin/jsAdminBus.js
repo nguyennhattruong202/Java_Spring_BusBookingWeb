@@ -33,7 +33,7 @@ function loadBus(endpoint) {
                                     <div class="modal-body">Are you sure to delete ${data[i][1]} ?</div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary">Yes</button>
+                                        <button class="btn btn-primary">Yes</button>
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
