@@ -2,41 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
-function loadTypeEmployee() {
+function inputSearchSelected(){
     let msg = "";
-    for (let i = 0; i <= 20; i++) {
-        msg +=
-                `
-        <tr class="align-middle">
-            <td>` + i + `</td>
-            <td>Loại nhân viên ` + i + `</td>
-            <td>Bậc lương ` + i + `</td>
-            <td>
-                <a class="text text-primary h5"><i class="fa fa-bars"></i></a>
-                <a class="text text-primary h5 ms-2"><i class="bi bi-pencil-square"></i></a>
-                <a class="text text-danger h5 ms-2" data-bs-toggle="modal" data-bs-target="#deleteTypeEmployeeModal"><i class="fa fa-trash"></i></a>
-            </td>
-            <div class="modal fade" id="deleteTypeEmployeeModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Attention</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure to delete?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Yes</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </tr>
-            `;
-    }
-    let d = document.getElementById("listTypeEmployee");
-    d.innerHTML = msg;
-};
-
+    let mySelect = document.getElementById("selectedSearch").value;
+    let formSearch = document.getElementById("formSearchTypeEmployee");
+    msg += `
+    <div class="input-group my-style-element-height">
+        <input name="`+ mySelect +`" type="search" class="form-control my-style-input-radius">
+        <button class="btn btn-primary my-style-input-radius" type="submit"><i class="bi bi-search"></i></button>
+    </div>
+    `;
+    formSearch.innerHTML = msg;
+}

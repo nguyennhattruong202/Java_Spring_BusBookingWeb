@@ -4,6 +4,7 @@
  */
 package com.btl.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -45,6 +46,7 @@ public class TypeEmployee implements Serializable {
     private String name;
     @Column(name = "salary_level")
     private Long salaryLevel;
+    @JsonIgnore
     @OneToMany(mappedBy = "typeEmployeeId")
     private Set<Employee> employeeSet;
 

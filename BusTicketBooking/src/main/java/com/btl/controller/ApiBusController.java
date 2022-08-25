@@ -23,7 +23,7 @@ public class ApiBusController {
     private BusService busService;
 
     @GetMapping("/bus")
-    public ResponseEntity<List<Bus>> getBus(@RequestParam(required = false, defaultValue = "", name = "kw") String keyword) {
+    public ResponseEntity<List<Bus>> getBus(@RequestParam(required = false, defaultValue = "", name = "kwName") String keyword) {
         return new ResponseEntity<>(this.busService.getBus(keyword), HttpStatus.OK);
     }
 }

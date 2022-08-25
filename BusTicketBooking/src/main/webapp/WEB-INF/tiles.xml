@@ -29,20 +29,29 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminEmployeeUser.jsp" />
     </definition>
+    
     <definition name="adminBusTrip" extends="adminBaseLayout">
         <put-attribute name="adminTitle" value="ManageBusTrip" />
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminBusTrip.jsp" />
     </definition>
+    
     <definition name="adminBus" extends="adminBaseLayout">
         <put-attribute name="adminTitle" value="ManageBus" />
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminBus.jsp" />
     </definition>
+    
     <definition name="adminTypeEmployee" extends="adminBaseLayout">
         <put-attribute name="adminTitle" value="ManageTypeEmployee" />
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminTypeEmployee.jsp" />
+    </definition>
+    
+    <definition name="adminCustomer" extends="adminBaseLayout">
+        <put-attribute name="adminTitle" value="Quản lý khách hàng" />
+        <put-attribute name="adminContent"
+                       value="/WEB-INF/jsp/admin/adminCustomer.jsp" />
     </definition>
     <!-- End admin tiles -->
 </tiles-definitions>
