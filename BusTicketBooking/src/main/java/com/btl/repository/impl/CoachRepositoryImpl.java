@@ -4,13 +4,11 @@
  */
 package com.btl.repository.impl;
 
-import com.btl.pojo.Bus;
-import com.btl.repository.BusRepository;
+import com.btl.pojo.Coach;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
@@ -19,10 +17,11 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import com.btl.repository.CoachRepository;
 
 @Repository
 @Transactional
-public class BusRepositoryImpl implements BusRepository {
+public class CoachRepositoryImpl implements CoachRepository {
 
     @Autowired
     public LocalSessionFactoryBean sessionFactory;
@@ -30,11 +29,11 @@ public class BusRepositoryImpl implements BusRepository {
     public Environment env;
 
     @Override
-    public List<Bus> getBus(String keyword) {
+    public List<Coach> getCoach(String keyword) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
-        Root root = criteriaQuery.from(Bus.class);
+        Root root = criteriaQuery.from(Coach.class);
         Predicate p1 = criteriaBuilder.equal(root.get("active"), true);
         if (keyword != null && !keyword.isEmpty()) {
             Predicate p2 = criteriaBuilder.like(root.get("name").as(String.class), String.format("%%%s%%", keyword));
@@ -53,10 +52,10 @@ public class BusRepositoryImpl implements BusRepository {
     }
 
     @Override
-    public boolean addBus(Bus bus) {
+    public boolean addCoach(Coach coach) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try {
-            session.save(bus);
+            session.save(coach);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();

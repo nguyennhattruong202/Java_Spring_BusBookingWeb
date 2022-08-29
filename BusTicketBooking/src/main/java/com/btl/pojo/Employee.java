@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -38,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Employee.findByLastName", query = "SELECT e FROM Employee e WHERE e.lastName = :lastName"),
     @NamedQuery(name = "Employee.findByFirstName", query = "SELECT e FROM Employee e WHERE e.firstName = :firstName"),
     @NamedQuery(name = "Employee.findByDateOfBirth", query = "SELECT e FROM Employee e WHERE e.dateOfBirth = :dateOfBirth"),
-    @NamedQuery(name = "Employee.findBySex", query = "SELECT e FROM Employee e WHERE e.sex = :sex"),
+    @NamedQuery(name = "Employee.findByGender", query = "SELECT e FROM Employee e WHERE e.gender = :gender"),
     @NamedQuery(name = "Employee.findByAddress", query = "SELECT e FROM Employee e WHERE e.address = :address"),
     @NamedQuery(name = "Employee.findByIdentityNum", query = "SELECT e FROM Employee e WHERE e.identityNum = :identityNum"),
     @NamedQuery(name = "Employee.findByPhone", query = "SELECT e FROM Employee e WHERE e.phone = :phone"),
@@ -46,6 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Employee.findByImage", query = "SELECT e FROM Employee e WHERE e.image = :image"),
     @NamedQuery(name = "Employee.findByUsername", query = "SELECT e FROM Employee e WHERE e.username = :username"),
     @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
+    @NamedQuery(name = "Employee.findByRole", query = "SELECT e FROM Employee e WHERE e.role = :role"),
     @NamedQuery(name = "Employee.findByActive", query = "SELECT e FROM Employee e WHERE e.active = :active")})
 public class Employee implements Serializable {
 
@@ -65,8 +64,8 @@ public class Employee implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Size(max = 255)
-    @Column(name = "sex")
-    private String sex;
+    @Column(name = "gender")
+    private String gender;
     @Size(max = 255)
     @Column(name = "address")
     private String address;
@@ -90,13 +89,13 @@ public class Employee implements Serializable {
     @Size(max = 255)
     @Column(name = "password")
     private String password;
+    @Size(max = 255)
+    @Column(name = "role")
+    private String role;
     @Column(name = "active")
     private Boolean active;
     @OneToMany(mappedBy = "employeeId")
-    private Set<Bustrip> bustripSet;
-    @JoinColumn(name = "type_employee_id", referencedColumnName = "id")
-    @ManyToOne
-    private TypeEmployee typeEmployeeId;
+    private Set<Coachtrip> coachtripSet;
 
     public Employee() {
     }
@@ -137,12 +136,12 @@ public class Employee implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getAddress() {
@@ -201,6 +200,14 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public Boolean getActive() {
         return active;
     }
@@ -210,20 +217,12 @@ public class Employee implements Serializable {
     }
 
     @XmlTransient
-    public Set<Bustrip> getBustripSet() {
-        return bustripSet;
+    public Set<Coachtrip> getCoachtripSet() {
+        return coachtripSet;
     }
 
-    public void setBustripSet(Set<Bustrip> bustripSet) {
-        this.bustripSet = bustripSet;
-    }
-
-    public TypeEmployee getTypeEmployeeId() {
-        return typeEmployeeId;
-    }
-
-    public void setTypeEmployeeId(TypeEmployee typeEmployeeId) {
-        this.typeEmployeeId = typeEmployeeId;
+    public void setCoachtripSet(Set<Coachtrip> coachtripSet) {
+        this.coachtripSet = coachtripSet;
     }
 
     @Override

@@ -4,7 +4,6 @@
  */
 package com.btl.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -17,9 +16,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,18 +25,18 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author ACER
  */
 @Entity
-@Table(name = "bus")
+@Table(name = "coach")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Bus.findAll", query = "SELECT b FROM Bus b"),
-    @NamedQuery(name = "Bus.findById", query = "SELECT b FROM Bus b WHERE b.id = :id"),
-    @NamedQuery(name = "Bus.findByName", query = "SELECT b FROM Bus b WHERE b.name = :name"),
-    @NamedQuery(name = "Bus.findByLicensePlates", query = "SELECT b FROM Bus b WHERE b.licensePlates = :licensePlates"),
-    @NamedQuery(name = "Bus.findByCapacity", query = "SELECT b FROM Bus b WHERE b.capacity = :capacity"),
-    @NamedQuery(name = "Bus.findByManufacturer", query = "SELECT b FROM Bus b WHERE b.manufacturer = :manufacturer"),
-    @NamedQuery(name = "Bus.findByType", query = "SELECT b FROM Bus b WHERE b.type = :type"),
-    @NamedQuery(name = "Bus.findByActive", query = "SELECT b FROM Bus b WHERE b.active = :active")})
-public class Bus implements Serializable {
+    @NamedQuery(name = "Coach.findAll", query = "SELECT c FROM Coach c"),
+    @NamedQuery(name = "Coach.findById", query = "SELECT c FROM Coach c WHERE c.id = :id"),
+    @NamedQuery(name = "Coach.findByName", query = "SELECT c FROM Coach c WHERE c.name = :name"),
+    @NamedQuery(name = "Coach.findByLicensePlates", query = "SELECT c FROM Coach c WHERE c.licensePlates = :licensePlates"),
+    @NamedQuery(name = "Coach.findByCapacity", query = "SELECT c FROM Coach c WHERE c.capacity = :capacity"),
+    @NamedQuery(name = "Coach.findByManufacturer", query = "SELECT c FROM Coach c WHERE c.manufacturer = :manufacturer"),
+    @NamedQuery(name = "Coach.findByType", query = "SELECT c FROM Coach c WHERE c.type = :type"),
+    @NamedQuery(name = "Coach.findByActive", query = "SELECT c FROM Coach c WHERE c.active = :active")})
+public class Coach implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,37 +44,29 @@ public class Bus implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @NotNull(message = "{admin.validation.bus.nullError}")
-    @Size(min = 1, max = 255, message = "{admin.validation.bus.name.sizeError}")
+    @Size(max = 255)
     @Column(name = "name")
     private String name;
-    @NotNull(message = "{admin.validation.bus.nullError}")
-    @Size(min = 8, max = 255, message = "{admin.validation.bus.licensePlates.sizeError}")
+    @Size(max = 255)
     @Column(name = "license_plates")
     private String licensePlates;
-    @NotNull(message = "{admin.validation.bus.nullError}")
-    @Min(value = 4, message = "{admin.validation.bus.capacity.minError}")
-    @Max(value = 50, message = "{admin.validation.bus.capacity.maxError}")
     @Column(name = "capacity")
     private Integer capacity;
-    @NotNull(message = "{admin.validation.bus.nullError}")
-    @Size(min = 1, max = 255, message = "{admin.validation.bus.manufacturer.sizeError}")
+    @Size(max = 255)
     @Column(name = "manufacturer")
     private String manufacturer;
-    @NotNull(message = "{admin.validation.bus.nullError}")
     @Size(max = 255)
     @Column(name = "type")
     private String type;
     @Column(name = "active")
-    private Boolean active = true;
-    @JsonIgnore
-    @OneToMany(mappedBy = "busId")
-    private Set<Bustrip> bustripSet;
+    private Boolean active;
+    @OneToMany(mappedBy = "coachId")
+    private Set<Coachtrip> coachtripSet;
 
-    public Bus() {
+    public Coach() {
     }
 
-    public Bus(Integer id) {
+    public Coach(Integer id) {
         this.id = id;
     }
 
@@ -139,12 +127,12 @@ public class Bus implements Serializable {
     }
 
     @XmlTransient
-    public Set<Bustrip> getBustripSet() {
-        return bustripSet;
+    public Set<Coachtrip> getCoachtripSet() {
+        return coachtripSet;
     }
 
-    public void setBustripSet(Set<Bustrip> bustripSet) {
-        this.bustripSet = bustripSet;
+    public void setCoachtripSet(Set<Coachtrip> coachtripSet) {
+        this.coachtripSet = coachtripSet;
     }
 
     @Override
@@ -157,10 +145,10 @@ public class Bus implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bus)) {
+        if (!(object instanceof Coach)) {
             return false;
         }
-        Bus other = (Bus) object;
+        Coach other = (Coach) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -169,7 +157,7 @@ public class Bus implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.Bus[ id=" + id + " ]";
+        return "com.btl.pojo.Coach[ id=" + id + " ]";
     }
     
 }

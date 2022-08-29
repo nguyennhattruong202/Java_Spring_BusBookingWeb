@@ -4,7 +4,7 @@
  */
 package com.btl.controller;
 
-import com.btl.service.LineBusService;
+import com.btl.service.CoachlineService;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
 
     @Autowired
-    private LineBusService lineBusService;
+    private CoachlineService coachlineService;
     @Autowired
     private Environment env;
 
@@ -31,8 +31,8 @@ public class AdminController {
     @GetMapping("/linesbus")
     public String adminLineBusIndex(Model model, @RequestParam Map<String, String> params) {
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
-        model.addAttribute("lineBus", this.lineBusService.getAllLineBus(params, page));
-        model.addAttribute("lineBusCounter", this.lineBusService.countLineBus());
+        model.addAttribute("listCoachline", this.coachlineService.getCoachline(params, page));
+        model.addAttribute("coachlineCounter", this.coachlineService.countCoachline());
         model.addAttribute("pageSize", Integer.parseInt(env.getProperty("admin.content.pageSize")));
         return "adminLineBus";
     }
@@ -42,8 +42,13 @@ public class AdminController {
         return "adminEmployeeUser";
     }
 
-    @GetMapping("/bustrip")
+    @GetMapping("/coachtrip")
     public String adminBusTrip() {
-        return "adminBusTrip";
+        return "adminCoachTrip";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }

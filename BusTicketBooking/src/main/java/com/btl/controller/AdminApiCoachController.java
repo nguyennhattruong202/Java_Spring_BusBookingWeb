@@ -4,8 +4,7 @@
  */
 package com.btl.controller;
 
-import com.btl.pojo.Bus;
-import com.btl.service.BusService;
+import com.btl.pojo.Coach;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,16 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.btl.service.CoachService;
 
 @RestController
 @RequestMapping("/api")
-public class ApiBusController {
+public class AdminApiCoachController {
 
     @Autowired
-    private BusService busService;
+    private CoachService busService;
 
-    @GetMapping("/bus")
-    public ResponseEntity<List<Bus>> getBus(@RequestParam(required = false, defaultValue = "", name = "kwName") String keyword) {
-        return new ResponseEntity<>(this.busService.getBus(keyword), HttpStatus.OK);
+    @GetMapping("/coach")
+    public ResponseEntity<List<Coach>> getCoach(@RequestParam(required = false, defaultValue = "", name = "kwName") String keyword) {
+        return new ResponseEntity<>(this.busService.getCoach(keyword), HttpStatus.OK);
     }
 }

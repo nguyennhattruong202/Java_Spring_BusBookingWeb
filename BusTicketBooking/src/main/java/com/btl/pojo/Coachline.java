@@ -25,17 +25,17 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author ACER
  */
 @Entity
-@Table(name = "line_bus")
+@Table(name = "coachline")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LineBus.findAll", query = "SELECT l FROM LineBus l"),
-    @NamedQuery(name = "LineBus.findById", query = "SELECT l FROM LineBus l WHERE l.id = :id"),
-    @NamedQuery(name = "LineBus.findByDeparture", query = "SELECT l FROM LineBus l WHERE l.departure = :departure"),
-    @NamedQuery(name = "LineBus.findByDestination", query = "SELECT l FROM LineBus l WHERE l.destination = :destination"),
-    @NamedQuery(name = "LineBus.findByDistance", query = "SELECT l FROM LineBus l WHERE l.distance = :distance"),
-    @NamedQuery(name = "LineBus.findByPrice", query = "SELECT l FROM LineBus l WHERE l.price = :price"),
-    @NamedQuery(name = "LineBus.findByActive", query = "SELECT l FROM LineBus l WHERE l.active = :active")})
-public class LineBus implements Serializable {
+    @NamedQuery(name = "Coachline.findAll", query = "SELECT c FROM Coachline c"),
+    @NamedQuery(name = "Coachline.findById", query = "SELECT c FROM Coachline c WHERE c.id = :id"),
+    @NamedQuery(name = "Coachline.findByDeparture", query = "SELECT c FROM Coachline c WHERE c.departure = :departure"),
+    @NamedQuery(name = "Coachline.findByDestination", query = "SELECT c FROM Coachline c WHERE c.destination = :destination"),
+    @NamedQuery(name = "Coachline.findByDistance", query = "SELECT c FROM Coachline c WHERE c.distance = :distance"),
+    @NamedQuery(name = "Coachline.findByPrice", query = "SELECT c FROM Coachline c WHERE c.price = :price"),
+    @NamedQuery(name = "Coachline.findByActive", query = "SELECT c FROM Coachline c WHERE c.active = :active")})
+public class Coachline implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -56,13 +56,13 @@ public class LineBus implements Serializable {
     private Long price;
     @Column(name = "active")
     private Boolean active;
-    @OneToMany(mappedBy = "linebusId")
-    private Set<Bustrip> bustripSet;
+    @OneToMany(mappedBy = "coachlineId")
+    private Set<Coachtrip> coachtripSet;
 
-    public LineBus() {
+    public Coachline() {
     }
 
-    public LineBus(Integer id) {
+    public Coachline(Integer id) {
         this.id = id;
     }
 
@@ -115,12 +115,12 @@ public class LineBus implements Serializable {
     }
 
     @XmlTransient
-    public Set<Bustrip> getBustripSet() {
-        return bustripSet;
+    public Set<Coachtrip> getCoachtripSet() {
+        return coachtripSet;
     }
 
-    public void setBustripSet(Set<Bustrip> bustripSet) {
-        this.bustripSet = bustripSet;
+    public void setCoachtripSet(Set<Coachtrip> coachtripSet) {
+        this.coachtripSet = coachtripSet;
     }
 
     @Override
@@ -133,10 +133,10 @@ public class LineBus implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LineBus)) {
+        if (!(object instanceof Coachline)) {
             return false;
         }
-        LineBus other = (LineBus) object;
+        Coachline other = (Coachline) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -145,7 +145,7 @@ public class LineBus implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.LineBus[ id=" + id + " ]";
+        return "com.btl.pojo.Coachline[ id=" + id + " ]";
     }
     
 }

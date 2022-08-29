@@ -32,9 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SaleOrder.findAll", query = "SELECT s FROM SaleOrder s"),
     @NamedQuery(name = "SaleOrder.findById", query = "SELECT s FROM SaleOrder s WHERE s.id = :id"),
     @NamedQuery(name = "SaleOrder.findByCraetedDate", query = "SELECT s FROM SaleOrder s WHERE s.craetedDate = :craetedDate"),
-    @NamedQuery(name = "SaleOrder.findByNum", query = "SELECT s FROM SaleOrder s WHERE s.num = :num"),
-    @NamedQuery(name = "SaleOrder.findByPaid", query = "SELECT s FROM SaleOrder s WHERE s.paid = :paid"),
-    @NamedQuery(name = "SaleOrder.findByCancel", query = "SELECT s FROM SaleOrder s WHERE s.cancel = :cancel")})
+    @NamedQuery(name = "SaleOrder.findByNum", query = "SELECT s FROM SaleOrder s WHERE s.num = :num")})
 public class SaleOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,13 +46,9 @@ public class SaleOrder implements Serializable {
     private Date craetedDate;
     @Column(name = "num")
     private Integer num;
-    @Column(name = "paid")
-    private Boolean paid;
-    @Column(name = "cancel")
-    private Boolean cancel;
-    @JoinColumn(name = "bustrip_id", referencedColumnName = "id")
+    @JoinColumn(name = "coachtrip_id", referencedColumnName = "id")
     @ManyToOne
-    private Bustrip bustripId;
+    private Coachtrip coachtripId;
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne
     private Customer customerId;
@@ -93,28 +87,12 @@ public class SaleOrder implements Serializable {
         this.num = num;
     }
 
-    public Boolean getPaid() {
-        return paid;
+    public Coachtrip getCoachtripId() {
+        return coachtripId;
     }
 
-    public void setPaid(Boolean paid) {
-        this.paid = paid;
-    }
-
-    public Boolean getCancel() {
-        return cancel;
-    }
-
-    public void setCancel(Boolean cancel) {
-        this.cancel = cancel;
-    }
-
-    public Bustrip getBustripId() {
-        return bustripId;
-    }
-
-    public void setBustripId(Bustrip bustripId) {
-        this.bustripId = bustripId;
+    public void setCoachtripId(Coachtrip coachtripId) {
+        this.coachtripId = coachtripId;
     }
 
     public Customer getCustomerId() {

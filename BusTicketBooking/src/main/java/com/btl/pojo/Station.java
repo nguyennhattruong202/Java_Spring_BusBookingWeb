@@ -67,7 +67,7 @@ public class Station implements Serializable {
     @Column(name = "active")
     private Boolean active;
     @OneToMany(mappedBy = "stationId")
-    private Set<DetailBustrip> detailBustripSet;
+    private Set<DetailCoachtrip> detailCoachtripSet;
 
     public Station() {
     }
@@ -141,12 +141,12 @@ public class Station implements Serializable {
     }
 
     @XmlTransient
-    public Set<DetailBustrip> getDetailBustripSet() {
-        return detailBustripSet;
+    public Set<DetailCoachtrip> getDetailCoachtripSet() {
+        return detailCoachtripSet;
     }
 
-    public void setDetailBustripSet(Set<DetailBustrip> detailBustripSet) {
-        this.detailBustripSet = detailBustripSet;
+    public void setDetailCoachtripSet(Set<DetailCoachtrip> detailCoachtripSet) {
+        this.detailCoachtripSet = detailCoachtripSet;
     }
 
     @Override

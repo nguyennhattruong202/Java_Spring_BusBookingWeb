@@ -51,9 +51,9 @@ public class Feedback implements Serializable {
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
-    @JoinColumn(name = "bustrip_id", referencedColumnName = "id")
+    @JoinColumn(name = "coachtrip_id", referencedColumnName = "id")
     @ManyToOne
-    private Bustrip bustripId;
+    private Coachtrip coachtripId;
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne
     private Customer customerId;
@@ -97,12 +97,12 @@ public class Feedback implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Bustrip getBustripId() {
-        return bustripId;
+    public Coachtrip getCoachtripId() {
+        return coachtripId;
     }
 
-    public void setBustripId(Bustrip bustripId) {
-        this.bustripId = bustripId;
+    public void setCoachtripId(Coachtrip coachtripId) {
+        this.coachtripId = coachtripId;
     }
 
     public Customer getCustomerId() {

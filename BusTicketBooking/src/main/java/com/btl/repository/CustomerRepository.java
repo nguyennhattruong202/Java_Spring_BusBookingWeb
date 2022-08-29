@@ -4,14 +4,16 @@
  */
 package com.btl.repository;
 
-import com.btl.pojo.Bus;
+import com.btl.pojo.Customer;
 import java.util.List;
 
-public interface BusRepository {
+public interface CustomerRepository {
 
-    List<Bus> getBus(String keyword);
+    List<Customer> getCustomer(int page);
 
-    boolean addBus(Bus bus);
-    
-//    boolean deleteBus(int busId);
+    long countCustomer();
+
+    boolean deleteCustomer(int id);
+
+    void editCustomer(Customer customer);
 }

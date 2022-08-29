@@ -29,4 +29,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .my-style-element-height{
     height: 50px;
 }
+.my-style-left-sidebar{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 16px;
+}
+.my-style-main{
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+}
 

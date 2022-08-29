@@ -4,8 +4,7 @@
  */
 package com.btl.controller;
 
-import com.btl.pojo.Bus;
-import com.btl.service.BusService;
+import com.btl.pojo.Coach;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,35 +15,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.btl.service.CoachService;
 
 @Controller
 @ControllerAdvice
 @RequestMapping("/admin")
-public class BusAdminController {
+public class AdminCoachController {
 
     @Autowired
-    private BusService busService;
+    private CoachService busService;
 
     @ModelAttribute
-    public String busAdminManage(Model model) {
-        return "adminBus";
+    public String sendReponseCoachData(Model model) {
+        return "adminCoach";
     }
 
-    @GetMapping("/bus")
-    public String busManage(Model model) {
-        model.addAttribute("newBus", new Bus());
-        return "adminBus";
+    @GetMapping("/coach")
+    public String sendReponseEmptyCoach(Model model) {
+        model.addAttribute("newCoach", new Coach());
+        return "adminCoach";
     }
 
-    @PostMapping("/bus")
-    public String pullNewBus(@ModelAttribute(value = "newBus") @Valid Bus bus,
+    @PostMapping("/coach")
+    public String getRequestNewCoach(@ModelAttribute(value = "newCoach") @Valid Coach coach,
             BindingResult result) {
         if (result.hasErrors()) {
-            return "adminBus";
+            return "adminCoach";
         }
-        if (this.busService.addBus(bus) == true) {
-            return "adminBus";
+        if (this.busService.addCoach(coach) == true) {
+            return "adminCoach";
         }
-        return "adminBus";
+        return "adminCoach";
     }
 }

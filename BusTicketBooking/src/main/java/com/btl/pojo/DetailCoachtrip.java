@@ -26,14 +26,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ACER
  */
 @Entity
-@Table(name = "detail_bustrip")
+@Table(name = "detail_coachtrip")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DetailBustrip.findAll", query = "SELECT d FROM DetailBustrip d"),
-    @NamedQuery(name = "DetailBustrip.findById", query = "SELECT d FROM DetailBustrip d WHERE d.id = :id"),
-    @NamedQuery(name = "DetailBustrip.findByDepartureTime", query = "SELECT d FROM DetailBustrip d WHERE d.departureTime = :departureTime"),
-    @NamedQuery(name = "DetailBustrip.findByDestinationTime", query = "SELECT d FROM DetailBustrip d WHERE d.destinationTime = :destinationTime")})
-public class DetailBustrip implements Serializable {
+    @NamedQuery(name = "DetailCoachtrip.findAll", query = "SELECT d FROM DetailCoachtrip d"),
+    @NamedQuery(name = "DetailCoachtrip.findById", query = "SELECT d FROM DetailCoachtrip d WHERE d.id = :id"),
+    @NamedQuery(name = "DetailCoachtrip.findByDepartureTime", query = "SELECT d FROM DetailCoachtrip d WHERE d.departureTime = :departureTime"),
+    @NamedQuery(name = "DetailCoachtrip.findByDestinationTime", query = "SELECT d FROM DetailCoachtrip d WHERE d.destinationTime = :destinationTime")})
+public class DetailCoachtrip implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,17 +47,17 @@ public class DetailBustrip implements Serializable {
     @Column(name = "destination_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date destinationTime;
-    @JoinColumn(name = "bustrip_id", referencedColumnName = "id")
+    @JoinColumn(name = "coachtrip_id", referencedColumnName = "id")
     @ManyToOne
-    private Bustrip bustripId;
+    private Coachtrip coachtripId;
     @JoinColumn(name = "station_id", referencedColumnName = "id")
     @ManyToOne
     private Station stationId;
 
-    public DetailBustrip() {
+    public DetailCoachtrip() {
     }
 
-    public DetailBustrip(Integer id) {
+    public DetailCoachtrip(Integer id) {
         this.id = id;
     }
 
@@ -85,12 +85,12 @@ public class DetailBustrip implements Serializable {
         this.destinationTime = destinationTime;
     }
 
-    public Bustrip getBustripId() {
-        return bustripId;
+    public Coachtrip getCoachtripId() {
+        return coachtripId;
     }
 
-    public void setBustripId(Bustrip bustripId) {
-        this.bustripId = bustripId;
+    public void setCoachtripId(Coachtrip coachtripId) {
+        this.coachtripId = coachtripId;
     }
 
     public Station getStationId() {
@@ -111,10 +111,10 @@ public class DetailBustrip implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DetailBustrip)) {
+        if (!(object instanceof DetailCoachtrip)) {
             return false;
         }
-        DetailBustrip other = (DetailBustrip) object;
+        DetailCoachtrip other = (DetailCoachtrip) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -123,7 +123,7 @@ public class DetailBustrip implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.DetailBustrip[ id=" + id + " ]";
+        return "com.btl.pojo.DetailCoachtrip[ id=" + id + " ]";
     }
     
 }

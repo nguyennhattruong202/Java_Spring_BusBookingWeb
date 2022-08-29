@@ -26,14 +26,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author ACER
  */
 @Entity
-@Table(name = "bustrip")
+@Table(name = "coachtrip")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Bustrip.findAll", query = "SELECT b FROM Bustrip b"),
-    @NamedQuery(name = "Bustrip.findById", query = "SELECT b FROM Bustrip b WHERE b.id = :id"),
-    @NamedQuery(name = "Bustrip.findByPrice", query = "SELECT b FROM Bustrip b WHERE b.price = :price"),
-    @NamedQuery(name = "Bustrip.findByActive", query = "SELECT b FROM Bustrip b WHERE b.active = :active")})
-public class Bustrip implements Serializable {
+    @NamedQuery(name = "Coachtrip.findAll", query = "SELECT c FROM Coachtrip c"),
+    @NamedQuery(name = "Coachtrip.findById", query = "SELECT c FROM Coachtrip c WHERE c.id = :id"),
+    @NamedQuery(name = "Coachtrip.findByPrice", query = "SELECT c FROM Coachtrip c WHERE c.price = :price"),
+    @NamedQuery(name = "Coachtrip.findByActive", query = "SELECT c FROM Coachtrip c WHERE c.active = :active")})
+public class Coachtrip implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,26 +45,26 @@ public class Bustrip implements Serializable {
     private Long price;
     @Column(name = "active")
     private Boolean active;
-    @OneToMany(mappedBy = "bustripId")
+    @OneToMany(mappedBy = "coachtripId")
     private Set<Feedback> feedbackSet;
-    @JoinColumn(name = "bus_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "coachtripId")
+    private Set<SaleOrder> saleOrderSet;
+    @JoinColumn(name = "coach_id", referencedColumnName = "id")
     @ManyToOne
-    private Bus busId;
+    private Coach coachId;
+    @JoinColumn(name = "coachline_id", referencedColumnName = "id")
+    @ManyToOne
+    private Coachline coachlineId;
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     @ManyToOne
     private Employee employeeId;
-    @JoinColumn(name = "linebus_id", referencedColumnName = "id")
-    @ManyToOne
-    private LineBus linebusId;
-    @OneToMany(mappedBy = "bustripId")
-    private Set<SaleOrder> saleOrderSet;
-    @OneToMany(mappedBy = "bustripId")
-    private Set<DetailBustrip> detailBustripSet;
+    @OneToMany(mappedBy = "coachtripId")
+    private Set<DetailCoachtrip> detailCoachtripSet;
 
-    public Bustrip() {
+    public Coachtrip() {
     }
 
-    public Bustrip(Integer id) {
+    public Coachtrip(Integer id) {
         this.id = id;
     }
 
@@ -101,12 +101,29 @@ public class Bustrip implements Serializable {
         this.feedbackSet = feedbackSet;
     }
 
-    public Bus getBusId() {
-        return busId;
+    @XmlTransient
+    public Set<SaleOrder> getSaleOrderSet() {
+        return saleOrderSet;
     }
 
-    public void setBusId(Bus busId) {
-        this.busId = busId;
+    public void setSaleOrderSet(Set<SaleOrder> saleOrderSet) {
+        this.saleOrderSet = saleOrderSet;
+    }
+
+    public Coach getCoachId() {
+        return coachId;
+    }
+
+    public void setCoachId(Coach coachId) {
+        this.coachId = coachId;
+    }
+
+    public Coachline getCoachlineId() {
+        return coachlineId;
+    }
+
+    public void setCoachlineId(Coachline coachlineId) {
+        this.coachlineId = coachlineId;
     }
 
     public Employee getEmployeeId() {
@@ -117,30 +134,13 @@ public class Bustrip implements Serializable {
         this.employeeId = employeeId;
     }
 
-    public LineBus getLinebusId() {
-        return linebusId;
-    }
-
-    public void setLinebusId(LineBus linebusId) {
-        this.linebusId = linebusId;
-    }
-
     @XmlTransient
-    public Set<SaleOrder> getSaleOrderSet() {
-        return saleOrderSet;
+    public Set<DetailCoachtrip> getDetailCoachtripSet() {
+        return detailCoachtripSet;
     }
 
-    public void setSaleOrderSet(Set<SaleOrder> saleOrderSet) {
-        this.saleOrderSet = saleOrderSet;
-    }
-
-    @XmlTransient
-    public Set<DetailBustrip> getDetailBustripSet() {
-        return detailBustripSet;
-    }
-
-    public void setDetailBustripSet(Set<DetailBustrip> detailBustripSet) {
-        this.detailBustripSet = detailBustripSet;
+    public void setDetailCoachtripSet(Set<DetailCoachtrip> detailCoachtripSet) {
+        this.detailCoachtripSet = detailCoachtripSet;
     }
 
     @Override
@@ -153,10 +153,10 @@ public class Bustrip implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bustrip)) {
+        if (!(object instanceof Coachtrip)) {
             return false;
         }
-        Bustrip other = (Bustrip) object;
+        Coachtrip other = (Coachtrip) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -165,7 +165,7 @@ public class Bustrip implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.Bustrip[ id=" + id + " ]";
+        return "com.btl.pojo.Coachtrip[ id=" + id + " ]";
     }
     
 }

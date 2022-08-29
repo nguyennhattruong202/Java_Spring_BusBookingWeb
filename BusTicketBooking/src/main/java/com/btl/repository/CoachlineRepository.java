@@ -4,15 +4,15 @@
  */
 package com.btl.repository;
 
-import com.btl.pojo.LineBus;
+import com.btl.pojo.Coachline;
 import java.util.List;
 import java.util.Map;
 
-public interface LineBusRepository {
+public interface CoachlineRepository {
 
-    List<LineBus> getAllLineBus(Map<String, String> params, int page);
+    List<Coachline> getCoachline(Map<String, String> params, int page);
 
-    int countLineBus();
+    int countCoachline();
 
-    boolean addLineBus(LineBus lb);
+    boolean addCoachline(Coachline lb);
 }

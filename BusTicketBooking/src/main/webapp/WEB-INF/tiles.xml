@@ -53,6 +53,10 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminContent"
                        value="/WEB-INF/jsp/admin/adminCustomer.jsp" />
     </definition>
+    
+    <definition name="login" extends="adminBaseLayout">
+        
+    </definition>
     <!-- End admin tiles -->
 </tiles-definitions>
 
