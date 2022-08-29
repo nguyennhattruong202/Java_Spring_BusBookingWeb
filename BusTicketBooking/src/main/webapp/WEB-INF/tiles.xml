@@ -54,7 +54,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
                        value="/WEB-INF/jsp/admin/adminCustomer.jsp" />
     </definition>
     
-    <definition name="login" extends="adminBaseLayout">
+    <definition name="login" template="/WEB-INF/jsp/admin/login.jsp">
         
     </definition>
     <!-- End admin tiles -->
