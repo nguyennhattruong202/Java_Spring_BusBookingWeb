@@ -25,29 +25,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- End font and icon cdn -->
-        
+
         <!-- Begin css of this project -->
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin/commonLayout.css"/>"/>
         <!-- End css of this project -->
     </head>
 
     <body>
-        <div class="container-fluid" style="font-family: arial">
+        <div class="container-fluid bg-light" style="font-family: arial">
             <!-- Admin header-->
             <tiles:insertAttribute name="adminHeader"/>
             
-            <div class="row">
-                <div class="col-3">
-                    <!-- Admin left-->
-                    <tiles:insertAttribute name="adminLeft"/>
-                </div>
-                
-                <div class="col-9">
-                    <!-- Admin content-->
-                    <tiles:insertAttribute name="adminContent"/>
-                </div>
-            </div>
-                
+            <!-- Admin content-->
+            <tiles:insertAttribute name="adminContent"/>
+
             <!-- Admin footer-->
             <tiles:insertAttribute name="adminFooter"/>
         </div>

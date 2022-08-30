@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Employee.findByImage", query = "SELECT e FROM Employee e WHERE e.image = :image"),
     @NamedQuery(name = "Employee.findByUsername", query = "SELECT e FROM Employee e WHERE e.username = :username"),
     @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
-    @NamedQuery(name = "Employee.findByRole", query = "SELECT e FROM Employee e WHERE e.role = :role"),
+    @NamedQuery(name = "Employee.findByUserRole", query = "SELECT e FROM Employee e WHERE e.userRole = :userRole"),
     @NamedQuery(name = "Employee.findByActive", query = "SELECT e FROM Employee e WHERE e.active = :active")})
 public class Employee implements Serializable {
 
@@ -90,8 +90,8 @@ public class Employee implements Serializable {
     @Column(name = "password")
     private String password;
     @Size(max = 255)
-    @Column(name = "role")
-    private String role;
+    @Column(name = "user_role")
+    private String userRole;
     @Column(name = "active")
     private Boolean active;
     @OneToMany(mappedBy = "employeeId")
@@ -200,12 +200,12 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getUserRole() {
+        return userRole;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public Boolean getActive() {

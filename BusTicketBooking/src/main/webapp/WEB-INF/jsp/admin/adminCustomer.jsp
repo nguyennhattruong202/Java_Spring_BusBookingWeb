@@ -20,9 +20,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Lưu ý</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    Danh sách khách hàng trống
-                </div>
+                <div class="modal-body">Danh sách khách hàng trống</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
@@ -31,8 +29,8 @@
     </div>
 </c:if>
 
-<div class="d-flex justify-content-center w-100 mt-4 mb-4">
-    <div class="my-style-card-box my-style-w-98 p-4">
+<div class="d-flex justify-content-center w-100 mt-3 mb-3">
+    <div class="my-style-card-box w-100 p-4">
         <div class="border-bottom">
             <h4 class="fw-bold my-style-text-blue">Danh sách khách hàng</h4>
         </div>
@@ -40,12 +38,14 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th onclick="sortTable(1)">Họ và tên lót</th>
-                    <th onclick="sortTable(2)">Tên</th>
-                    <th onclick="sortTable(3)">Giới tính</th>
-                    <th onclick="sortTable(4)">Số điện thoại</th>
-                    <th onclick="sortTable(5)">Email</th>
-                    <th>Thao tác</th>
+                    <th onclick="sortTable(1)" class="text-center">Họ và tên lót</th>
+                    <th onclick="sortTable(2)" class="text-center">Tên</th>
+                    <th onclick="sortTable(3)" class="text-center">Giới tính</th>
+                    <th onclick="sortTable(4)" class="text-center">Ngày sinh</th>
+                    <th onclick="sortTable(5)" class="text-center">SĐT</th>
+                    <th onclick="sortTable(6)" class="text-center">Email</th>
+                    <th onclick="sortTable(7)" class="text-center">Địa chỉ</th>
+                    <th class="text-center">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,12 +58,20 @@
                         <td>${customer.lastName}</td>
                         <td>${customer.firstName}</td>
                         <td>${customer.gender}</td>
+                        <td>${customer.dateOfBirth}</td>
                         <td>${customer.phone}</td>
                         <td>${customer.email}</td>
+                        <td>${customer.address}</td>
                         <td>
-                            <a class="text text-primary my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerDetail${customer.id}"><i class="fa fa-bars"></i></a>
-                            <a class="text text-primary ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerEdit${customer.id}"><i class="bi bi-pencil-square"></i></a>
-                            <a class="text text-danger ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#deleteCustomer${customer.id}"><i class="fa fa-trash"></i></a>
+                            <a class="text text-primary my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerDetail${customer.id}">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                            <a class="text text-primary ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerEdit${customer.id}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a class="text text-danger ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#deleteCustomer${customer.id}">
+                                <i class="fa fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 <div class="modal fade" id="customerEdit${customer.id}">

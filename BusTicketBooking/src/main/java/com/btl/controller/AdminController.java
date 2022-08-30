@@ -46,9 +46,4 @@ public class AdminController {
     public String adminBusTrip() {
         return "adminCoachTrip";
     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
 }
