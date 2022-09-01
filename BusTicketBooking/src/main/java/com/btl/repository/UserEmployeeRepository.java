@@ -5,8 +5,15 @@
 package com.btl.repository;
 
 import com.btl.pojo.Employee;
+import java.util.List;
 
 public interface UserEmployeeRepository {
 
     Employee getUserEmployeeByUserName(String user);
+
+    List<Employee> getEmployee(int page);
+
+    long countEmployee();
+    
+    boolean addEmployee(Employee employee);
 }

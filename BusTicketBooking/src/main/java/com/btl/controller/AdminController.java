@@ -37,11 +37,6 @@ public class AdminController {
         return "adminLineBus";
     }
 
-    @GetMapping("/employee")
-    public String adminEmployeeManage() {
-        return "adminEmployeeUser";
-    }
-
     @GetMapping("/coachtrip")
     public String adminBusTrip() {
         return "adminCoachTrip";

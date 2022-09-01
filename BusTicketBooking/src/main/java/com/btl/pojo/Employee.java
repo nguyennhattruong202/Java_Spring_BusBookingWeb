@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -54,10 +55,12 @@ public class Employee implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 255)
+    @Size(max = 255, message = "{admin.validator.employee.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "last_name")
     private String lastName;
-    @Size(max = 255)
+    @Size(max = 255, message = "{admin.validator.employee.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "date_of_birth")
@@ -66,34 +69,40 @@ public class Employee implements Serializable {
     @Size(max = 255)
     @Column(name = "gender")
     private String gender;
-    @Size(max = 255)
+    @Size(max = 255, message = "{admin.validator.employee.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "address")
     private String address;
-    @Size(max = 255)
+    @Size(max = 12, message = "{admin.validator.employee.identity.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "identity_num")
     private String identityNum;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Size(max = 255)
+    @Size(max = 10, message = "{admin.validator.employee.phoneNumber.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "phone")
     private String phone;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 255)
+    @Size(max = 255, message = "{admin.validator.employee.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "email")
     private String email;
     @Size(max = 255)
     @Column(name = "image")
     private String image;
-    @Size(max = 255)
+    @Size(max = 255, message = "{admin.validator.employee.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "username")
     private String username;
-    @Size(max = 255)
+    @Size(max = 255, message = "{admin.validator.employee.maxSize}")
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "password")
     private String password;
     @Size(max = 255)
     @Column(name = "user_role")
     private String userRole;
     @Column(name = "active")
-    private Boolean active;
+    private Boolean active = true;
     @OneToMany(mappedBy = "employeeId")
     private Set<Coachtrip> coachtripSet;
 

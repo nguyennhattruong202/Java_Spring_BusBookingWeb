@@ -23,7 +23,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     </definition>
     
     <definition name="adminEmployeeUser" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="ManageEmployee" />
+        <put-attribute name="adminTitle" value="Quản lý nhân sự" />
         <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminEmployeeUser.jsp" />
     </definition>
     
@@ -37,11 +37,6 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminBus.jsp" />
     </definition>
     
-    <definition name="adminTypeEmployee" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="ManageTypeEmployee" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminTypeEmployee.jsp" />
-    </definition>
-    
     <definition name="adminCustomer" extends="adminBaseLayout">
         <put-attribute name="adminTitle" value="Quản lý khách hàng" />
         <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCustomer.jsp" />
@@ -52,6 +47,11 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminHeader" value=""/>
         <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/login.jsp"/>
         <put-attribute name="adminFooter" value=""/>
+    </definition>
+    
+    <definition name="formAddEmployee" extends="adminBaseLayout">
+        <put-attribute name="adminTitle" value="Thêm nhân sự"/>
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/formAddEmployee.jsp"/>
     </definition>
     <!-- End admin tiles -->
 </tiles-definitions>

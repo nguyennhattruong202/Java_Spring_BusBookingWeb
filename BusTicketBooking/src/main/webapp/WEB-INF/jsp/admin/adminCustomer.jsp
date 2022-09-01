@@ -34,17 +34,17 @@
         <div class="border-bottom">
             <h4 class="fw-bold my-style-text-blue">Danh sách khách hàng</h4>
         </div>
-        <table class="table table-hover mt-3" id="customerTable">
-            <thead>
+        <table class="table table-hover mt-3 table-bordered" id="customerTable">
+            <thead class="bg-light">
                 <tr>
-                    <th></th>
-                    <th onclick="sortTable(1)" class="text-center">Họ và tên lót</th>
-                    <th onclick="sortTable(2)" class="text-center">Tên</th>
-                    <th onclick="sortTable(3)" class="text-center">Giới tính</th>
-                    <th onclick="sortTable(4)" class="text-center">Ngày sinh</th>
-                    <th onclick="sortTable(5)" class="text-center">SĐT</th>
-                    <th onclick="sortTable(6)" class="text-center">Email</th>
-                    <th onclick="sortTable(7)" class="text-center">Địa chỉ</th>
+                    <th class="text-center">Hình ảnh</th>
+                    <th onclick="sortTable(1, 'customerTable')" class="text-center">Họ và tên lót</th>
+                    <th onclick="sortTable(2, 'customerTable')" class="text-center">Tên</th>
+                    <th onclick="sortTable(3, 'customerTable')" class="text-center">Giới tính</th>
+                    <th onclick="sortTable(4, 'customerTable')" class="text-center">Ngày sinh</th>
+                    <th onclick="sortTable(5, 'customerTable')" class="text-center">SĐT</th>
+                    <th onclick="sortTable(6, 'customerTable')" class="text-center">Email</th>
+                    <th onclick="sortTable(7, 'customerTable')" class="text-center">Địa chỉ</th>
                     <th class="text-center">Thao tác</th>
                 </tr>
             </thead>
@@ -52,7 +52,7 @@
                 <c:forEach items="${listCustomer}" var="customer">
                     <c:url value="/api/customer/${customer.id}" var="endpoint"/>
                     <tr class="align-middle">
-                        <td>
+                        <td class="text-center">
                             <img src="${customer.image}" alt="customer${customer.id}" class="rounded-circle shadow rounded" style="width: 50px; height: 50px;">
                         </td>
                         <td>${customer.lastName}</td>
@@ -62,16 +62,10 @@
                         <td>${customer.phone}</td>
                         <td>${customer.email}</td>
                         <td>${customer.address}</td>
-                        <td>
-                            <a class="text text-primary my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerDetail${customer.id}">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                            <a class="text text-primary ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerEdit${customer.id}">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a class="text text-danger ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#deleteCustomer${customer.id}">
-                                <i class="fa fa-trash"></i>
-                            </a>
+                        <td class="text-center">
+                            <a class="text text-primary my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerDetail${customer.id}"><i class="fa fa-bars"></i></a>
+                            <a class="text text-primary ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerEdit${customer.id}"><i class="bi bi-pencil-square"></i></a>
+                            <a class="text text-danger ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#deleteCustomer${customer.id}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 <div class="modal fade" id="customerEdit${customer.id}">
@@ -357,41 +351,5 @@
         }).catch(function (err) {
             console.error(err);
         });
-    }
-    function sortTable(n) {
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("customerTable");
-        switching = true;
-        dir = "asc";
-        while (switching) {
-            switching = false;
-            rows = table.rows;
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[n];
-                y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (dir === "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir === "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount++;
-            } else {
-                if (switchcount === 0 && dir === "asc") {
-                    dir = "desc";
-                    switching = true;
-                }
-            }
-        }
     }
 </script>

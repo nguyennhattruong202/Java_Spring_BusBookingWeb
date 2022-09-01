@@ -4,9 +4,10 @@
     Author     : ACER
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <nav class="navbar navbar-light" style="background-color: cyan;">
     <div class="container-fluid">
@@ -14,10 +15,13 @@
             <img src="<c:url value="/images/admin/mainLogo.png"/>" alt="mainLogo" width="100" height="50" class="d-inline-block align-text-top">
         </a>
         <li class="d-flex nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="img-fluid" style="width: 40px;" src="<c:url value="/images/admin/iconUserAvatar.png"/>" alt="iconUser">
-                Epmloyee 1
-            </a>
+            <sec:authorize access="isAuthenticated()">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="img-fluid" style="width: 40px;" src="${pageContext.session.getAttribute("currentUser").image}" alt="iconCurentUser">
+                    ${pageContext.session.getAttribute("currentUser").lastName}
+                    ${pageContext.session.getAttribute("currentUser").firstName}
+                </a>
+            </sec:authorize>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
                 <li>
                     <a class="dropdown-item" href="#">
@@ -88,7 +92,7 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownEmployee">
         <li>
-            <a class="dropdown-item" href="#">Danh sách nhân sự</a>
+            <a class="dropdown-item" href="<c:url value="/admin/employee"/>">Danh sách nhân sự</a>
         </li>
         <li>
             <a class="dropdown-item" href="#">Nhân sự đã xóa</a>

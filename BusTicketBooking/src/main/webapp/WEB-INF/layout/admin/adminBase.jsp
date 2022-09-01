@@ -29,6 +29,10 @@
         <!-- Begin css of this project -->
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin/commonLayout.css"/>"/>
         <!-- End css of this project -->
+        
+        <!-- Begin java script of this project -->
+        <script src="<c:url value="/js/admin/sortTable.js"/>"></script>
+        <!-- End java script of this project -->
     </head>
 
     <body>

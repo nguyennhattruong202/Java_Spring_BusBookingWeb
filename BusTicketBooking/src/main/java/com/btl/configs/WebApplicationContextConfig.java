@@ -4,6 +4,10 @@
  */
 package com.btl.configs;
 
+import com.btl.validator.EmployeeValidator;
+import com.btl.validator.WebAppValidator;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,15 +30,16 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {
     "com.btl.controller",
     "com.btl.repository",
-    "com.btl.service"
+    "com.btl.service",
+    "com.btl.validator"
 })
 public class WebApplicationContextConfig implements WebMvcConfigurer {
-    
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-    
+
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -43,37 +48,46 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         resolver.setSuffix(".jsp");
         return resolver;
     }
-    
+
     @Bean
     public CommonsMultipartResolver commonsMultipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setDefaultEncoding("UTF-8");
         return resolver;
     }
-    
+
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource resource = new ResourceBundleMessageSource();
         resource.setBasenames("messages");
         return resource;
     }
-    
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("images/**").addResourceLocations("/resources/images/");
         registry.addResourceHandler("css/**").addResourceLocations("/resources/css/");
         registry.addResourceHandler("js/**").addResourceLocations("/resources/js/");
     }
-    
+
     @Override
     public Validator getValidator() {
         return validator();
     }
 
-    @Bean(name = "validator")
+    @Bean
     public LocalValidatorFactoryBean validator() {
         LocalValidatorFactoryBean v = new LocalValidatorFactoryBean();
         v.setValidationMessageSource(messageSource());
         return v;
+    }
+
+    @Bean
+    public WebAppValidator employeeValidators() {
+        Set<Validator> springValidators = new HashSet<>();
+        springValidators.add(new EmployeeValidator());
+        WebAppValidator webAppValidator = new WebAppValidator();
+        webAppValidator.setSpringValidator(springValidators);
+        return webAppValidator;
     }
 }

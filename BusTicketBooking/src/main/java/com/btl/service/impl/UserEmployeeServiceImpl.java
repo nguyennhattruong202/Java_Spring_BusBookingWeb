@@ -8,6 +8,7 @@ import com.btl.pojo.Employee;
 import com.btl.repository.UserEmployeeRepository;
 import com.btl.service.UserEmployeeService;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,15 +19,25 @@ import org.springframework.stereotype.Service;
 
 @Service("userDetailsService")
 public class UserEmployeeServiceImpl implements UserEmployeeService {
-
+    
     @Autowired
     private UserEmployeeRepository userEmployeeRepository;
-
+    
     @Override
     public Employee getUserEmployeeByUserName(String user) {
         return this.userEmployeeRepository.getUserEmployeeByUserName(user);
     }
-
+    
+    @Override
+    public List<Employee> getEmployee(int page) {
+        return this.userEmployeeRepository.getEmployee(page);
+    }
+    
+    @Override
+    public long countEmployee() {
+        return this.userEmployeeRepository.countEmployee();
+    }
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Employee employee = this.getUserEmployeeByUserName(username);
@@ -40,5 +51,9 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
                 employee.getPassword(), authorities
         );
     }
-
+    
+    @Override
+    public boolean addEmployee(Employee employee) {
+        return this.userEmployeeRepository.addEmployee(employee);
+    }
 }
