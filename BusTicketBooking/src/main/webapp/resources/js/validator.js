@@ -130,7 +130,7 @@ Validator.isRequired = function(selector, message){
     return {
         selector: selector,
         test: function(value){
-            return value ? undefined : message || "Please fill in this field." 
+            return value ? undefined : message || "Vui long khong de trong." 
         }
     }
 }
@@ -140,7 +140,7 @@ Validator.isEmail = function(selector, message){
         selector: selector,
         test: function(value){
             const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-            return regex.test(value) ? undefined  : message || "Invalid email address."
+            return regex.test(value) ? undefined  : message || "Email khong hop le."
         }
     }
 }
@@ -149,7 +149,7 @@ Validator.isMinLength = function(selector, minLength, message){
     return {
         selector: selector,
         test: function(value){
-            return value.length >= minLength ? undefined : message || `Please enter at least  ${minLength} characters.` 
+            return value.length >= minLength ? undefined : message || `Vui long nhap it nhat  ${minLength} ki tu.` 
         }
     }
 }
@@ -158,7 +158,7 @@ Validator.isConfirmed = function(selector, getConfirm, message){
     return {
         selector: selector,
         test: function(value){
-            return value === getConfirm()  ? undefined : message || `Please enter correctly.` 
+            return value === getConfirm()  ? undefined : message || `Vui long nhap chinh xac.` 
         }
     }
 }
