@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<main class="main">
+<main id="home" class="main">
     <!-- slider-area -->
     <div class="main-slider" style="background-image: url(img/slider/banner_bg02.jpg);">
         <!-- banner-area-->
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="banner-car-search-wrap">
+<!--        <div class="banner-car-search-wrap">
             <div class="banner-car-container">
                 <div class="grid wide">
                     <div class="row mr-3">
@@ -85,43 +85,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- banner-area-end -->
     </div>
-
-    <!-- <div class="latest-cars-area pb-120 pt-120">
-         <div class="grid wide">
-             <div class="latest-cars-control">
-                 <div class="row large-gutter ">
-                     <div class="col l-12 m-12 c-12">
-                         <div class="section-title mb-35">
-                             <div class="overlay-title">THONG TIN</div>
-                             <span>THONG TIN</span>
-                             <h2>CAC CHUYEN XE HIEN HANH</h2>
-                         </div>
-                         <div class="latest-cars-menu">
-                             <button href="#" class="btn btn-cars-menu active" data-type="all">Xe ngoi</button>
-                             <button href="#" class="btn btn-cars-menu" data-type="new-car">Xe giuong</button>
-                         </div>
-                     </div>
-                 </div>
-             </div>              
-             <div class="latest-cars-wrapper">
-                 <div class="row large-gutter mr-3 ">
-
-                 </div>
-             </div>
-             <div class="latest-cars-btn">
-                 <div class="row">
-                     <div class="col col-12">
-                         <a href="" class="btn bnt-show-all">XEM THEM</a>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div> -->
-
-    <!-- slider-area-end -->
+    
     <!-- features-area -->
     <div class="features-area pt-120 pb-90">
         <div class="grid wide">
@@ -381,7 +348,7 @@
     </div>
     <!-- fact-area-end -->
     <!-- blog-area -->
-    <div class="blog-area pd-120 pt-120">
+    <div id="blog" class="blog-area pd-120 pt-120">
         <div class="grid wide">
             <div class="latest-cars-control">
                 <div class="row large-gutter">

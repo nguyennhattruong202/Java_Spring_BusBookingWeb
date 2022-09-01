@@ -4,6 +4,7 @@
     Author     : KIMNAM - ADMIN
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="modal-wrapper">
     <div class="modal__overlay"></div>

@@ -55,10 +55,10 @@
                 <div class="navbar-wrap">
                     <ul class="navbar-wrap-list">
                         <li class="navbar-wrap-item active">
-                            <a href="#">Trang chu</a>
+                            <a href="#home">Trang chu</a>
                         </li>
                         <li class="navbar-wrap-item inventory-hv">
-                            <a href="#">Chuyen xe</a>
+                            <a href="#">Tim chuyen xe</a>
                             <ul class="navbar-wrap-list-child">
                                 <li>
                                     <a href="#">Xe ngoi</a>
@@ -69,10 +69,10 @@
                             </ul>
                         </li>
                         <li class="navbar-wrap-item blog-hv">
-                            <a href="#">Tin tuc</a>
+                            <a href="#blog">Tin tuc</a>
                         </li>
                         <li class="navbar-wrap-item">
-                            <a href="#">Lien he</a>
+                            <a href="#contact">Lien he</a>
                         </li>
                     </ul>
                 </div>

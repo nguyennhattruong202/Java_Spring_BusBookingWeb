@@ -4,8 +4,9 @@
     Author     : KIMNAM - ADMIN
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<footer class="footer">
+<footer id="contact" class="footer">
     <div class="footer-top-wrap">
         <div class="footer-top ">
             <div class="grid wide">
