@@ -22,8 +22,8 @@
         <link rel="stylesheet" href="<c:url value="/resources/css/grid.css"/>"/>
         <link rel="stylesheet" href="<c:url value="/resources/css/responsive.css"/>"/>
         <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
-        <script src="../../../../resources/js/main.js"></script>
-        <script src="../../../../resources/js/validator.js"></script>
+        <script src="<c:url value="/js/main.js" />"></script>
+        <script src="<c:url value="/js/validator.js" />"></script>
         <!-- Counter up/ Slick slider --> 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
@@ -37,7 +37,10 @@
             <tiles:insertAttribute name="header"/>
             <!-- End Header -->
             <!-- Begin Main -->
-            <tiles:insertAttribute name="main"/>
+            <div class="container">
+                <tiles:insertAttribute name="main"/>
+            </div>
+            
             <!-- End Main -->
             <!-- Begin Footer -->
             <tiles:insertAttribute name="footer"/>

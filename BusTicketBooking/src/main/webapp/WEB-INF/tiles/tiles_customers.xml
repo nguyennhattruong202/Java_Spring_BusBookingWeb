@@ -28,10 +28,10 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
                        value="/WEB-INF/jsp/customers/index.jsp" />
     </definition>
     
-<!--    <definition name="products" extends="baseLayout">
-        <put-attribute name="title" value="Quan ly san pham" />
-        <put-attribute name="content"
-                       value="/WEB-INF/jsp/products.jsp" />
-    </definition>-->
+    <definition name="trips" extends="baseLayout">
+        <put-attribute name="title" value="Truong Nam - Thong tin chuyen xe" />
+        <put-attribute name="main"
+                       value="/WEB-INF/jsp/customers/trips.jsp" />
+    </definition>
 </tiles-definitions>
 

@@ -58,7 +58,7 @@
                             <a href="#home">Trang chu</a>
                         </li>
                         <li class="navbar-wrap-item inventory-hv">
-                            <a href="#">Tim chuyen xe</a>
+                            <a href="<c:url value="/trips" />">Tim chuyen xe</a>
                             <ul class="navbar-wrap-list-child">
                                 <li>
                                     <a href="#">Xe ngoi</a>
@@ -141,7 +141,7 @@
                             </div>
                         </li>
                         <li class="header-quote">
-                            <a href="#" class="btn btn__quote">DAT VE</a>
+                            <a href="<c:url value="/trips" />" class="btn btn__quote">DAT VE</a>
                         </li>
                         <li class="btn-search">
                             <i class="fa-solid fa-magnifying-glass icon-search"></i>
