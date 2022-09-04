@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +23,10 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author ACER
+ */
 @Entity
 @Table(name = "customer")
 @XmlRootElement
@@ -32,15 +35,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Customer.findById", query = "SELECT c FROM Customer c WHERE c.id = :id"),
     @NamedQuery(name = "Customer.findByLastName", query = "SELECT c FROM Customer c WHERE c.lastName = :lastName"),
     @NamedQuery(name = "Customer.findByFirstName", query = "SELECT c FROM Customer c WHERE c.firstName = :firstName"),
+    @NamedQuery(name = "Customer.findByGender", query = "SELECT c FROM Customer c WHERE c.gender = :gender"),
     @NamedQuery(name = "Customer.findByDateOfBirth", query = "SELECT c FROM Customer c WHERE c.dateOfBirth = :dateOfBirth"),
-    @NamedQuery(name = "Customer.findBySex", query = "SELECT c FROM Customer c WHERE c.sex = :sex"),
-    @NamedQuery(name = "Customer.findByAddress", query = "SELECT c FROM Customer c WHERE c.address = :address"),
     @NamedQuery(name = "Customer.findByIdentityNum", query = "SELECT c FROM Customer c WHERE c.identityNum = :identityNum"),
+    @NamedQuery(name = "Customer.findByAddress", query = "SELECT c FROM Customer c WHERE c.address = :address"),
     @NamedQuery(name = "Customer.findByPhone", query = "SELECT c FROM Customer c WHERE c.phone = :phone"),
     @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email"),
     @NamedQuery(name = "Customer.findByImage", query = "SELECT c FROM Customer c WHERE c.image = :image"),
     @NamedQuery(name = "Customer.findByUsername", query = "SELECT c FROM Customer c WHERE c.username = :username"),
-    @NamedQuery(name = "Customer.findByPassword", query = "SELECT c FROM Customer c WHERE c.password = :password")})
+    @NamedQuery(name = "Customer.findByPassword", query = "SELECT c FROM Customer c WHERE c.password = :password"),
+    @NamedQuery(name = "Customer.findByActive", query = "SELECT c FROM Customer c WHERE c.active = :active")})
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,18 +59,18 @@ public class Customer implements Serializable {
     @Size(max = 255)
     @Column(name = "first_name")
     private String firstName;
+    @Size(max = 255)
+    @Column(name = "gender")
+    private String gender;
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Size(max = 255)
-    @Column(name = "sex")
-    private String sex;
+    @Column(name = "identity_num")
+    private String identityNum;
     @Size(max = 255)
     @Column(name = "address")
     private String address;
-    @Size(max = 255)
-    @Column(name = "identity_num")
-    private String identityNum;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 255)
     @Column(name = "phone")
@@ -84,7 +88,11 @@ public class Customer implements Serializable {
     @Size(max = 255)
     @Column(name = "password")
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "customerId")
+    private Set<Feedback> feedbackSet;
+    @OneToMany(mappedBy = "customerId")
     private Set<SaleOrder> saleOrderSet;
 
     public Customer() {
@@ -118,6 +126,14 @@ public class Customer implements Serializable {
         this.firstName = firstName;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -126,12 +142,12 @@ public class Customer implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getSex() {
-        return sex;
+    public String getIdentityNum() {
+        return identityNum;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setIdentityNum(String identityNum) {
+        this.identityNum = identityNum;
     }
 
     public String getAddress() {
@@ -140,14 +156,6 @@ public class Customer implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getIdentityNum() {
-        return identityNum;
-    }
-
-    public void setIdentityNum(String identityNum) {
-        this.identityNum = identityNum;
     }
 
     public String getPhone() {
@@ -190,6 +198,23 @@ public class Customer implements Serializable {
         this.password = password;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @XmlTransient
+    public Set<Feedback> getFeedbackSet() {
+        return feedbackSet;
+    }
+
+    public void setFeedbackSet(Set<Feedback> feedbackSet) {
+        this.feedbackSet = feedbackSet;
+    }
+
     @XmlTransient
     public Set<SaleOrder> getSaleOrderSet() {
         return saleOrderSet;
@@ -223,5 +248,5 @@ public class Customer implements Serializable {
     public String toString() {
         return "com.btl.pojo.Customer[ id=" + id + " ]";
     }
-
+    
 }

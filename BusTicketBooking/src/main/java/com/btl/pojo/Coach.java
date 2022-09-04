@@ -7,7 +7,6 @@ package com.btl.pojo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,18 +20,23 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author ACER
+ */
 @Entity
-@Table(name = "bus")
+@Table(name = "coach")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Bus.findAll", query = "SELECT b FROM Bus b"),
-    @NamedQuery(name = "Bus.findById", query = "SELECT b FROM Bus b WHERE b.id = :id"),
-    @NamedQuery(name = "Bus.findByName", query = "SELECT b FROM Bus b WHERE b.name = :name"),
-    @NamedQuery(name = "Bus.findByLicensePlates", query = "SELECT b FROM Bus b WHERE b.licensePlates = :licensePlates"),
-    @NamedQuery(name = "Bus.findByCapacity", query = "SELECT b FROM Bus b WHERE b.capacity = :capacity"),
-    @NamedQuery(name = "Bus.findByManufacturer", query = "SELECT b FROM Bus b WHERE b.manufacturer = :manufacturer"),
-    @NamedQuery(name = "Bus.findByType", query = "SELECT b FROM Bus b WHERE b.type = :type")})
-public class Bus implements Serializable {
+    @NamedQuery(name = "Coach.findAll", query = "SELECT c FROM Coach c"),
+    @NamedQuery(name = "Coach.findById", query = "SELECT c FROM Coach c WHERE c.id = :id"),
+    @NamedQuery(name = "Coach.findByName", query = "SELECT c FROM Coach c WHERE c.name = :name"),
+    @NamedQuery(name = "Coach.findByLicensePlates", query = "SELECT c FROM Coach c WHERE c.licensePlates = :licensePlates"),
+    @NamedQuery(name = "Coach.findByCapacity", query = "SELECT c FROM Coach c WHERE c.capacity = :capacity"),
+    @NamedQuery(name = "Coach.findByManufacturer", query = "SELECT c FROM Coach c WHERE c.manufacturer = :manufacturer"),
+    @NamedQuery(name = "Coach.findByType", query = "SELECT c FROM Coach c WHERE c.type = :type"),
+    @NamedQuery(name = "Coach.findByActive", query = "SELECT c FROM Coach c WHERE c.active = :active")})
+public class Coach implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,13 +58,15 @@ public class Bus implements Serializable {
     @Size(max = 255)
     @Column(name = "type")
     private String type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "busId")
-    private Set<BusTrip> busTripSet;
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "coachId")
+    private Set<Coachtrip> coachtripSet;
 
-    public Bus() {
+    public Coach() {
     }
 
-    public Bus(Integer id) {
+    public Coach(Integer id) {
         this.id = id;
     }
 
@@ -112,13 +118,21 @@ public class Bus implements Serializable {
         this.type = type;
     }
 
-    @XmlTransient
-    public Set<BusTrip> getBusTripSet() {
-        return busTripSet;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setBusTripSet(Set<BusTrip> busTripSet) {
-        this.busTripSet = busTripSet;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @XmlTransient
+    public Set<Coachtrip> getCoachtripSet() {
+        return coachtripSet;
+    }
+
+    public void setCoachtripSet(Set<Coachtrip> coachtripSet) {
+        this.coachtripSet = coachtripSet;
     }
 
     @Override
@@ -131,10 +145,10 @@ public class Bus implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bus)) {
+        if (!(object instanceof Coach)) {
             return false;
         }
-        Bus other = (Bus) object;
+        Coach other = (Coach) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -143,7 +157,7 @@ public class Bus implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.Bus[ id=" + id + " ]";
+        return "com.btl.pojo.Coach[ id=" + id + " ]";
     }
-
+    
 }

@@ -7,7 +7,6 @@ package com.btl.pojo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,16 +20,20 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author ACER
+ */
 @Entity
-@Table(name = "line_bus")
+@Table(name = "payment")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LineBus.findAll", query = "SELECT l FROM LineBus l"),
-    @NamedQuery(name = "LineBus.findById", query = "SELECT l FROM LineBus l WHERE l.id = :id"),
-    @NamedQuery(name = "LineBus.findByName", query = "SELECT l FROM LineBus l WHERE l.name = :name"),
-    @NamedQuery(name = "LineBus.findByDeparture", query = "SELECT l FROM LineBus l WHERE l.departure = :departure"),
-    @NamedQuery(name = "LineBus.findByDestination", query = "SELECT l FROM LineBus l WHERE l.destination = :destination")})
-public class LineBus implements Serializable {
+    @NamedQuery(name = "Payment.findAll", query = "SELECT p FROM Payment p"),
+    @NamedQuery(name = "Payment.findById", query = "SELECT p FROM Payment p WHERE p.id = :id"),
+    @NamedQuery(name = "Payment.findByName", query = "SELECT p FROM Payment p WHERE p.name = :name"),
+    @NamedQuery(name = "Payment.findByContent", query = "SELECT p FROM Payment p WHERE p.content = :content"),
+    @NamedQuery(name = "Payment.findByActive", query = "SELECT p FROM Payment p WHERE p.active = :active")})
+public class Payment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,18 +45,17 @@ public class LineBus implements Serializable {
     @Column(name = "name")
     private String name;
     @Size(max = 255)
-    @Column(name = "departure")
-    private String departure;
-    @Size(max = 255)
-    @Column(name = "destination")
-    private String destination;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineBusId")
-    private Set<BusTrip> busTripSet;
+    @Column(name = "content")
+    private String content;
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "paymentId")
+    private Set<SaleOrder> saleOrderSet;
 
-    public LineBus() {
+    public Payment() {
     }
 
-    public LineBus(Integer id) {
+    public Payment(Integer id) {
         this.id = id;
     }
 
@@ -73,29 +75,29 @@ public class LineBus implements Serializable {
         this.name = name;
     }
 
-    public String getDeparture() {
-        return departure;
+    public String getContent() {
+        return content;
     }
 
-    public void setDeparture(String departure) {
-        this.departure = departure;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getDestination() {
-        return destination;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @XmlTransient
-    public Set<BusTrip> getBusTripSet() {
-        return busTripSet;
+    public Set<SaleOrder> getSaleOrderSet() {
+        return saleOrderSet;
     }
 
-    public void setBusTripSet(Set<BusTrip> busTripSet) {
-        this.busTripSet = busTripSet;
+    public void setSaleOrderSet(Set<SaleOrder> saleOrderSet) {
+        this.saleOrderSet = saleOrderSet;
     }
 
     @Override
@@ -108,10 +110,10 @@ public class LineBus implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LineBus)) {
+        if (!(object instanceof Payment)) {
             return false;
         }
-        LineBus other = (LineBus) object;
+        Payment other = (Payment) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,7 +122,7 @@ public class LineBus implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.LineBus[ id=" + id + " ]";
+        return "com.btl.pojo.Payment[ id=" + id + " ]";
     }
-
+    
 }

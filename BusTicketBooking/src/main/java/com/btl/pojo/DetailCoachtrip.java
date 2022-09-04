@@ -26,14 +26,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ACER
  */
 @Entity
-@Table(name = "sale_order")
+@Table(name = "detail_coachtrip")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SaleOrder.findAll", query = "SELECT s FROM SaleOrder s"),
-    @NamedQuery(name = "SaleOrder.findById", query = "SELECT s FROM SaleOrder s WHERE s.id = :id"),
-    @NamedQuery(name = "SaleOrder.findByCraetedDate", query = "SELECT s FROM SaleOrder s WHERE s.craetedDate = :craetedDate"),
-    @NamedQuery(name = "SaleOrder.findByNum", query = "SELECT s FROM SaleOrder s WHERE s.num = :num")})
-public class SaleOrder implements Serializable {
+    @NamedQuery(name = "DetailCoachtrip.findAll", query = "SELECT d FROM DetailCoachtrip d"),
+    @NamedQuery(name = "DetailCoachtrip.findById", query = "SELECT d FROM DetailCoachtrip d WHERE d.id = :id"),
+    @NamedQuery(name = "DetailCoachtrip.findByDepartureTime", query = "SELECT d FROM DetailCoachtrip d WHERE d.departureTime = :departureTime"),
+    @NamedQuery(name = "DetailCoachtrip.findByDestinationTime", query = "SELECT d FROM DetailCoachtrip d WHERE d.destinationTime = :destinationTime")})
+public class DetailCoachtrip implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,25 +41,23 @@ public class SaleOrder implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "craeted_date")
+    @Column(name = "departure_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date craetedDate;
-    @Column(name = "num")
-    private Integer num;
+    private Date departureTime;
+    @Column(name = "destination_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date destinationTime;
     @JoinColumn(name = "coachtrip_id", referencedColumnName = "id")
     @ManyToOne
     private Coachtrip coachtripId;
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JoinColumn(name = "station_id", referencedColumnName = "id")
     @ManyToOne
-    private Customer customerId;
-    @JoinColumn(name = "payment_id", referencedColumnName = "id")
-    @ManyToOne
-    private Payment paymentId;
+    private Station stationId;
 
-    public SaleOrder() {
+    public DetailCoachtrip() {
     }
 
-    public SaleOrder(Integer id) {
+    public DetailCoachtrip(Integer id) {
         this.id = id;
     }
 
@@ -71,20 +69,20 @@ public class SaleOrder implements Serializable {
         this.id = id;
     }
 
-    public Date getCraetedDate() {
-        return craetedDate;
+    public Date getDepartureTime() {
+        return departureTime;
     }
 
-    public void setCraetedDate(Date craetedDate) {
-        this.craetedDate = craetedDate;
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
     }
 
-    public Integer getNum() {
-        return num;
+    public Date getDestinationTime() {
+        return destinationTime;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setDestinationTime(Date destinationTime) {
+        this.destinationTime = destinationTime;
     }
 
     public Coachtrip getCoachtripId() {
@@ -95,20 +93,12 @@ public class SaleOrder implements Serializable {
         this.coachtripId = coachtripId;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
+    public Station getStationId() {
+        return stationId;
     }
 
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
-    }
-
-    public Payment getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Payment paymentId) {
-        this.paymentId = paymentId;
+    public void setStationId(Station stationId) {
+        this.stationId = stationId;
     }
 
     @Override
@@ -121,10 +111,10 @@ public class SaleOrder implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SaleOrder)) {
+        if (!(object instanceof DetailCoachtrip)) {
             return false;
         }
-        SaleOrder other = (SaleOrder) object;
+        DetailCoachtrip other = (DetailCoachtrip) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -133,7 +123,7 @@ public class SaleOrder implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btl.pojo.SaleOrder[ id=" + id + " ]";
+        return "com.btl.pojo.DetailCoachtrip[ id=" + id + " ]";
     }
     
 }
