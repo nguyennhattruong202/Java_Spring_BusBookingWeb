@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author KIMNAM
  */
-
 @Controller
 public class TripController {
-    
     @GetMapping("/trips")
     public String list () {
         return "trips";

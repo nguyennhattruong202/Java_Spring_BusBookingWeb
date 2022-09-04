@@ -5,7 +5,7 @@
         height: 247px;
     }
     .exclusive-car-content .row {
-        align-items: center;
+        align-items: baseline;
     }
 }
 /* Mobile and Tablet */
@@ -25,7 +25,7 @@
     .d-none {
         display: none;
     }
-    
+
     .btn-search::before {
         height: 24px;
     }
@@ -70,8 +70,8 @@
     .main-content-show h2 {
         font-size: 6rem;
     }
-    
-   
+
+
     .banner-car-search-wrap {
         padding: 39px 0 9px 0;
     }
@@ -84,13 +84,13 @@
     .about-content-wrapper {
         padding: 50px 0 0 0;
     }
-    
+
     .mr--30 {
         margin-right: 0;
     }
     .ml--30 {
         margin-left: 0;
-    } 
+    }
     .exclusive-car-item {
         text-align: center;
     }
@@ -106,7 +106,7 @@
         padding-top: 501px;
         padding-bottom: 99px;
     }
-    
+
     .fact-img img {
         margin-right: 0;
         margin-bottom: 15px;
@@ -127,7 +127,7 @@
     .main-right__title h4 {
         font-size: 1.8rem;
     }
-    
+
     .payment__img img {
         margin-top: 16px;
     }
@@ -250,7 +250,7 @@
     .exclusive-car-item h5  {
         margin-top: 18px;
     }
-    
+
     .fact-area {
         padding-top: 863px;
         padding-bottom: 99px
@@ -341,10 +341,10 @@
     input {
         font-size: 16px !important;
     }
-/*     .modal-wrapper.show, .modal-body {
-        overflow-y: auto;
-        overflow-x: hidden;
-    } */
+    /*     .modal-wrapper.show, .modal-body {
+            overflow-y: auto;
+            overflow-x: hidden;
+        } */
 }
 @media screen and (max-width: 375px) {
     .header-cart, .header-quote {

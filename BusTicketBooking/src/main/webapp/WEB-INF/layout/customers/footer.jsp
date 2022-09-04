@@ -5,13 +5,13 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <footer id="contact" class="footer">
     <div class="footer-top-wrap">
         
     </div>
     
-    <div class="footer-main-wrap" style="background-image: url(img/bg/footer_bg.jpg);">
+    <div class="footer-main-wrap" style="background-image: url(../../../resources/img/background_trip.jpg);">
         <div class="footer-main">
             <div class="grid wide">
                 <div class="row large-gutter mr-3">
@@ -91,7 +91,8 @@
                                 <div class="col l-12 m-12 c-12">
                                     <div class="payment">
                                         <div class="payment__title">
-                                            <p>Ban co the thanh toan truc tuyen hoac qua the tin dung cac ngan hang pho bien hop phap tai Viet Nam
+                                            <p>Ban co the thanh toan truc tuyen hoac qua the tin dung cac ngan hang pho
+                                               bien hop phap tai Viet Nam
                                         </div>
                                         <div class="payment__img">
                                             <img src="img/images/payment_card.png" alt="img">
@@ -112,13 +113,9 @@
                             <p>Copyright © 2022. Nguyen Nhat Truong - Truong Kim Nam</p>
                         </div>
                     </div>
-                    <div class="col l-4 m-4 c-12">
-                        <button class="btn btn-scroll-top">
-                            <i class="fa-solid fa-angle-up"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 

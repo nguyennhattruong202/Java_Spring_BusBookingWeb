@@ -13,6 +13,12 @@
 	transform: translateY(-50%);
 }
 
+#table-tour{
+	color:black;
+	background-color: #F5F5F5;
+	border-radius: 5pt;
+}
+
 #booking {
 	font-family: 'Lato', sans-serif;
 	background-image: url('../img/background_trip.jpg');
@@ -27,12 +33,11 @@
 	max-width: 642px;
 	width: 100%;
 	margin: auto;
-	padding: 45px 25px 25px;
 	border-radius: 4px;
 	-webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
 	box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-weight: 50 rem;
+	font-weight: 50;
 }
 
 .booking-form .form-group {
