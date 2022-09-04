@@ -71,7 +71,7 @@
             <div class="col-md-5 col-lg-6 m-auto">
                 <div class="booking-cta text-center">
                     <h1 class="">Truong Nam <hr> Dai ly ve xe</h1>
-                    <p>Kinh doanh ve xe khach Bac - Nam chat luong 5 sao. Nang cao chat luong dich vu</p>
+                    <p>Kinh doanh ve xe khach Bac - Nam chat luong 5 sao. </br> Nang cao chat luong dich vu</p>
                 </div>
             </div>
 
@@ -84,7 +84,7 @@
                 <th class="py-2 w-auto">Khoang Cach</th>
                 <th class="py-2 w-auto">Gia Ve</th>
                 <th class="py-2 w-auto">Loai Xe</th>
-                <th class="py-2 w-auto">Nut Dat Ve</th>
+                <th class="py-2 w-auto"></th>
                 </tr>
                 </thead>
                 <tbody>
