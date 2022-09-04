@@ -21,7 +21,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="header-top-right m-auto">
+            <div class="header-top-right">
                 <ul class="m-auto">
                     <li class="header-top-social">
                         <a href="https://www.facebook.com/profile.php?id=100012783071174"><i
@@ -67,10 +67,10 @@
                         </ul>
                     </li>
                     <li class="navbar-wrap-item px-2 blog-hv">
-                        <a href="#blog">Tin tuc</a>
+                        <a href="<c:url value="/"/>#blog">Tin tuc</a>
                     </li>
                     <li class="navbar-wrap-item px-2">
-                        <a href="#contact">Lien he</a>
+                        <a href="<c:url value="/"/>#contact">Lien he</a>
                     </li>
                 </ul>
             </div>
