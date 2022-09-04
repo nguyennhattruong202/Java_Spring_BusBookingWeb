@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-5 col-lg-6 m-auto">
                 <div class="booking-cta text-center">
-                    <h1 class="">Truong Nam Dai ly ve xe</h1>
+                    <h1 class="">Truong Nam <hr> Dai ly ve xe</h1>
                     <p>Kinh doanh ve xe khach Bac - Nam chat luong 5 sao. Nang cao chat luong dich vu</p>
                 </div>
             </div>
