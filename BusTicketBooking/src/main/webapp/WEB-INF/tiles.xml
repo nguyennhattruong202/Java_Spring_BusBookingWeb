@@ -4,54 +4,53 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <!-- Begin admin tiles -->
-    <definition name="adminBaseLayout" template="/WEB-INF/layout/admin/adminBase.jsp">
-        <put-attribute name="adminTitle" value=""/>
-        <put-attribute name="adminHeader" value="/WEB-INF/layout/admin/adminHeader.jsp"/>
-        <put-attribute name="adminContent" value="Default Tiles"/>
-        <put-attribute name="adminFooter" value="/WEB-INF/layout/admin/adminFooter.jsp"/>
+    <definition name="adminTemplate" template="/WEB-INF/layout/admin/adminBaseLayout.jsp">
+        <put-attribute name="adminTitle" value="Admin template layout"/>
+        <put-attribute name="adminHeader" value="/WEB-INF/layout/admin/adminHeaderLayout.jsp"/>
+        <put-attribute name="adminContent" value="Admin template layout"/>
+        <put-attribute name="adminFooter" value="/WEB-INF/layout/admin/adminFooterLayout.jsp"/>
     </definition>
     
-    <definition name="adminIndex" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="Manage" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminIndex.jsp" />
+    <definition name="adminIndexPage" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Admin home page" />
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminIndexPage.jsp"/>
     </definition>
     
-    <definition name="adminLineBus" extends="adminBaseLayout">
+    <definition name="adminCoachlinePage" extends="adminTemplate">
         <put-attribute name="adminTitle" value="ManageLineBus" />
-        <put-attribute name="adminContent"
-                       value="/WEB-INF/jsp/admin/adminLineBus.jsp" />
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCoachlinePage.jsp"/>
     </definition>
     
-    <definition name="adminEmployeeUser" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="Quản lý nhân sự" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminEmployeeUser.jsp" />
+    <definition name="adminEmployeePage" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Admin manage employee" />
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminEmployeePage.jsp" />
     </definition>
     
-    <definition name="adminBusTrip" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="ManageBusTrip" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminBusTrip.jsp" />
+    <definition name="adminCoachtripPage" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Admin manage coachtrip" />
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCoachtripPage.jsp" />
     </definition>
     
-    <definition name="adminBus" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="ManageBus" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminBus.jsp" />
+    <definition name="adminCoachPage" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Admin manage coach" />
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCoachPage.jsp" />
     </definition>
     
-    <definition name="adminCustomer" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="Quản lý khách hàng" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCustomer.jsp" />
+    <definition name="adminCustomerPage" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Admin manage customer" />
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCustomerPage.jsp" />
     </definition>
     
-    <definition name="login" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="Đăng nhập"/>
+    <definition name="login" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Login"/>
         <put-attribute name="adminHeader" value=""/>
         <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/login.jsp"/>
         <put-attribute name="adminFooter" value=""/>
     </definition>
     
-    <definition name="formAddEmployee" extends="adminBaseLayout">
-        <put-attribute name="adminTitle" value="Thêm nhân sự"/>
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/formAddEmployee.jsp"/>
+    <definition name="adminAddEmployeeForm" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Admin manage employee"/>
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminAddEmployeeForm.jsp"/>
     </definition>
     <!-- End admin tiles -->
 </tiles-definitions>

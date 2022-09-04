@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.btl.controller;
+package com.btl.controller.admin;
 
 import com.btl.service.CustomerService;
 import java.util.Map;
@@ -26,12 +26,12 @@ public class AdminCustomerController {
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
         model.addAttribute("listCustomer", this.customerService.getCustomer(page));
         model.addAttribute("customerCounter", this.customerService.countCustomer());
-        return "adminCustomer";
+        return "adminCustomerPage";
     }
 
     @GetMapping("/customer/{customerId}")
     public String customerRemove(Model model, @PathVariable(value = "customerId") int customerId) {
         model.addAttribute("deleteStatus", this.customerService.deleteCustomer(customerId));
-        return "adminCustomer";
+        return "adminCustomerPage";
     }
 }

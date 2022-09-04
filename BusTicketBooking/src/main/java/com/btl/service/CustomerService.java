@@ -16,4 +16,6 @@ public interface CustomerService {
     boolean deleteCustomer(int id);
     
     void editCustomer(Customer customer);
+    
+    boolean changeStatusActive(int id, boolean status);
 }

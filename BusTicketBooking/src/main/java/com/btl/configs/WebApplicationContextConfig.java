@@ -4,8 +4,8 @@
  */
 package com.btl.configs;
 
-import com.btl.validator.EmployeeValidator;
-import com.btl.validator.WebAppValidator;
+//import com.btl.validator.EmployeeValidator;
+//import com.btl.validator.WebAppValidator;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.context.MessageSource;
@@ -75,19 +75,19 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         return validator();
     }
 
-    @Bean
+    @Bean(name = "validator")
     public LocalValidatorFactoryBean validator() {
         LocalValidatorFactoryBean v = new LocalValidatorFactoryBean();
         v.setValidationMessageSource(messageSource());
         return v;
     }
 
-    @Bean
-    public WebAppValidator employeeValidators() {
-        Set<Validator> springValidators = new HashSet<>();
-        springValidators.add(new EmployeeValidator());
-        WebAppValidator webAppValidator = new WebAppValidator();
-        webAppValidator.setSpringValidator(springValidators);
-        return webAppValidator;
-    }
+//    @Bean
+//    public WebAppValidator employeeValidators() {
+//        Set<Validator> springValidators = new HashSet<>();
+//        springValidators.add(new EmployeeValidator());
+//        WebAppValidator webAppValidator = new WebAppValidator();
+//        webAppValidator.setSpringValidator(springValidators);
+//        return webAppValidator;
+//    }
 }

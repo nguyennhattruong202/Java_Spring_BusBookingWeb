@@ -6,4 +6,4 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<h1>Coachtrip</h1>
+<h1>Coach trip</h1>

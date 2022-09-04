@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.btl.controller;
+package com.btl.controller.admin;
 
 import com.btl.service.CoachlineService;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class AdminController {
 
     @GetMapping("/index")
     public String adminIndex() {
-        return "adminIndex";
+        return "adminIndexPage";
     }
 
     @GetMapping("/linesbus")
@@ -34,11 +34,11 @@ public class AdminController {
         model.addAttribute("listCoachline", this.coachlineService.getCoachline(params, page));
         model.addAttribute("coachlineCounter", this.coachlineService.countCoachline());
         model.addAttribute("pageSize", Integer.parseInt(env.getProperty("admin.content.pageSize")));
-        return "adminLineBus";
+        return "adminCoachlinePage";
     }
 
     @GetMapping("/coachtrip")
     public String adminBusTrip() {
-        return "adminCoachTrip";
+        return "adminCoachtripPage";
     }
 }

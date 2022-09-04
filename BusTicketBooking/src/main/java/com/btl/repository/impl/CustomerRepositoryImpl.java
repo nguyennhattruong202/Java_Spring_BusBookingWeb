@@ -91,4 +91,20 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         session.createQuery(criteriaUpdate).executeUpdate();
     }
 
+    @Override
+    public boolean changeStatusActive(int id, boolean status) {
+        boolean result = false;
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaUpdate<Customer> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Customer.class);
+        Root root = criteriaUpdate.from(Customer.class);
+        criteriaUpdate.set("active", status);
+        criteriaUpdate.where(criteriaBuilder.equal(root.get("id"), id));
+        int query = session.createQuery(criteriaUpdate).executeUpdate();
+        if (query > 0) {
+            result = true;
+        }
+        return result;
+    }
+
 }

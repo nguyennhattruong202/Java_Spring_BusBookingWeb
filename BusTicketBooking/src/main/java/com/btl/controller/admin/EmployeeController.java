@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.btl.controller;
+package com.btl.controller.admin;
 
 import com.btl.pojo.Employee;
 import com.btl.service.UserEmployeeService;
-import com.btl.validator.WebAppValidator;
+//import com.btl.validator.EmployeeValidator;
+//import com.btl.validator.WebAppValidator;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,36 +28,36 @@ public class EmployeeController {
 
     @Autowired
     private UserEmployeeService userEmployeeService;
-    @Autowired
-    private WebAppValidator employeeValidators;
+//    @Autowired
+//    private EmployeeValidator employeeValidator;
 
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.setValidator(employeeValidators);
-    }
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder) {
+//        binder.setValidator(employeeValidator);
+//    }
 
     @GetMapping("/employee")
     public String listEmployee(Model model, @RequestParam Map<String, String> params) {
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
         model.addAttribute("listEmployee", this.userEmployeeService.getEmployee(page));
         model.addAttribute("employeeCounter", this.userEmployeeService.countEmployee());
-        return "adminEmployeeUser";
+        return "adminEmployeePage";
     }
 
     @GetMapping("/employee/add")
     public String getFormAddEmployee(Model model) {
         model.addAttribute("employee", new Employee());
-        return "formAddEmployee";
+        return "adminAddEmployeeForm";
     }
 
     @PostMapping("/employee/add")
     public String addEmployee(@ModelAttribute(value = "employee") @Valid Employee employee, BindingResult result) {
         if (result.hasErrors()) {
-            return "formAddEmployee";
+            return "adminAddEmployeeForm";
         }
         if (this.userEmployeeService.addEmployee(employee) == true) {
             return "redirect:/admin/employee";
         }
-        return "formAddEmployee";
+        return "adminAddEmployeeForm";
     }
 }

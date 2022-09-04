@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.btl.controller;
+package com.btl.controller.admin;
 
 import com.btl.pojo.Coach;
 import javax.validation.Valid;
@@ -27,24 +27,24 @@ public class AdminCoachController {
 
     @ModelAttribute
     public String sendReponseCoachData(Model model) {
-        return "adminCoach";
+        return "adminCoachPage";
     }
 
     @GetMapping("/coach")
     public String sendReponseEmptyCoach(Model model) {
         model.addAttribute("newCoach", new Coach());
-        return "adminCoach";
+        return "adminCoachPage";
     }
 
     @PostMapping("/coach")
     public String getRequestNewCoach(@ModelAttribute(value = "newCoach") @Valid Coach coach,
             BindingResult result) {
         if (result.hasErrors()) {
-            return "adminCoach";
+            return "adminCoachPage";
         }
         if (this.busService.addCoach(coach) == true) {
             return "adminCoach";
         }
-        return "adminCoach";
+        return "adminCoachPage";
     }
 }

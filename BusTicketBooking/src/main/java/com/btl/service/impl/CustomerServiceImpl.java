@@ -13,28 +13,33 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-    
+
     @Autowired
     private CustomerRepository customerRepository;
-    
+
     @Override
     public List<Customer> getCustomer(int page) {
         return this.customerRepository.getCustomer(page);
     }
-    
+
     @Override
     public long countCustomer() {
         return this.customerRepository.countCustomer();
     }
-    
+
     @Override
     public boolean deleteCustomer(int id) {
         return this.customerRepository.deleteCustomer(id);
     }
-    
+
     @Override
     public void editCustomer(Customer customer) {
         this.customerRepository.editCustomer(customer);
     }
-    
+
+    @Override
+    public boolean changeStatusActive(int id, boolean status) {
+        return this.customerRepository.changeStatusActive(id, status);
+    }
+
 }

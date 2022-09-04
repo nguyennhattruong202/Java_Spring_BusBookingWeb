@@ -15,7 +15,6 @@
         </div>
         <c:url value="/admin/employee/add" var="action"/>
         <form:form method="post" action="${action}" modelAttribute="employee" enctype="multipart/form-data">
-            <form:errors path="*" element="div" cssClass="alert alert-danger"/>
             <div class="row mt-3">
                 <div class="col-6">
                     <label for="lastName">Họ và tên lót:</label>
@@ -67,8 +66,8 @@
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text">@</span>
                         <form:input id="email" path="email" type="email" cssClass="form-control" placeholder="abc@gmail.com"/>
-                        <form:errors path="email" cssClass="text text-danger"/>
                     </div>
+                    <form:errors path="email" cssClass="text text-danger"/>
                 </div>
                 <div class="col-6">
                     <label for="userRole">User role:</label>

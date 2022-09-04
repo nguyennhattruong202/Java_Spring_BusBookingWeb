@@ -64,10 +64,13 @@
                         <td>${customer.address}</td>
                         <td class="text-center">
                             <a class="text text-primary my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerDetail${customer.id}"><i class="fa fa-bars"></i></a>
+                            <!--
                             <a class="text text-primary ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerEdit${customer.id}"><i class="bi bi-pencil-square"></i></a>
+                            -->
                             <a class="text text-danger ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#deleteCustomer${customer.id}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
+                    <!--
                 <div class="modal fade" id="customerEdit${customer.id}">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
@@ -174,6 +177,7 @@
                         </div>
                     </div>
                 </div>
+            -->
                 <div class="modal fade" id="customerDetail${customer.id}">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">

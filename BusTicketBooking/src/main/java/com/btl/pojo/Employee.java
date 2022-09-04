@@ -88,6 +88,7 @@ public class Employee implements Serializable {
     @Column(name = "email")
     private String email;
     @Size(max = 255)
+    @NotNull(message = "{admin.validator.employee.nullError}")
     @Column(name = "image")
     private String image;
     @Size(max = 255, message = "{admin.validator.employee.maxSize}")
