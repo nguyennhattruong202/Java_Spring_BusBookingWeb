@@ -28,11 +28,11 @@
                         <a href="https://www.facebook.com/truongkim.nam.9/"><i class="fa-brands fa-facebook-square"> Nam</i></a>
                     </li>
                     <li class="header-top-login">
-                        <a href="#" id="login-top">
+                        <a href="<c:url value="/authentications" />" id="login-top">
                             <i class="fa-regular fa-circle-user icon-user"></i>
                             Dang nhap
                         </a>
-                        <a href="#" id="register-top">
+                        <a href="<c:url value="/authentications" />" id="register-top">
                             Dang ky
                         </a>
                     </li>

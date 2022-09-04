@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 
 @Controller
-public class TripController {
+public class AuthenticationsController {
     
-    @GetMapping("/trips")
+    @GetMapping("/authentications")
     public String list () {
-        return "trips";
+        return "authentications";
     }
 }

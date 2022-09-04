@@ -30,23 +30,27 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+        <!--Trips -->
+
+
+
     </head>
     <body>
         <div id="app">
             <!-- Begin Header -->
             <tiles:insertAttribute name="header"/>
             <!-- End Header -->
+
             <!-- Begin Main -->
             <div class="container">
                 <tiles:insertAttribute name="main"/>
-            </div>
-            
+            </div>            
+
             <!-- End Main -->
+
             <!-- Begin Footer -->
             <tiles:insertAttribute name="footer"/>
             <!-- End Footer -->
-            <!-- Modal login/register -->
-            <tiles:insertAttribute name="modal"/>
         </div>
 
         <script>
@@ -77,42 +81,6 @@
                     },
                 ]
             });
-        </script>
-
-        <script>
-            // login
-            Validator({
-                form: "#login",
-                formGroupSelector: ".form-group",
-                error: ".form-message",
-                rules: [
-                    Validator.isRequired("#email-login"),
-                    Validator.isRequired("#password-login"),
-                ],
-                onsubmit: function () {
-                    alert("No action!")
-                }
-            })
-            // register
-            Validator({
-                form: "#register",
-                formGroupSelector: ".form-group",
-                error: ".form-message",
-                rules: [
-                    Validator.isRequired("#fullname"),
-                    Validator.isRequired("#email"),
-                    Validator.isEmail("#email"),
-                    Validator.isRequired("#password"),
-                    Validator.isMinLength("#password", 8, "Mat khau phai co it nhat 8 ki tu."),
-                    Validator.isRequired("#password_confirmation"),
-                    Validator.isConfirmed("#password_confirmation", function () {
-                        return document.querySelector("#register #password").value
-                    }, "Mat khau khong trung khop."),
-                ],
-                onsubmit: function () {
-                    alert("Dang ki thanh cong. Vui lòng dang nhap lai !")
-                }
-            })
         </script>
     </body>
 </html>

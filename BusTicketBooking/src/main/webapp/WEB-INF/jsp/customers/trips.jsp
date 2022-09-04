@@ -6,16 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>"/>-->
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
 
 <!-- Custom stlylesheet -->
 <link rel="stylesheet" href="<c:url value="/resources/css/style_trip.css"/>"/>
+
 
 
 <div id="booking" class="section">
@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-7 col-md-offset-1">
+                <div class="col-md-7 col-lg-6">
                     <div class="booking-form">
                         <form>
                             <div class="form-group" style="font-size: 15px;">
@@ -66,17 +66,18 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5 col-lg-6">
                     <div class="booking-cta">
                         <h1>Truong Nam Dai ly ve xe</h1>
                         <p>Kinh doanh ve xe khach Bac - Nam chat luong 5 sao. Nang cao chat luong dich vu</p>
                     </div>
                 </div>
 
-
-
-                <table class="table text-dark h3 mt-5 bg-light">
-                    <thead class="table-dark">
+               
+            </div>
+            <div class="row">
+                <table class="h3 mt-5" id="table-tour">
+                    <thead class="">
                         <tr>
                             <th>Ma Chuyen</th>
                             <th>Ten Chuyen</th>

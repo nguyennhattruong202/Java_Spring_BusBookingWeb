@@ -8,7 +8,6 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     <definition name="baseLayout"
                 template="/WEB-INF/jsp/customers/layout/base.jsp">
         <put-attribute name="title" value="" />
-        
         <put-attribute name="header"
                        value="/WEB-INF/jsp/customers/layout/header.jsp" />
         
@@ -17,8 +16,6 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="footer"
                        value="/WEB-INF/jsp/customers/layout/footer.jsp" />
         
-        <put-attribute name="modal"
-                       value="/WEB-INF/jsp/customers/layout/authentication.jsp" />
     </definition>
     
     <definition name="index" extends="baseLayout">
@@ -32,6 +29,12 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Truong Nam - Thong tin chuyen xe" />
         <put-attribute name="main"
                        value="/WEB-INF/jsp/customers/trips.jsp" />
+    </definition>
+    
+    <definition name="authentications" extends="baseLayout">
+        <put-attribute name="title" value="Truong Nam - Xac thuc" />
+        <put-attribute name="main"
+                       value="/WEB-INF/jsp/customers/authentications.jsp" />
     </definition>
 </tiles-definitions>
 
