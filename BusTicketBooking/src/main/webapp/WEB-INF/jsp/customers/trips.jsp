@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
@@ -87,36 +88,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Nam</td>
-                    <td>1111</td>
-                    <td>1111</td>
-                    <td>1111</td>
-                    <td class="py-2">
-                        <button type="button" class="btn btn-primary m-auto w-75">Dat ve</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Nam</td>
-                    <td>123456789</td>
-                    <td>123456789</td>
-                    <td>1111</td>
-                    <td class="py-2">
-                        <button type="button" class="btn btn-primary m-auto w-75">Dat ve</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Nam</td>
-                    <td>1111</td>
-                    <td>1111</td>
-                    <td>1111</td>
-                    <td class="py-2">
-                        <button type="button" class="btn btn-primary m-auto w-75">Dat ve</button>
-                    </td>
-                </tr>
+                    <c:forEach items="${listOrderCoachTrip}" var="coachTrip">
+                        <tr>
+                            <td>${coachTrip[0]}</td>
+                            <td>${coachTrip[1]} - ${coachTrip[2]}</td>
+                            <td>${coachTrip[3]} Km</td>
+                            <td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${coachTrip[4]}" /> VND</td>
+                            <td>${coachTrip[5]}</td>
+                            <td class="py-2">
+                                <button type="button" class="btn btn-primary m-auto w-75">Dat ve</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
