@@ -7,7 +7,6 @@ package com.btl.configs;
 //import com.btl.validator.EmployeeValidator;
 //import com.btl.validator.WebAppValidator;
 import java.util.HashSet;
-import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,7 +43,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
-        resolver.setPrefix("/WEB-INF/jsp/");
+        resolver.setPrefix("/WEB-INF/jsp/customers/");
         resolver.setSuffix(".jsp");
         return resolver;
     }
@@ -65,9 +64,11 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("images/**").addResourceLocations("/resources/images/");
-        registry.addResourceHandler("css/**").addResourceLocations("/resources/css/");
-        registry.addResourceHandler("js/**").addResourceLocations("/resources/js/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
+        registry.addResourceHandler("/img/**").addResourceLocations("/resources/img/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/resources/fonts/");
     }
 
     @Override

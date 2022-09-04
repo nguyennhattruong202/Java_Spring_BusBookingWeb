@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="baseLayout"
+                template="/WEB-INF/jsp/customers/layout/base.jsp">
+        <put-attribute name="title" value="" />
+        
+        <put-attribute name="header"
+                       value="/WEB-INF/jsp/customers/layout/header.jsp" />
+        
+        <put-attribute name="main" value="" />
+        
+        <put-attribute name="footer"
+                       value="/WEB-INF/jsp/customers/layout/footer.jsp" />
+        
+        <put-attribute name="modal"
+                       value="/WEB-INF/jsp/customers/layout/authentication.jsp" />
+    </definition>
+    
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Truong Nam - Dai ly ve xe" />
+        
+        <put-attribute name="main"
+                       value="/WEB-INF/jsp/customers/index.jsp" />
+    </definition>
+    
+    <definition name="trips" extends="baseLayout">
+        <put-attribute name="title" value="Truong Nam - Thong tin chuyen xe" />
+        <put-attribute name="main"
+                       value="/WEB-INF/jsp/customers/trips.jsp" />
+    </definition>
+</tiles-definitions>
+

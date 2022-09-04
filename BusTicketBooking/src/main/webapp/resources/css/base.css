@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+:root {
+    --primary-color: #ff5400;
+    --black-color: #000;
+    --white-color: #fff;
+    --text-color: #9c9c9c;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.mt--15 {
+    margin-top: -15px;
+}
+.ml--30 {
+    margin-left: -30px;
+}
+.mr--30 {
+    margin-right: -30px;
+}
+.row.mr-3 {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.mb-25 {
+    margin-bottom: 25px;
+}
+.mb-35 {
+    margin-bottom: 35px;
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+.pb-120 {
+    padding-bottom: 120px;
+}
+.pb-90 {
+    padding-bottom: 90px;
+}
+.pt-120 {
+    padding-top: 120px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    border-style: none;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    min-width: 44px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 700;
+}
+.btn:hover {
+    background-color: var(--black-color);
+    transition: all 0.3s ease 0s;
+}
+.fact-area-title {
+    position: relative;
+    width: 300px;
+    height: 30px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    visibility: visible;
+    animation: fadeInUp 1.5s;
+    
+}
+.fact-area-title::before {
+    content: "";
+    position: absolute;
+    left: -19px;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 56% 50%, 0% 0%);
+    background: #ff5400;
+}
+.fact-area-title::after {
+    content: "";
+    position: absolute;
+    right: -19px;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    clip-path: polygon(100% 0%, 45% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+    background: #ff5400;
+}
+
+.fact-area-title > span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    left: 14px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.fact-area-title > span.right {
+    left: auto;
+    right: 14px;
+}
+
+/* animation */
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+      transform: translateY(20px);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes shine {
+    100% {
+      left: 125%;
+    }
+}
+  
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        -ms-transform: translateY(-300px);
+        transform: translateY(-300px);
+      }
+    
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+      }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+      }
+    
+      to {
+        opacity: 1;
+      }
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(-20px);
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+}
+  
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(-20px);
+      -ms-transform: translateY(-20px);
+      transform: translateY(-20px);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+}
+
+@keyframes carFadeIn{
+    from{
+        opacity: 0;
+        transform: scale(0);
+
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
