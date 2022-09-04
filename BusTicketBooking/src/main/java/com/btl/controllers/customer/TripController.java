@@ -17,6 +17,6 @@ public class TripController {
     
     @GetMapping("/trips")
     public String list () {
-        return "/trips";
+        return "trips";
     }
 }

@@ -8,59 +8,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <footer id="contact" class="footer">
     <div class="footer-top-wrap">
-        <div class="footer-top ">
-            <div class="grid wide">
-                <div class="row large-gutter mr-3">
-                    <div class="col l-4 m-6 c-12">
-                        <div class="footer-logo">
-                            <a href="#" class="btn">
-                                <img src="img/logo/w_logo.png" alt="logo">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col l-8 m-6 c-12">
-                        <div class="footer-slider"> 
-                            <div class="footer-slider-item">
-                                <div class="slider-img">
-                                    <a href="#">
-                                        <img src="img/brand/footer_brand01.png" alt="img">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="footer-slider-item">
-                                <div class="slider-img">
-                                    <a href="#">
-                                        <img src="img/brand/footer_brand02.png" alt="img">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="footer-slider-item">
-                                <div class="slider-img">
-                                    <a href="#">
-                                        <img src="img/brand/footer_brand03.png" alt="img">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="footer-slider-item">
-                                <div class="slider-img">
-                                    <a href="#">
-                                        <img src="img/brand/footer_brand04.png" alt="img">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="footer-slider-item">
-                                <div class="slider-img">
-                                    <a href="#">
-                                        <img src="img/brand/footer_brand02.png" alt="img">
-                                    </a>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
+    
     <div class="footer-main-wrap" style="background-image: url(img/bg/footer_bg.jpg);">
         <div class="footer-main">
             <div class="grid wide">
