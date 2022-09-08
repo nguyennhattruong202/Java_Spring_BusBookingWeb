@@ -5,6 +5,7 @@
 package com.btl.configs;
 
 import com.btl.handler.LoginHandler;
+import com.btl.handler.LogoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,6 +33,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LoginHandler loginHandler;
     @Autowired
+    private LogoutHandler logoutHandler;
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Bean
@@ -47,17 +50,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Chỉ định form login và input username, password
         http.formLogin().loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password");
-        // Action sau khi login thành công
         http.formLogin().successHandler(this.loginHandler);
-        // Action khi login không thành công
         http.formLogin().failureUrl("/login?error");
-        // Action khi requset không được cấp quyền
         http.exceptionHandling().accessDeniedPage("/login?accessDenied");
-        // Phân quyền
+        http.logout().logoutSuccessHandler(this.logoutHandler);
         http.authorizeRequests().antMatchers("/", "/login").permitAll()
                 .antMatchers("/admin/**")
                 .access("hasRole('ROLE_ADMIN')");

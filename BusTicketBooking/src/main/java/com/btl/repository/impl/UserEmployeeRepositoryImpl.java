@@ -30,12 +30,12 @@ public class UserEmployeeRepositoryImpl implements UserEmployeeRepository {
     private Environment env;
 
     @Override
-    public Employee getUserEmployeeByUserName(String user) {
+    public Employee getUserEmployeeByUserName(String username) {
         Session session = this.sessionFactoryBean.getObject().getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
         Root root = criteriaQuery.from(Employee.class);
-        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("username"), user));
+        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("username"), username));
         Query query = session.createQuery(criteriaQuery);
         return (Employee) query.getSingleResult();
     }

@@ -25,7 +25,7 @@ public class LoginHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse reponse, Authentication a) throws IOException, ServletException {
         Employee employee = this.userEmployeeService.getUserEmployeeByUserName(a.getName());
         request.getSession().setAttribute("currentUser", employee);
-        reponse.sendRedirect("/BusTicketBooking/admin/index");
+        reponse.sendRedirect("/BusTicketBooking/admin/index/");
     }
     
 }

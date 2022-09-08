@@ -10,40 +10,40 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <nav class="navbar navbar-light" style="background-color: cyan;">
-    <div class="container-fluid">
-        <a class="navbar-brand text-white" href="<c:url value="/admin/index"/>">
-            <img src="<c:url value="/images/admin/mainLogo.png"/>" alt="mainLogo" width="100" height="50" class="d-inline-block align-text-top">
-        </a>
-        <li class="d-flex nav-item dropdown">
-            <sec:authorize access="isAuthenticated()">
+    <sec:authorize access="isAuthenticated()">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="<c:url value="/admin/index"/>">
+                <img src="<c:url value="/images/admin/mainLogo.png"/>" alt="mainLogo" width="100" height="50" class="d-inline-block align-text-top">
+            </a>
+            <li class="d-flex nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="img-fluid" style="width: 40px;" src="${pageContext.session.getAttribute("currentUser").image}" alt="iconCurentUser">
                     ${pageContext.session.getAttribute("currentUser").lastName}
                     ${pageContext.session.getAttribute("currentUser").firstName}
                 </a>
-            </sec:authorize>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
-                <li>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-info-circle me-2" style="font-size: 20px;"></i>
-                        Thông tin tài khoản
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-key me-2" style="font-size: 20px;"></i>
-                        Thay đổi mật khẩu
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-box-arrow-left me-2" style="font-size: 20px;"></i>
-                        Đăng xuất
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </div>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-info-circle me-2" style="font-size: 20px;"></i>
+                            Thông tin tài khoản
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-key me-2" style="font-size: 20px;"></i>
+                            Thay đổi mật khẩu
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<c:url value="/logout"/>">
+                            <i class="bi bi-box-arrow-left me-2" style="font-size: 20px;"></i>
+                            Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+    </sec:authorize>
 </nav>
 <div class="list-group list-group-horizontal dropdown mt-2">
     <a class="border border-light bg-secondary list-group-item list-group-item-action text-white" href="<c:url value="/admin/index"/>">
