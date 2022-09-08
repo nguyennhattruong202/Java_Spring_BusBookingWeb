@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +30,8 @@ public class UserEmployeeRepositoryImpl implements UserEmployeeRepository {
     private LocalSessionFactoryBean sessionFactoryBean;
     @Autowired
     private Environment env;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Employee getUserEmployeeByUserName(String username) {
@@ -77,6 +81,21 @@ public class UserEmployeeRepositoryImpl implements UserEmployeeRepository {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean checkOldPassword(String oldPassword) {
+        Employee employee = this.getUserEmployeeByUserName(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (employee.getPassword().equals(passwordEncoder.encode(oldPassword))) {
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public boolean changePassword(Employee employee, String newPassword) {
+        return true;
     }
 
 }

@@ -19,25 +19,25 @@ import org.springframework.stereotype.Service;
 
 @Service("userDetailsService")
 public class UserEmployeeServiceImpl implements UserEmployeeService {
-    
+
     @Autowired
     private UserEmployeeRepository userEmployeeRepository;
-    
+
     @Override
     public Employee getUserEmployeeByUserName(String user) {
         return this.userEmployeeRepository.getUserEmployeeByUserName(user);
     }
-    
+
     @Override
     public List<Employee> getEmployee(int page) {
         return this.userEmployeeRepository.getEmployee(page);
     }
-    
+
     @Override
     public long countEmployee() {
         return this.userEmployeeRepository.countEmployee();
     }
-    
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Employee employee = this.getUserEmployeeByUserName(username);
@@ -51,9 +51,19 @@ public class UserEmployeeServiceImpl implements UserEmployeeService {
                 employee.getPassword(), authorities
         );
     }
-    
+
     @Override
     public boolean addEmployee(Employee employee) {
         return this.userEmployeeRepository.addEmployee(employee);
+    }
+
+    @Override
+    public boolean checkOldPassword(String oldPassword) {
+        return this.userEmployeeRepository.checkOldPassword(oldPassword);
+    }
+
+    @Override
+    public boolean changePassword(Employee employee, String newPassword) {
+        return this.userEmployeeRepository.changePassword(employee, newPassword);
     }
 }

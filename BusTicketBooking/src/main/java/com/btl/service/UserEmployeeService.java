@@ -17,4 +17,8 @@ public interface UserEmployeeService extends UserDetailsService {
     long countEmployee();
 
     boolean addEmployee(Employee employee);
+
+    boolean checkOldPassword(String oldPassword);
+
+    boolean changePassword(Employee employee, String newPassword);
 }

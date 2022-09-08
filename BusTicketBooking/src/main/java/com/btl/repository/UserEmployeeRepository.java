@@ -9,11 +9,15 @@ import java.util.List;
 
 public interface UserEmployeeRepository {
 
-    Employee getUserEmployeeByUserName(String user);
+    Employee getUserEmployeeByUserName(String username);
 
     List<Employee> getEmployee(int page);
 
     long countEmployee();
-    
+
     boolean addEmployee(Employee employee);
+
+    boolean checkOldPassword(String oldPassword);
+
+    boolean changePassword(Employee employee, String newPassword);
 }

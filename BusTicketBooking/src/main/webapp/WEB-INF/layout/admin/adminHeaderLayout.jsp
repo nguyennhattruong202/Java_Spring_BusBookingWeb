@@ -23,13 +23,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<c:url value="/admin/myaccount"/>">
                             <i class="bi bi-info-circle me-2" style="font-size: 20px;"></i>
                             Thông tin tài khoản
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<c:url value="/admin/changepassword"/>">
                             <i class="bi bi-key me-2" style="font-size: 20px;"></i>
                             Thay đổi mật khẩu
                         </a>

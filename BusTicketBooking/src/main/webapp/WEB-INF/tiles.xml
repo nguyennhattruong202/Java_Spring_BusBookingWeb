@@ -52,6 +52,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="adminTitle" value="Admin manage employee"/>
         <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminAddEmployeeForm.jsp"/>
     </definition>
+    
+    <definition name="adminInfoCurrentUser" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="MyAccount"/>
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminInfoCurrentUser.jsp"/>
+    </definition>
+    
+    <definition name="adminChangePassword" extends="adminTemplate">
+        <put-attribute name="adminTitle" value="Change password"/>
+        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminChangePassword.jsp"/>
+    </definition>
     <!-- End admin tiles -->
 </tiles-definitions>
 
