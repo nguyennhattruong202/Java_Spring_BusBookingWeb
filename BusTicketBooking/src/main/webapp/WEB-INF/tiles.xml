@@ -4,63 +4,68 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <!-- Begin admin tiles -->
-    <definition name="adminTemplate" template="/WEB-INF/layout/admin/adminBaseLayout.jsp">
-        <put-attribute name="adminTitle" value="Admin template layout"/>
-        <put-attribute name="adminHeader" value="/WEB-INF/layout/admin/adminHeaderLayout.jsp"/>
-        <put-attribute name="adminContent" value="Admin template layout"/>
-        <put-attribute name="adminFooter" value="/WEB-INF/layout/admin/adminFooterLayout.jsp"/>
+    <definition name="adminBase" template="/WEB-INF/layout/admin/base.jsp">
+        <put-attribute name="title" value="Base"/>
+        <put-attribute name="header" value="/WEB-INF/layout/admin/header.jsp"/>
+        <put-attribute name="content" value="Base"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/admin/footer.jsp"/>
     </definition>
     
-    <definition name="adminIndexPage" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Admin home page" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminIndexPage.jsp"/>
+    <definition name="adminIndex" extends="adminBase">
+        <put-attribute name="title" value="Admin home" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/index.jsp"/>
     </definition>
     
-    <definition name="adminCoachlinePage" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="ManageLineBus" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCoachlinePage.jsp"/>
+    <definition name="adminCoachline" extends="adminBase">
+        <put-attribute name="title" value="Coachline" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/coachline.jsp"/>
     </definition>
     
-    <definition name="adminEmployeePage" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Admin manage employee" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminEmployeePage.jsp" />
+    <definition name="adminEmployee" extends="adminBase">
+        <put-attribute name="title" value="Employee" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/employee.jsp" />
     </definition>
     
-    <definition name="adminCoachtripPage" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Admin manage coachtrip" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCoachtripPage.jsp" />
+    <definition name="adminCoachtrip" extends="adminBase">
+        <put-attribute name="title" value="Coachtrip" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/coachtrip.jsp" />
     </definition>
     
-    <definition name="adminCoachPage" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Admin manage coach" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCoachPage.jsp" />
+    <definition name="adminCoach" extends="adminBase">
+        <put-attribute name="title" value="Coach" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/coach.jsp" />
     </definition>
     
-    <definition name="adminCustomerPage" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Admin manage customer" />
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminCustomerPage.jsp" />
+    <definition name="adminCustomer" extends="adminBase">
+        <put-attribute name="title" value="Customer" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/customer.jsp" />
     </definition>
     
-    <definition name="login" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Login"/>
-        <put-attribute name="adminHeader" value=""/>
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/login.jsp"/>
-        <put-attribute name="adminFooter" value=""/>
+    <definition name="login" extends="adminBase">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="header" value=""/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/login.jsp"/>
+        <put-attribute name="footer" value=""/>
     </definition>
     
-    <definition name="adminAddEmployeeForm" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Admin manage employee"/>
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminAddEmployeeForm.jsp"/>
+    <definition name="adminAddEmployee" extends="adminBase">
+        <put-attribute name="title" value="Add employee"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/addEmployee.jsp"/>
     </definition>
     
-    <definition name="adminInfoCurrentUser" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="MyAccount"/>
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminInfoCurrentUser.jsp"/>
+    <definition name="adminInfoCurrentUser" extends="adminBase">
+        <put-attribute name="title" value="Account"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/infoCurrentUser.jsp"/>
     </definition>
     
-    <definition name="adminChangePassword" extends="adminTemplate">
-        <put-attribute name="adminTitle" value="Change password"/>
-        <put-attribute name="adminContent" value="/WEB-INF/jsp/admin/adminChangePassword.jsp"/>
+    <definition name="adminChangePassword" extends="adminBase">
+        <put-attribute name="title" value="Change password"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/changePassword.jsp"/>
+    </definition>
+    
+    <definition name="adminCustomerDeleted" extends="adminBase">
+        <put-attribute name="title" value="Customer deleted"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/customerDeleted.jsp"/>
     </definition>
     <!-- End admin tiles -->
 </tiles-definitions>

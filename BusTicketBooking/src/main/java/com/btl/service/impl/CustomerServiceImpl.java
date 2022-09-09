@@ -18,28 +18,18 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public List<Customer> getCustomer(int page) {
-        return this.customerRepository.getCustomer(page);
+    public List<Customer> getCustomer(int page, boolean active) {
+        return this.customerRepository.getCustomer(page, active);
     }
 
     @Override
-    public long countCustomer() {
-        return this.customerRepository.countCustomer();
+    public long countCustomer(boolean active) {
+        return this.customerRepository.countCustomer(active);
     }
 
     @Override
     public boolean deleteCustomer(int id) {
         return this.customerRepository.deleteCustomer(id);
-    }
-
-    @Override
-    public void editCustomer(Customer customer) {
-        this.customerRepository.editCustomer(customer);
-    }
-
-    @Override
-    public boolean changeStatusActive(int id, boolean status) {
-        return this.customerRepository.changeStatusActive(id, status);
     }
 
 }

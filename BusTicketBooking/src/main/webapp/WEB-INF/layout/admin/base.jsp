@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>
-            <tiles:insertAttribute name="adminTitle"/>
+            <tiles:insertAttribute name="title"/>
         </title>
 
         <!-- Begin Bootstrap 5 cdn -->
@@ -38,13 +38,13 @@
     <body>
         <div class="container-fluid bg-light" style="font-family: arial">
             <!-- Admin header-->
-            <tiles:insertAttribute name="adminHeader"/>
+            <tiles:insertAttribute name="header"/>
             
             <!-- Admin content-->
-            <tiles:insertAttribute name="adminContent"/>
+            <tiles:insertAttribute name="content"/>
 
             <!-- Admin footer-->
-            <tiles:insertAttribute name="adminFooter"/>
+            <tiles:insertAttribute name="footer"/>
         </div>
     </body>
 </html>

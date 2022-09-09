@@ -19,32 +19,32 @@ import com.btl.service.CoachService;
 
 @Controller
 @ControllerAdvice
-@RequestMapping("/admin")
-public class AdminCoachController {
+@RequestMapping("/admin/coach")
+public class CoachController {
 
     @Autowired
     private CoachService busService;
 
     @ModelAttribute
     public String sendReponseCoachData(Model model) {
-        return "adminCoachPage";
+        return "adminCoach";
     }
 
-    @GetMapping("/coach")
+    @GetMapping
     public String sendReponseEmptyCoach(Model model) {
         model.addAttribute("newCoach", new Coach());
-        return "adminCoachPage";
+        return "adminCoach";
     }
 
-    @PostMapping("/coach")
+    @PostMapping
     public String getRequestNewCoach(@ModelAttribute(value = "newCoach") @Valid Coach coach,
             BindingResult result) {
         if (result.hasErrors()) {
-            return "adminCoachPage";
+            return "adminCoach";
         }
         if (this.busService.addCoach(coach) == true) {
             return "adminCoach";
         }
-        return "adminCoachPage";
+        return "adminCoach";
     }
 }

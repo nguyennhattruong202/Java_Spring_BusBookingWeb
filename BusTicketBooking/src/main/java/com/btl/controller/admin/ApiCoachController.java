@@ -17,7 +17,7 @@ import com.btl.service.CoachService;
 
 @RestController
 @RequestMapping("/api")
-public class AdminApiCoachController {
+public class ApiCoachController {
 
     @Autowired
     private CoachService busService;

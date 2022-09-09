@@ -9,13 +9,9 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> getCustomer(int page);
+    List<Customer> getCustomer(int page, boolean active);
 
-    long countCustomer();
-    
+    long countCustomer(boolean active);
+
     boolean deleteCustomer(int id);
-    
-    void editCustomer(Customer customer);
-    
-    boolean changeStatusActive(int id, boolean status);
 }

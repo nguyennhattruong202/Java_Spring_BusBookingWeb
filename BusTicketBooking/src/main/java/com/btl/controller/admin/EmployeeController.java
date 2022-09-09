@@ -14,16 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/employee")
 public class EmployeeController {
 
     @Autowired
@@ -35,29 +33,28 @@ public class EmployeeController {
 //    public void initBinder(WebDataBinder binder) {
 //        binder.setValidator(employeeValidator);
 //    }
-
-    @GetMapping("/employee")
+    @GetMapping
     public String listEmployee(Model model, @RequestParam Map<String, String> params) {
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
         model.addAttribute("listEmployee", this.userEmployeeService.getEmployee(page));
         model.addAttribute("employeeCounter", this.userEmployeeService.countEmployee());
-        return "adminEmployeePage";
+        return "adminEmployee";
     }
 
-    @GetMapping("/employee/add")
+    @GetMapping("/add")
     public String getFormAddEmployee(Model model) {
         model.addAttribute("employee", new Employee());
-        return "adminAddEmployeeForm";
+        return "adminAddEmployee";
     }
 
-    @PostMapping("/employee/add")
+    @PostMapping("/add")
     public String addEmployee(@ModelAttribute(value = "employee") @Valid Employee employee, BindingResult result) {
         if (result.hasErrors()) {
-            return "adminAddEmployeeForm";
+            return "adminAddEmployee";
         }
         if (this.userEmployeeService.addEmployee(employee) == true) {
             return "redirect:/admin/employee";
         }
-        return "adminAddEmployeeForm";
+        return "adminAddEmployee";
     }
 }

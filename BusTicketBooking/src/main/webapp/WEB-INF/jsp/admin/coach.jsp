@@ -41,7 +41,7 @@
 <div class="d-flex justify-content-center w-100 mt-4">
     <div class="my-style-card-box my-style-w-98 p-3">
         <div class="h4 my-style-pt-10 my-style-pb-10 fw-bold my-style-text-blue">Thêm xe khách mới</div>
-        <c:url value="/admin/bus" var="formAction"/>
+        <c:url value="/admin/coach" var="formAction"/>
         <form:form method="post" action="${formAction}" modelAttribute="newBus">
             <div class="row mt-3">
                 <div class="col-8">
@@ -88,7 +88,7 @@
 <div class="d-flex justify-content-center w-100 mb-4 mt-4">
     <div class="my-style-card-box my-style-w-98 p-3">
         <div class="h4 my-style-pt-20 my-style-pb-20 fw-bold my-style-text-blue">Danh sách xe khách</div>
-        <form action="<c:url value="/admin/bus"/>" id="myForm">
+        <form action="<c:url value="/admin/coach"/>" id="myForm">
             <div class="input-group">
                 <input id="inputSearch" type="search" name="kwName" class="form-control my-style-input-radius" placeholder="Tìm kiếm xe">
                 <button type="submit" class="btn btn-primary my-style-input-radius"><i class="bi bi-search"></i></button>

@@ -49,7 +49,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-3">
-                <a href="<c:url value="/admin/linesbus"/>" class="text-decoration-none my-card-hover">
+                <a href="<c:url value="/admin/coachtrip"/>" class="text-decoration-none my-card-hover">
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/location.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexLineBus" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
@@ -59,7 +59,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="<c:url value="/admin/bustrip"/>" class="text-decoration-none my-card-hover">
+                <a href="<c:url value="/admin/coachtrip"/>" class="text-decoration-none my-card-hover">
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/busTrip.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexBusTrip" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
@@ -70,7 +70,7 @@
             </div>
 
             <div class="col-3">
-                <a href="<c:url value="/admin/bus"/>" class="text-decoration-none my-card-hover">
+                <a href="<c:url value="/admin/coach"/>" class="text-decoration-none my-card-hover">
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/bus.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexBusTrip" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">

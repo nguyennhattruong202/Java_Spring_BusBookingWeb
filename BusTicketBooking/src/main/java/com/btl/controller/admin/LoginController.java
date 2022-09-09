@@ -9,16 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/user")
-public class UserController {
+@RequestMapping("/login")
+public class LoginController {
 
-    @GetMapping("/myaccount")
-    public String myAccount() {
-        return "adminInfoCurrentUser";
-    }
-
-    @GetMapping("/changepassword")
-    public String viewChangePassword() {
-        return "adminChangePassword";
+    @GetMapping
+    public String login() {
+        return "login";
     }
 }
