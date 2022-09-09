@@ -31,9 +31,9 @@
 </c:if>
 
 <div class="d-flex justify-content-center w-100 mt-3 mb-3">
-    <div class="my-style-card-box w-100 p-4">
+    <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h4 class="fw-bold my-style-text-blue">Danh sách nhân sự</h4>
+            <h4 class="fw-bold text-primary">Danh sách nhân sự</h4>
         </div>
         <div class="d-grid gap-2 d-flex justify-content-end mt-3">
             <a class="btn btn-primary fw-bold" href="<c:url value="/admin/employee/add"/>" role="button"><i class="bi bi-person-plus me-2" style="font-size: 20px;"></i>Thêm nhân sự mới</a>
@@ -41,15 +41,15 @@
         <table class="table table-hover mt-3 table-bordered" id="employeeTable">
             <thead class="bg-light">
                 <tr>
-                    <th class="text-center">Hình ảnh</th>
-                    <th onclick="sortTable(1, 'employeeTable')" class="text-center">Họ và tên lót</th>
-                    <th onclick="sortTable(2, 'employeeTable')" class="text-center">Tên</th>
-                    <th onclick="sortTable(3, 'employeeTable')" class="text-center">Giới tính</th>
-                    <th onclick="sortTable(4, 'employeeTable')" class="text-center">Ngày sinh</th>
-                    <th onclick="sortTable(5, 'employeeTable')" class="text-center">SĐT</th>
-                    <th onclick="sortTable(6, 'employeeTable')" class="text-center">Email</th>
-                    <th onclick="sortTable(7, 'employeeTable')" class="text-center">User role</th>
-                    <th class="text-center">Thao tác</th>
+                    <th class="text-center my-style-th-cursor">Hình ảnh</th>
+                    <th onclick="sortTable(1, 'employeeTable')" class="text-center my-style-th-cursor">Họ và tên lót</th>
+                    <th onclick="sortTable(2, 'employeeTable')" class="text-center my-style-th-cursor">Tên</th>
+                    <th onclick="sortTable(3, 'employeeTable')" class="text-center my-style-th-cursor">Giới tính</th>
+                    <th onclick="sortTable(4, 'employeeTable')" class="text-center my-style-th-cursor">Ngày sinh</th>
+                    <th onclick="sortTable(5, 'employeeTable')" class="text-center my-style-th-cursor">SĐT</th>
+                    <th onclick="sortTable(6, 'employeeTable')" class="text-center my-style-th-cursor">Email</th>
+                    <th onclick="sortTable(7, 'employeeTable')" class="text-center my-style-th-cursor">User role</th>
+                    <th class="text-center my-style-th-cursor">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -347,13 +347,3 @@
         </nav>
     </div>
 </div>
-
-<style>
-    th{
-        cursor: pointer;
-    }
-    .my-style-action-size{
-        font-size: 20px;
-        cursor: pointer;
-    }
-</style>

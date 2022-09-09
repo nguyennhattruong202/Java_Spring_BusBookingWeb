@@ -15,15 +15,16 @@ import com.btl.service.CoachService;
 public class CoachServiceImpl implements CoachService {
 
     @Autowired
-    private CoachRepository busRepository;
+    private CoachRepository coachRepository;
 
     @Override
-    public List<Coach> getCoach(String keyword) {
-        return this.busRepository.getCoach(keyword);
+    public List<Coach> getCoach(int page, boolean active) {
+        return this.coachRepository.getCoach(page, active);
     }
 
     @Override
-    public boolean addCoach(Coach coach) {
-        return this.busRepository.addCoach(coach);
+    public long countCoach(boolean active) {
+        return this.coachRepository.countCoach(active);
     }
+
 }

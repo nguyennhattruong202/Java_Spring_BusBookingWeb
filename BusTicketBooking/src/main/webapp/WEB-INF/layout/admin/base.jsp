@@ -4,9 +4,9 @@
     Author     : ACER
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +29,7 @@
         <!-- Begin css of this project -->
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/admin/commonLayout.css"/>"/>
         <!-- End css of this project -->
-        
+
         <!-- Begin java script of this project -->
         <script src="<c:url value="/js/admin/sortTable.js"/>"></script>
         <!-- End java script of this project -->
@@ -39,7 +39,7 @@
         <div class="container-fluid bg-light" style="font-family: arial">
             <!-- Admin header-->
             <tiles:insertAttribute name="header"/>
-            
+
             <!-- Admin content-->
             <tiles:insertAttribute name="content"/>
 

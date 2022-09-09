@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CoachService {
 
-    List<Coach> getCoach(String keyword);
+    List<Coach> getCoach(int page, boolean active);
 
-    boolean addCoach(Coach coach);
+    long countCoach(boolean active);
 }

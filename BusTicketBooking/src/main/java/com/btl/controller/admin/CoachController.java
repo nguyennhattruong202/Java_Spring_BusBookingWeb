@@ -4,47 +4,35 @@
  */
 package com.btl.controller.admin;
 
-import com.btl.pojo.Coach;
-import javax.validation.Valid;
+import com.btl.service.CoachService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.btl.service.CoachService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@ControllerAdvice
 @RequestMapping("/admin/coach")
 public class CoachController {
 
     @Autowired
-    private CoachService busService;
-
-    @ModelAttribute
-    public String sendReponseCoachData(Model model) {
-        return "adminCoach";
-    }
+    private CoachService coachService;
 
     @GetMapping
-    public String sendReponseEmptyCoach(Model model) {
-        model.addAttribute("newCoach", new Coach());
+    public String getListOfCoach(Model model, @RequestParam Map<String, String> params) {
+        int page = Integer.parseInt(params.getOrDefault("page", "1"));
+        model.addAttribute("listCoach", this.coachService.getCoach(page, true));
+        model.addAttribute("coachCounter", this.coachService.countCoach(true));
         return "adminCoach";
     }
-
-    @PostMapping
-    public String getRequestNewCoach(@ModelAttribute(value = "newCoach") @Valid Coach coach,
-            BindingResult result) {
-        if (result.hasErrors()) {
-            return "adminCoach";
-        }
-        if (this.busService.addCoach(coach) == true) {
-            return "adminCoach";
-        }
-        return "adminCoach";
+    
+    @GetMapping("/deleted")
+    public String removedCoach(Model model, @RequestParam Map<String, String> params) {
+        int page = Integer.parseInt(params.getOrDefault("page", "1"));
+        model.addAttribute("coachDeletedList", this.coachService.getCoach(page, false));
+        model.addAttribute("coachDeletedCount", this.coachService.countCoach(false));
+        return "kk";
     }
 }

@@ -6,10 +6,8 @@ package com.btl.repository.impl;
 
 import com.btl.pojo.Coach;
 import java.util.List;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,65 +16,43 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.btl.repository.CoachRepository;
+import org.hibernate.query.Query;
 
 @Repository
 @Transactional
 public class CoachRepositoryImpl implements CoachRepository {
 
     @Autowired
-    public LocalSessionFactoryBean sessionFactory;
+    public LocalSessionFactoryBean sessionFactoryBean;
     @Autowired
     public Environment env;
 
     @Override
-    public List<Coach> getCoach(String keyword) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
+    public List<Coach> getCoach(int page, boolean active) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+        CriteriaQuery<Coach> criteriaQuery = criteriaBuilder.createQuery(Coach.class);
         Root root = criteriaQuery.from(Coach.class);
-        Predicate p1 = criteriaBuilder.equal(root.get("active"), true);
-        if (keyword != null && !keyword.isEmpty()) {
-            Predicate p2 = criteriaBuilder.like(root.get("name").as(String.class), String.format("%%%s%%", keyword));
-            criteriaQuery.where(criteriaBuilder.and(p1, p2));
-        } else {
-            criteriaQuery.where(p1);
+        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("active"), active));
+        Query<Coach> query = session.createQuery(criteriaQuery);
+        if (page > 0) {
+            int size = Integer.parseInt(env.getProperty("admin.content.pageSize").toString());
+            query.setFirstResult((page - 1) * size);
+            query.setMaxResults(size);
         }
-        criteriaQuery.multiselect(root.get("id"),
-                root.get("name"),
-                root.get("licensePlates"),
-                root.get("capacity"),
-                root.get("manufacturer"),
-                root.get("type"));
-        Query query = session.createQuery(criteriaQuery);
         return query.getResultList();
     }
 
     @Override
-    public boolean addCoach(Coach coach) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        try {
-            session.save(coach);
-            return true;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        }
+    public long countCoach(boolean active) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+        Root root = criteriaQuery.from(Coach.class);
+        criteriaQuery.select(criteriaBuilder.count(root))
+                .where(criteriaBuilder.equal(root.get("active"), active));
+        Query query = session.createQuery(criteriaQuery);
+        return (long) query.getSingleResult();
     }
 
-//    @Override
-//    public boolean deleteBus(int busId) {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//        try {
-//            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-//            CriteriaUpdate<Bus> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Bus.class);
-//            Root<Bus> root = criteriaUpdate.from(Bus.class);
-//            criteriaUpdate.set("active", false);
-//            criteriaUpdate.where(criteriaBuilder.equal(root.get("id"), busId));
-//            session.createQuery(criteriaUpdate).executeUpdate();
-//            return true;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
 }

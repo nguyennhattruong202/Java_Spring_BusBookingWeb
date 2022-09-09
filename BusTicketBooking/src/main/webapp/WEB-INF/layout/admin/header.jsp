@@ -80,7 +80,7 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownCoach">
         <li>
-            <a class="dropdown-item" href="#">Danh sách xe khách</a>
+            <a class="dropdown-item" href="<c:url value="/admin/coach"/>">Danh sách xe khách</a>
         </li>
         <li>
             <a class="dropdown-item" href="#">Xe khách đã xóa</a>

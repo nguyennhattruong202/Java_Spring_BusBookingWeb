@@ -16,7 +16,7 @@
 <div class="d-flex justify-content-center w-100 mt-4 mb-4">
     <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h4 class="fw-bold my-style-text-blue">Danh sách khách hàng đã xóa</h4>
+            <h4 class="fw-bold text-primary">Danh sách khách hàng đã xóa</h4>
         </div>
         <c:if test="${customerDeletedList.size() != 0}">
             <table class="table table-hover mt-3 table-bordered" id="customerDeletedTable">

@@ -7,6 +7,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <div class="d-flex justify-content-center w-100 mt-4 mb-4">
     <div class="shadow p-3 bg-body rounded w-75 p-4">
         <div class="border-bottom mb-4">

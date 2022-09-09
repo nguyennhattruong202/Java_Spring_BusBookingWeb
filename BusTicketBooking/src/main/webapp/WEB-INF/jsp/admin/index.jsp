@@ -7,14 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<head>
-    <style>
-        .my-card-hover:hover{
-            opacity: 0.8;
-            color: navy;
-        }
-    </style>
-</head>
 <div id="carouselExampleIndicators" class="carousel slide mt-3" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -43,9 +35,9 @@
 </div>
 
 <div class="d-flex justify-content-center w-100 mt-3 mb-3">
-    <div class="my-style-card-box w-100 p-4">
+    <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h2 class="fw-bold my-style-text-blue text-center text-uppercase">Truong Nam BusLines</h2>
+            <h2 class="fw-bold text-primary text-center text-uppercase">Truong Nam BusLines</h2>
         </div>
         <div class="row mt-5">
             <div class="col-3">

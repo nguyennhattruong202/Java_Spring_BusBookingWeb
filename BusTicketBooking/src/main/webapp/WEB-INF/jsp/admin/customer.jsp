@@ -8,6 +8,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<script src="<c:url value="/js/admin/customer.js" />"></script>
+
 <!-- Begin message area -->
 <spring:message code="admin.content.pageSize" var="pageSize"/>
 <!-- End message area -->
@@ -30,22 +32,22 @@
 </c:if>
 
 <div class="d-flex justify-content-center w-100 mt-3 mb-3">
-    <div class="my-style-card-box w-100 p-4">
+    <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h4 class="fw-bold my-style-text-blue">Danh sách khách hàng</h4>
+            <h4 class="fw-bold text-primary">Danh sách khách hàng</h4>
         </div>
         <table class="table table-hover mt-3 table-bordered" id="customerTable">
             <thead class="bg-light">
                 <tr>
-                    <th class="text-center">Hình ảnh</th>
-                    <th onclick="sortTable(1, 'customerTable')" class="text-center">Họ và tên lót</th>
-                    <th onclick="sortTable(2, 'customerTable')" class="text-center">Tên</th>
-                    <th onclick="sortTable(3, 'customerTable')" class="text-center">Giới tính</th>
-                    <th onclick="sortTable(4, 'customerTable')" class="text-center">Ngày sinh</th>
-                    <th onclick="sortTable(5, 'customerTable')" class="text-center">SĐT</th>
-                    <th onclick="sortTable(6, 'customerTable')" class="text-center">Email</th>
-                    <th onclick="sortTable(7, 'customerTable')" class="text-center">Địa chỉ</th>
-                    <th class="text-center">Thao tác</th>
+                    <th class="text-center my-style-th-cursor">Hình ảnh</th>
+                    <th onclick="sortTable(1, 'customerTable')" class="text-center my-style-th-cursor">Họ và tên lót</th>
+                    <th onclick="sortTable(2, 'customerTable')" class="text-center my-style-th-cursor">Tên</th>
+                    <th onclick="sortTable(3, 'customerTable')" class="text-center my-style-th-cursor">Giới tính</th>
+                    <th onclick="sortTable(4, 'customerTable')" class="text-center my-style-th-cursor">Ngày sinh</th>
+                    <th onclick="sortTable(5, 'customerTable')" class="text-center my-style-th-cursor">SĐT</th>
+                    <th onclick="sortTable(6, 'customerTable')" class="text-center my-style-th-cursor">Email</th>
+                    <th onclick="sortTable(7, 'customerTable')" class="text-center my-style-th-cursor">Địa chỉ</th>
+                    <th class="text-center my-style-th-cursor">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,120 +66,9 @@
                         <td>${customer.address}</td>
                         <td class="text-center">
                             <a class="text text-primary my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerDetail${customer.id}"><i class="fa fa-bars"></i></a>
-                            <!--
-                            <a class="text text-primary ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#customerEdit${customer.id}"><i class="bi bi-pencil-square"></i></a>
-                            -->
                             <a class="text text-danger ms-2 my-style-action-size" data-bs-toggle="modal" data-bs-target="#deleteCustomer${customer.id}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
-                    <!--
-                <div class="modal fade" id="customerEdit${customer.id}">
-                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Chỉnh sửa thông tin khách hàng</h4>
-                                <button typr="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-4 text-center">
-                                        <img style="width: 200px; height: 200px;" class="rounded-circle shadow rounded" src="${customer.image}" alt="customerImage${customer.id}">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">ID:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="number" class="form-control bg-white" value="${customer.id}" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Họ và tên lót:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" value="${customer.lastName}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Tên:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" value="${customer.firstName}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Giới tính:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <select class="form-select w-100">
-                                                    <option value="Nam" selected>Nam</option>
-                                                    <option value="Nữ">Nữ</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Ngày sinh:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="date" class="form-control" value="${customer.dateOfBirth}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">CMND/CCCD:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" value="${customer.identityNum}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Địa chỉ:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" value="${customer.address}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Số điện thoại:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" value="${customer.phone}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Email:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="email" class="form-control" value="${customer.email}">
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Username:</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" value="${customer.username}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmEditCustomer${customer.id}" data-bs-dismiss="modal">Edit</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            -->
                 <div class="modal fade" id="customerDetail${customer.id}">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
@@ -331,29 +222,3 @@
         </nav>
     </div>
 </div>
-
-<style>
-    th{
-        cursor: pointer;
-    }
-    .my-style-action-size{
-        font-size: 20px;
-        cursor: pointer;
-    }
-</style>
-
-<script>
-    function deleteCustomer(endpoint, customerId) {
-        fetch(endpoint, {
-            method: "put",
-            body: JSON.stringify({"id": customerId}),
-            headers: {"Content-Type": "application/json"}
-        }).then(function (res) {
-            if (res.status === 204) {
-                location.reload();
-            }
-        }).catch(function (err) {
-            console.error(err);
-        });
-    }
-</script>

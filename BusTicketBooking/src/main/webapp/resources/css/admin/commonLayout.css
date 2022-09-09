@@ -6,39 +6,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Aug 22, 2022, 5:52:09 PM
     Author     : ACER
 */
-.my-style-card-box{
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+.my-style-th-cursor{
+    cursor: pointer;
 }
-.my-style-pt-10{
-    padding-top: 10px;
+.my-style-action-size{
+    font-size: 20px;
+    cursor: pointer;
 }
-.my-style-pb-10{
-    padding-bottom: 10px;
-}
-.my-style-text-blue{
-    color: #1b00ff;
-}
-.my-style-input-radius{
-    border-radius: 10px;
-}
-.my-style-element-height{
-    height: 50px;
-}
-.my-style-left-sidebar{
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 16px;
-}
-.my-style-main{
-    margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
+.my-card-hover:hover{
+    opacity: 0.8;
+    color: navy;
 }
 
