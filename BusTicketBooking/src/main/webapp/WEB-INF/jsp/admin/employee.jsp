@@ -6,6 +6,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -13,43 +14,26 @@
 <spring:message code="admin.content.pageSize" var="pageSize"/>
 <!-- End message area -->
 
-<c:if test="${listEmployee.size() == 0}">
-    <div class="modal fade" id="modalEmpty" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalEmptyLabel">Lưu ý</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">Danh sách nhân sự trống</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</c:if>
-
 <div class="d-flex justify-content-center w-100 mt-3 mb-3">
     <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h4 class="fw-bold text-primary">Danh sách nhân sự</h4>
+            <h4 class="fw-bold text-primary"><fmt:message key="admin.content.employeeList"/></h4>
         </div>
         <div class="d-grid gap-2 d-flex justify-content-end mt-3">
-            <a class="btn btn-primary fw-bold" href="<c:url value="/admin/employee/add"/>" role="button"><i class="bi bi-person-plus me-2" style="font-size: 20px;"></i>Thêm nhân sự mới</a>
+            <a class="btn btn-primary fw-bold" href="<c:url value="/admin/employee/add"/>" role="button"><i class="bi bi-person-plus me-2" style="font-size: 20px;"></i><fmt:message key="admin.content.employeeAdd"/></a>
         </div>
         <table class="table table-hover mt-3 table-bordered" id="employeeTable">
             <thead class="bg-light">
                 <tr>
-                    <th class="text-center my-style-th-cursor">Hình ảnh</th>
-                    <th onclick="sortTable(1, 'employeeTable')" class="text-center my-style-th-cursor">Họ và tên lót</th>
-                    <th onclick="sortTable(2, 'employeeTable')" class="text-center my-style-th-cursor">Tên</th>
-                    <th onclick="sortTable(3, 'employeeTable')" class="text-center my-style-th-cursor">Giới tính</th>
-                    <th onclick="sortTable(4, 'employeeTable')" class="text-center my-style-th-cursor">Ngày sinh</th>
-                    <th onclick="sortTable(5, 'employeeTable')" class="text-center my-style-th-cursor">SĐT</th>
-                    <th onclick="sortTable(6, 'employeeTable')" class="text-center my-style-th-cursor">Email</th>
-                    <th onclick="sortTable(7, 'employeeTable')" class="text-center my-style-th-cursor">User role</th>
-                    <th class="text-center my-style-th-cursor">Thao tác</th>
+                    <th class="text-center my-style-th-cursor"><fmt:message key="admin.picture"/></th>
+                    <th onclick="sortTable(1, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.lastname"/></th>
+                    <th onclick="sortTable(2, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.firstname"/></th>
+                    <th onclick="sortTable(3, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.gender"/></th>
+                    <th onclick="sortTable(4, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.DOB"/></th>
+                    <th onclick="sortTable(5, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.phone"/></th>
+                    <th onclick="sortTable(6, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.email"/></th>
+                    <th onclick="sortTable(7, 'employeeTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.address"/></th>
+                    <th class="text-center my-style-th-cursor"><fmt:message key="admin.action"/></th>
                 </tr>
             </thead>
             <tbody>
@@ -76,7 +60,7 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Chỉnh sửa thông tin nhân sự</h4>
+                                <h4 class="modal-title"><fmt:message key="admin.edit"/></h4>
                                 <button typr="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -95,7 +79,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Họ và tên lót:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.lastname"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.lastName}">
@@ -103,7 +87,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Tên:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.firstname"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.firstName}">
@@ -111,18 +95,18 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Giới tính:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.gender"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <select class="form-select w-100">
-                                                    <option value="Nam" selected>Nam</option>
-                                                    <option value="Nữ">Nữ</option>
+                                                    <option value="1" selected><fmt:message key="admin.gender.male"/></option>
+                                                    <option value="2"><fmt:message key="admin.gender.female"/></option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Ngày sinh:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.DOB"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="date" class="form-control" value="${employee.dateOfBirth}">
@@ -130,7 +114,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">CMND/CCCD:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.identity"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.identityNum}">
@@ -138,7 +122,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Địa chỉ:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.address"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.address}">
@@ -146,7 +130,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Số điện thoại:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.phone"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.phone}">
@@ -154,7 +138,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Email:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.email"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="email" class="form-control" value="${employee.email}">
@@ -162,7 +146,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Username:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.username"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.username}">
@@ -170,7 +154,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">User role:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.employee.userRole"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control" value="${employee.userRole}">
@@ -190,7 +174,7 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Thông tin nhân sự</h4>
+                                <h4 class="modal-title"><fmt:message key="admin.employee.info"/></h4>
                                 <button typr="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -209,7 +193,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Họ và tên lót:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.lastname"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.lastName}" readonly>
@@ -217,7 +201,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Tên:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.firstname"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.firstName}" readonly>
@@ -225,7 +209,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Giới tính:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.gender"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.gender}" readonly>
@@ -233,7 +217,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Ngày sinh:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.DOB"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="date" class="form-control bg-white" value="${employee.dateOfBirth}" readonly>
@@ -241,7 +225,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">CMND/CCCD:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.identity"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.identityNum}" readonly>
@@ -249,7 +233,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Địa chỉ:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.address"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.address}" readonly>
@@ -257,7 +241,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Số điện thoại:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.phone"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.phone}" readonly>
@@ -265,7 +249,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Email:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.email"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="email" class="form-control bg-white" value="${employee.email}" readonly>
@@ -273,7 +257,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Username:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.username"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.username}" readonly>
@@ -281,7 +265,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">User role:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.employee.userRole"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${employee.userRole}" readonly>
@@ -300,7 +284,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Lưu ý</h4>
+                                <h4 class="modal-title"><fmt:message key="content.attention"/></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -317,7 +301,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Lưu ý</h4>
+                                <h4 class="modal-title"><fmt:message key="content.attention"/></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">

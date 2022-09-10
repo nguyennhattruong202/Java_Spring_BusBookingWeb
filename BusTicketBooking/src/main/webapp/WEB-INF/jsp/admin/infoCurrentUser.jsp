@@ -6,12 +6,13 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="d-flex justify-content-center w-100 mt-4 mb-4">
     <div class="shadow p-3 bg-body rounded w-75 p-4">
         <div class="border-bottom mb-4">
-            <h3 class="fw-bold text-primary text-center">Thông tin tài khoản</h3>
+            <h3 class="fw-bold text-primary text-center"><fmt:message key="admin.currentUser.info"/></h3>
         </div>
         <div class="row">
             <div class="col-5 text-center">
@@ -38,7 +39,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3 d-flex align-items-center">
-                        <span class="fw-bold">Ngày sinh:</span>
+                        <span class="fw-bold"><fmt:message key="admin.DOB"/></span>
                     </div>
                     <div class="col-9">
                         <input type="date" class="form-control bg-white" value="${pageContext.session.getAttribute("currentUser").dateOfBirth}" readonly>
@@ -46,7 +47,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3 d-flex align-items-center">
-                        <span class="fw-bold">CMND/CCCD:</span>
+                        <span class="fw-bold"><fmt:message key="admin.identity"/></span>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control bg-white" value="${pageContext.session.getAttribute("currentUser").identityNum}" readonly>
@@ -54,7 +55,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3 d-flex align-items-center">
-                        <span class="fw-bold">Địa chỉ:</span>
+                        <span class="fw-bold"><fmt:message key="admin.address"/></span>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control bg-white" value="${pageContext.session.getAttribute("currentUser").address}" readonly>
@@ -62,7 +63,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3 d-flex align-items-center">
-                        <span class="fw-bold">Số điện thoại:</span>
+                        <span class="fw-bold"><fmt:message key="admin.phone"/></span>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control bg-white" value="${pageContext.session.getAttribute("currentUser").phone}" readonly>
@@ -70,7 +71,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3 d-flex align-items-center">
-                        <span class="fw-bold">Email:</span>
+                        <span class="fw-bold"><fmt:message key="admin.email"/></span>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control bg-white" value="${pageContext.session.getAttribute("currentUser").email}" readonly>
@@ -78,7 +79,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3 d-flex align-items-center">
-                        <span class="fw-bold">Username:</span>
+                        <span class="fw-bold"><fmt:message key="admin.username"/></span>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control bg-white" value="${pageContext.session.getAttribute("currentUser").username}" readonly>
@@ -87,8 +88,8 @@
                 <div class="row">
                     <div class="col-3"></div>
                     <div class="col-9 text-center">
-                        <a class="btn btn-outline-primary me-3" role="button" href="<c:url value="/admin/index"/>"><i class="bi bi-arrow-left me-2"></i>Trang chủ</a>
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalWarningEdit">Chỉnh sửa thông tin</button>
+                        <a class="btn btn-outline-primary me-3" role="button" href="<c:url value="/admin/index"/>"><i class="bi bi-arrow-left me-2"></i><fmt:message key="admin.header.home"/></a>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalWarningEdit"><fmt:message key="admin.editInfomation"/></button>
                     </div>
                 </div>
             </div>
@@ -99,11 +100,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Lưu ý</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><fmt:message key="content.attention"/></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Liên hệ admin để cập nhật thông tin cá nhân
+                <fmt:message key="admin.currentuser.dialog.edit"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

@@ -6,6 +6,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <script src="<c:url value="/js/admin/customer.js" />"></script>
@@ -19,10 +20,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Lưu ý</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><fmt:message key="content.attention"/></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">Danh sách khách hàng trống</div>
+                <div class="modal-body"><fmt:message key="content.customer.listEmpty"/></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
@@ -34,20 +35,20 @@
 <div class="d-flex justify-content-center w-100 mt-3 mb-3">
     <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h4 class="fw-bold text-primary">Danh sách khách hàng</h4>
+            <h4 class="fw-bold text-primary"><fmt:message key="admin.header.customerList"/></h4>
         </div>
         <table class="table table-hover mt-3 table-bordered" id="customerTable">
             <thead class="bg-light">
                 <tr>
-                    <th class="text-center my-style-th-cursor">Hình ảnh</th>
-                    <th onclick="sortTable(1, 'customerTable')" class="text-center my-style-th-cursor">Họ và tên lót</th>
-                    <th onclick="sortTable(2, 'customerTable')" class="text-center my-style-th-cursor">Tên</th>
-                    <th onclick="sortTable(3, 'customerTable')" class="text-center my-style-th-cursor">Giới tính</th>
-                    <th onclick="sortTable(4, 'customerTable')" class="text-center my-style-th-cursor">Ngày sinh</th>
-                    <th onclick="sortTable(5, 'customerTable')" class="text-center my-style-th-cursor">SĐT</th>
+                    <th class="text-center my-style-th-cursor"><fmt:message key="admin.picture"/></th>
+                    <th onclick="sortTable(1, 'customerTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.lastname"/></th>
+                    <th onclick="sortTable(2, 'customerTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.firstname"/></th>
+                    <th onclick="sortTable(3, 'customerTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.gender"/></th>
+                    <th onclick="sortTable(4, 'customerTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.DOB"/></th>
+                    <th onclick="sortTable(5, 'customerTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.phone"/></th>
                     <th onclick="sortTable(6, 'customerTable')" class="text-center my-style-th-cursor">Email</th>
-                    <th onclick="sortTable(7, 'customerTable')" class="text-center my-style-th-cursor">Địa chỉ</th>
-                    <th class="text-center my-style-th-cursor">Thao tác</th>
+                    <th onclick="sortTable(7, 'customerTable')" class="text-center my-style-th-cursor"><fmt:message key="admin.address"/></th>
+                    <th class="text-center my-style-th-cursor"><fmt:message key="admin.action"/></th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +74,7 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Thông tin khách hàng</h4>
+                                <h4 class="modal-title"><fmt:message key="admin.customer.info"/></h4>
                                 <button typr="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -92,7 +93,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Họ và tên lót:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.lastname"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${customer.lastName}" readonly>
@@ -100,7 +101,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Tên:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.firstname"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${customer.firstName}" readonly>
@@ -108,7 +109,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Giới tính:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.gender"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${customer.gender}" readonly>
@@ -116,7 +117,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Ngày sinh:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.DOB"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="date" class="form-control bg-white" value="${customer.dateOfBirth}" readonly>
@@ -124,7 +125,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">CMND/CCCD:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.identity"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${customer.identityNum}" readonly>
@@ -132,7 +133,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Địa chỉ:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.address"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${customer.address}" readonly>
@@ -140,7 +141,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-3">
-                                                <span class="fw-bold h-100 d-flex align-items-center">Số điện thoại:</span>
+                                                <span class="fw-bold h-100 d-flex align-items-center"><fmt:message key="admin.phone"/></span>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" class="form-control bg-white" value="${customer.phone}" readonly>
@@ -175,7 +176,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Lưu ý</h4>
+                                <h4 class="modal-title"><fmt:message key="content.attention"/></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -192,7 +193,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Lưu ý</h4>
+                                <h4 class="modal-title"><fmt:message key="content.attention"/></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
