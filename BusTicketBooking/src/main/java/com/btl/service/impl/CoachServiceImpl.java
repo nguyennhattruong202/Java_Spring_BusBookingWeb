@@ -13,18 +13,23 @@ import com.btl.service.CoachService;
 
 @Service
 public class CoachServiceImpl implements CoachService {
-
+    
     @Autowired
     private CoachRepository coachRepository;
-
+    
     @Override
     public List<Coach> getCoach(int page, boolean active) {
         return this.coachRepository.getCoach(page, active);
     }
-
+    
     @Override
     public long countCoach(boolean active) {
         return this.coachRepository.countCoach(active);
     }
-
+    
+    @Override
+    public boolean addCoach(Coach coach) {
+        return this.coachRepository.addCoach(coach);
+    }
+    
 }

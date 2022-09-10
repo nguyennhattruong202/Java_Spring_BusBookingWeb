@@ -55,4 +55,16 @@ public class CoachRepositoryImpl implements CoachRepository {
         return (long) query.getSingleResult();
     }
 
+    @Override
+    public boolean addCoach(Coach coach) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        try {
+            session.save(coach);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
 }

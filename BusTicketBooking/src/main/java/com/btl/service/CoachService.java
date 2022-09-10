@@ -12,4 +12,6 @@ public interface CoachService {
     List<Coach> getCoach(int page, boolean active);
 
     long countCoach(boolean active);
+
+    boolean addCoach(Coach coach);
 }

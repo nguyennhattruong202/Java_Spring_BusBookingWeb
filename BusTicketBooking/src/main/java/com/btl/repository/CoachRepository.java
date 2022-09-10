@@ -13,4 +13,6 @@ public interface CoachRepository {
 
     long countCoach(boolean active);
 
+    boolean addCoach(Coach coach);
+
 }

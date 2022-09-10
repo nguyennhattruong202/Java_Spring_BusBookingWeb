@@ -1,6 +1,6 @@
 <%-- 
-    Document   : adminBus
-    Created on : Aug 11, 2022, 5:03:31 PM
+    Document   : coachDeleted
+    Created on : Sep 10, 2022, 5:14:30 PM
     Author     : ACER
 --%>
 
@@ -17,37 +17,33 @@
         <div class="border-bottom">
             <h4 class="fw-bold text-primary">Danh sách xe khách</h4>
         </div>
-        <div class="d-grid gap-2 d-flex justify-content-end mt-3">
-            <a class="btn btn-outline-primary fw-bold" href="<c:url value="/admin/coach/add"/>" role="button"><i class="bi bi-person-plus me-2" style="font-size: 20px;"></i>Thêm xe mới</a>
-        </div>
         <c:if test="${listCoach.size() != 0}">
-            <table class="table table-hover mt-3 table-bordered" id="coachTable">
+            <table class="table table-hover mt-3 table-bordered" id="coachDeletedTable">
                 <thead class="bg-light">
                     <tr>
-                        <th onclick="sortTable(0, 'coachTable')" class="text-center">ID</th>
-                        <th onclick="sortTable(1, 'coachTable')" class="text-center">Tên xe</th>
-                        <th onclick="sortTable(2, 'coachTable')" class="text-center">Biển số xe</th>
-                        <th onclick="sortTable(3, 'coachTable')" class="text-center">Sức chứa</th>
-                        <th onclick="sortTable(4, 'coachTable')" class="text-center">Hãng sản xuất</th>
-                        <th onclick="sortTable(5, 'coachTable')" class="text-center">Loại</th>
+                        <th onclick="sortTable(0, 'coachDeletedTable')" class="text-center">ID</th>
+                        <th onclick="sortTable(1, 'coachDeletedTable')" class="text-center">Tên xe</th>
+                        <th onclick="sortTable(2, 'coachDeletedTable')" class="text-center">Biển số xe</th>
+                        <th onclick="sortTable(3, 'coachDeletedTable')" class="text-center">Sức chứa</th>
+                        <th onclick="sortTable(4, 'coachDeletedTable')" class="text-center">Hãng sản xuất</th>
+                        <th onclick="sortTable(5, 'coachDeletedTable')" class="text-center">Loại</th>
                         <th class="text-center">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${listCoach}" var="listCoach">
+                    <c:forEach items="${coachDeletedList}" var="listDeletedCoach">
                         <tr class="align-middle">
-                            <td>${listCoach.id}</td>
-                            <td>${listCoach.name}</td>
-                            <td>${listCoach.licensePlates}</td>
-                            <td>${listCoach.capacity}</td>
-                            <td>${listCoach.manufacturer}</td>
-                            <td>${listCoach.type}</td>
+                            <td>${listDeletedCoach.id}</td>
+                            <td>${listDeletedCoach.name}</td>
+                            <td>${listDeletedCoach.licensePlates}</td>
+                            <td>${listDeletedCoach.capacity}</td>
+                            <td>${listDeletedCoach.manufacturer}</td>
+                            <td>${listDeletedCoach.type}</td>
                             <td class="text-center">
-                                <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#"><i class="bi bi-pencil-square"></i></a>
-                                <a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteCoach${listCoach.id}"><i class="fa fa-trash"></i></a>
+                                <a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteCoach${listDeletedCoach.id}">Khôi phục</a>
                             </td>
                         </tr>
-                    <div class="modal fade" id="deleteCoach${listCoach.id}">
+                    <div class="modal fade" id="deleteCoach${listDeletedCoach.id}">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -55,7 +51,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Are you sure to delete ${listCoach.name}?
+                                    Are you sure to restore ${listDeletedCoach.name}?
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary">Xóa</button>
@@ -68,12 +64,12 @@
                 </tbody>
             </table>
         </c:if>
-        <c:if test="${listCoach.size() == 0}">
+        <c:if test="${coachDeletedList.size() == 0}">
             <div class="alert alert-danger mt-4" role="alert">Danh sách trống</div>
         </c:if>
         <nav>
             <ul class="pagination justify-content-end">
-                <c:forEach begin="1" end="${Math.ceil(coachCounter/pageSize)}" var="i">
+                <c:forEach begin="1" end="${Math.ceil(coachDeletedCount/pageSize)}" var="i">
                     <c:url value="/admin/coach" var="c">
                         <c:param value="${i}" name="page"/>
                     </c:url>

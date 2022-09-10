@@ -16,6 +16,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -44,15 +46,19 @@ public class Coach implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @NotNull(message = "{validator.addCoach.notNull.error}")
     @Size(max = 255)
     @Column(name = "name")
     private String name;
     @Size(max = 255)
+    @NotNull(message = "{validator.addCoach.notNull.error}")
     @Column(name = "license_plates")
     private String licensePlates;
+    @Max(value = 4, message = "{validator.addCoach.min}")
     @Column(name = "capacity")
     private Integer capacity;
     @Size(max = 255)
+    @NotNull(message = "{validator.addCoach.notNull.error}")
     @Column(name = "manufacturer")
     private String manufacturer;
     @Size(max = 255)

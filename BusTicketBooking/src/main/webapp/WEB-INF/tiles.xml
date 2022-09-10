@@ -67,6 +67,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Customer deleted"/>
         <put-attribute name="content" value="/WEB-INF/jsp/admin/customerDeleted.jsp"/>
     </definition>
+    
+    <definition name="adminAddCoach" extends="adminBase">
+        <put-attribute name="title" value="Add Coach"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/addCoach.jsp"/>
+    </definition>
+    
+    <definition name="adminCoachDeleted" extends="adminBase">
+        <put-attribute name="title" value="Add Coach"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/coachDeleted.jsp"/>
+    </definition>
     <!-- End admin tiles -->
 </tiles-definitions>
 

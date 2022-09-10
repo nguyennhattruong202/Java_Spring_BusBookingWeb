@@ -83,7 +83,7 @@
             <a class="dropdown-item" href="<c:url value="/admin/coach"/>">Danh sách xe khách</a>
         </li>
         <li>
-            <a class="dropdown-item" href="#">Xe khách đã xóa</a>
+            <a class="dropdown-item" href="<c:url value="/admin/coach/deleted"/>">Xe khách đã xóa</a>
         </li>
     </ul>
     <a class="border border-light bg-secondary list-group-item list-group-item-action text-white" href="#" role="button" data-bs-toggle="dropdown" id="dropdownEmployee">
