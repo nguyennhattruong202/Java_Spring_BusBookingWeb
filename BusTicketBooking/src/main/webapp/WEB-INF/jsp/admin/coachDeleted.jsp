@@ -15,7 +15,7 @@
 <div class="d-flex justify-content-center w-100 mt-4 mb-4">
     <div class="shadow p-3 bg-body rounded w-100 p-4">
         <div class="border-bottom">
-            <h4 class="fw-bold text-primary">Danh sách xe khách</h4>
+            <h4 class="fw-bold text-primary">Danh sách xe khách đã xóa</h4>
         </div>
         <c:if test="${listCoach.size() != 0}">
             <table class="table table-hover mt-3 table-bordered" id="coachDeletedTable">

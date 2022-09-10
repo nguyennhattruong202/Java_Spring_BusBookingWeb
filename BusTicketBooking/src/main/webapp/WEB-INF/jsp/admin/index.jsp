@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <!DOCTYPE html>
 <div id="carouselExampleIndicators" class="carousel slide mt-3" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -45,7 +46,7 @@
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/location.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexLineBus" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Quản lý tuyến xe</h5>
+                            <h5 class="card-title"><fmt:message key="content.index.manageCoachline"/></h5>
                         </div>
                     </div>
                 </a>
@@ -55,7 +56,7 @@
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/busTrip.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexBusTrip" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Quản lý chuyến xe</h5>
+                            <h5 class="card-title"><fmt:message key="content.index.manageCoachtrip"/></h5>
                         </div>
                     </div>
                 </a>
@@ -66,7 +67,7 @@
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/bus.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexBusTrip" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Quản lý xe khách</h5>
+                            <h5 class="card-title"><fmt:message key="content.index.manageCoach"/></h5>
                         </div>
                     </div>
                 </a>
@@ -76,7 +77,7 @@
                     <div class="card shadow p-3 mb-5 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/employee2.jpg"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexEmployee" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Quản lý nhân sự</h5>
+                            <h5 class="card-title"><fmt:message key="content.index.manageEmployee"/></h5>
                         </div>
                     </div>
                 </a>
@@ -88,7 +89,7 @@
                     <div class="card shadow p-3 bg-body rounded justify-content-center" style="width: 18rem; height: 18rem;">
                         <img src="<c:url value="/images/admin/typeEmployee.png"/>" class="card-img-top img-fluid rounded mx-auto d-block" alt="indexTypeEmployee" style="height: 200px; width: 200px;">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Quản khách hàng</h5>
+                            <h5 class="card-title"><fmt:message key="content.index.manageCustomer"/></h5>
                         </div>
                     </div>
                 </a>
