@@ -55,7 +55,6 @@ public class Coach implements Serializable {
     @Column(name = "license_plates")
     private String licensePlates;
     @NotNull(message = "{validator.addCoach.notNull.error}")
-    @Max(value = 4, message = "{validator.addCoach.min}")
     @Column(name = "capacity")
     private Integer capacity;
     @Size(max = 255)
